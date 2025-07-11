@@ -1,0 +1,2711 @@
+9.7909 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x000001C12C4496A0>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x000001C12C46DAC8>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=1, size=array([1920, 1080]), stencilBits=0, stereo=False, units='norm', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+9.7910 	EXP 	window1: mouseVisible = True
+9.7910 	EXP 	window1: recordFrameIntervals = False
+9.9574 	EXP 	window1: recordFrameIntervals = True
+10.1410 	EXP 	window1: recordFrameIntervals = False
+10.5238 	EXP 	Created Instructions = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='Instructions', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='norm', win=Window(...), wrapWidth=1)
+10.5283 	EXP 	Created image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, image='sin', interpolate=False, mask=None, maskParams=None, name='image', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([1., 1.]), texRes=512, units='height', win=Window(...))
+10.5459 	EXP 	Created fixationOutside = ShapeStim(__class__=<class 'psychopy.visual.shape.ShapeStim'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-3.0, fillColor=array([-1, -1, -1]), fillColorSpace='rgb', fillRGB=array([-1, -1, -1]), interpolate=True, lineColor=array([-1., -1., -1.]), lineColorSpace='rgb', lineRGB=array([-1, -1, -1]), lineWidth=1.0, name='fixationOutside', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.01, 0.01]), units='height', vertices=ndarray(...), win=Window(...), windingRule=None)
+10.5608 	EXP 	Created fixationResponse = ShapeStim(__class__=<class 'psychopy.visual.shape.ShapeStim'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-4.0, fillColor=array([ 1, -1, -1]), fillColorSpace='rgb', fillRGB=array([ 1, -1, -1]), interpolate=True, lineColor=array([ 1., -1., -1.]), lineColorSpace='rgb', lineRGB=array([ 1, -1, -1]), lineWidth=1.0, name='fixationResponse', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.01, 0.01]), units='height', vertices=ndarray(...), win=Window(...), windingRule=None)
+10.5755 	EXP 	Created fixationInside = ShapeStim(__class__=<class 'psychopy.visual.shape.ShapeStim'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-5.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1.0, name='fixationInside', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.004, 0.004]), units='height', vertices=ndarray(...), win=Window(...), windingRule=None)
+10.7125 	EXP 	Instructions: autoDraw = True
+14.9013 	DATA 	Keypress: 1
+14.9119 	EXP 	Instructions: autoDraw = False
+28.3299 	EXP 	Imported runInfo/All/P014_Run6.csv as conditions, 165 conditions, 8 params
+28.3305 	EXP 	Created sequence: sequential, trialTypes=165, nReps=1, seed=None
+28.3308 	EXP 	New trial (rep=0, index=0): OrderedDict([('eventStartTime', 0.0), ('eventEndTime', 4.0), ('eventCond', 0), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+28.3388 	DATA 	Keypress: 5
+28.3571 	EXP 	image: size = array([0., 0.])
+28.3571 	EXP 	image: image = 'Stimuli/Blank.png'
+28.3571 	EXP 	image: autoDraw = True
+28.3571 	EXP 	fixationOutside: autoDraw = True
+28.3571 	EXP 	fixationResponse: autoDraw = True
+28.3571 	EXP 	fixationResponse: autoDraw = False
+28.3571 	EXP 	fixationInside: autoDraw = True
+30.3005 	DATA 	Keypress: 5
+32.3004 	DATA 	Keypress: 5
+32.3137 	EXP 	New trial (rep=0, index=1): OrderedDict([('eventStartTime', 4.0), ('eventEndTime', 4.75), ('eventCond', 25), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_cashew_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+32.3443 	EXP 	image: autoDraw = False
+32.3443 	EXP 	fixationOutside: autoDraw = False
+32.3443 	EXP 	fixationInside: autoDraw = False
+32.3443 	EXP 	image: autoDraw = False
+32.3443 	EXP 	fixationOutside: autoDraw = False
+32.3443 	EXP 	fixationResponse: autoDraw = False
+32.3443 	EXP 	fixationInside: autoDraw = False
+32.3443 	EXP 	image: size = array([0.75, 0.75])
+32.3443 	EXP 	image: image = 'Stimuli/P014/things_cashew_07s.jpg'
+32.3443 	EXP 	image: autoDraw = True
+32.3443 	EXP 	fixationOutside: autoDraw = True
+32.3443 	EXP 	fixationResponse: autoDraw = True
+32.3443 	EXP 	fixationResponse: autoDraw = False
+32.3443 	EXP 	fixationInside: autoDraw = True
+33.0650 	EXP 	New trial (rep=0, index=2): OrderedDict([('eventStartTime', 4.75), ('eventEndTime', 8.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+33.0783 	EXP 	image: autoDraw = False
+33.0783 	EXP 	fixationOutside: autoDraw = False
+33.0783 	EXP 	fixationInside: autoDraw = False
+33.0783 	EXP 	image: autoDraw = False
+33.0783 	EXP 	fixationOutside: autoDraw = False
+33.0783 	EXP 	fixationResponse: autoDraw = False
+33.0783 	EXP 	fixationInside: autoDraw = False
+33.0783 	EXP 	image: size = array([0., 0.])
+33.0783 	EXP 	image: image = 'Stimuli/Blank.png'
+33.0783 	EXP 	image: autoDraw = True
+33.0783 	EXP 	fixationOutside: autoDraw = True
+33.0783 	EXP 	fixationResponse: autoDraw = True
+33.0783 	EXP 	fixationResponse: autoDraw = False
+33.0783 	EXP 	fixationInside: autoDraw = True
+34.3040 	DATA 	Keypress: 5
+36.2890 	DATA 	Keypress: 5
+36.3003 	EXP 	New trial (rep=0, index=3): OrderedDict([('eventStartTime', 8.0), ('eventEndTime', 8.75), ('eventCond', 23), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_bug_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+36.3142 	EXP 	image: autoDraw = False
+36.3142 	EXP 	fixationOutside: autoDraw = False
+36.3142 	EXP 	fixationInside: autoDraw = False
+36.3142 	EXP 	image: autoDraw = False
+36.3142 	EXP 	fixationOutside: autoDraw = False
+36.3142 	EXP 	fixationResponse: autoDraw = False
+36.3142 	EXP 	fixationInside: autoDraw = False
+36.3142 	EXP 	image: size = array([0.75, 0.75])
+36.3142 	EXP 	image: image = 'Stimuli/P014/things_bug_07s.jpg'
+36.3142 	EXP 	image: autoDraw = True
+36.3142 	EXP 	fixationOutside: autoDraw = True
+36.3142 	EXP 	fixationResponse: autoDraw = True
+36.3142 	EXP 	fixationResponse: autoDraw = False
+36.3142 	EXP 	fixationInside: autoDraw = True
+37.0514 	EXP 	New trial (rep=0, index=4): OrderedDict([('eventStartTime', 8.75), ('eventEndTime', 12.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+37.0649 	EXP 	image: autoDraw = False
+37.0649 	EXP 	fixationOutside: autoDraw = False
+37.0649 	EXP 	fixationInside: autoDraw = False
+37.0649 	EXP 	image: autoDraw = False
+37.0649 	EXP 	fixationOutside: autoDraw = False
+37.0649 	EXP 	fixationResponse: autoDraw = False
+37.0649 	EXP 	fixationInside: autoDraw = False
+37.0649 	EXP 	image: size = array([0., 0.])
+37.0649 	EXP 	image: image = 'Stimuli/Blank.png'
+37.0649 	EXP 	image: autoDraw = True
+37.0649 	EXP 	fixationOutside: autoDraw = True
+37.0649 	EXP 	fixationResponse: autoDraw = True
+37.0649 	EXP 	fixationResponse: autoDraw = False
+37.0649 	EXP 	fixationInside: autoDraw = True
+38.2877 	DATA 	Keypress: 5
+40.2898 	DATA 	Keypress: 5
+40.3030 	EXP 	New trial (rep=0, index=5): OrderedDict([('eventStartTime', 12.0), ('eventEndTime', 12.75), ('eventCond', 12), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bjyrrxiwsnbmkbqs.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+40.3177 	EXP 	image: autoDraw = False
+40.3177 	EXP 	fixationOutside: autoDraw = False
+40.3177 	EXP 	fixationInside: autoDraw = False
+40.3177 	EXP 	image: autoDraw = False
+40.3177 	EXP 	fixationOutside: autoDraw = False
+40.3177 	EXP 	fixationResponse: autoDraw = False
+40.3177 	EXP 	fixationInside: autoDraw = False
+40.3177 	EXP 	image: size = array([0.75, 0.75])
+40.3177 	EXP 	image: image = 'Stimuli/P014/sun_bjyrrxiwsnbmkbqs.jpg'
+40.3177 	EXP 	image: autoDraw = True
+40.3177 	EXP 	fixationOutside: autoDraw = True
+40.3177 	EXP 	fixationResponse: autoDraw = True
+40.3177 	EXP 	fixationResponse: autoDraw = False
+40.3177 	EXP 	fixationInside: autoDraw = True
+41.0538 	EXP 	New trial (rep=0, index=6): OrderedDict([('eventStartTime', 12.75), ('eventEndTime', 16.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+41.0684 	EXP 	image: autoDraw = False
+41.0684 	EXP 	fixationOutside: autoDraw = False
+41.0684 	EXP 	fixationInside: autoDraw = False
+41.0684 	EXP 	image: autoDraw = False
+41.0684 	EXP 	fixationOutside: autoDraw = False
+41.0684 	EXP 	fixationResponse: autoDraw = False
+41.0684 	EXP 	fixationInside: autoDraw = False
+41.0684 	EXP 	image: size = array([0., 0.])
+41.0684 	EXP 	image: image = 'Stimuli/Blank.png'
+41.0684 	EXP 	image: autoDraw = True
+41.0684 	EXP 	fixationOutside: autoDraw = True
+41.0684 	EXP 	fixationResponse: autoDraw = True
+41.0684 	EXP 	fixationResponse: autoDraw = False
+41.0684 	EXP 	fixationInside: autoDraw = True
+42.2921 	DATA 	Keypress: 5
+44.2927 	DATA 	Keypress: 5
+44.3070 	EXP 	New trial (rep=0, index=7): OrderedDict([('eventStartTime', 16.0), ('eventEndTime', 16.75), ('eventCond', 28), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_girl_07s.jpg'), ('responseEvent', 1), ('fixRespStart', 0.0), ('fixRespEnd', 0.75)])
+44.3213 	EXP 	image: autoDraw = False
+44.3213 	EXP 	fixationOutside: autoDraw = False
+44.3213 	EXP 	fixationInside: autoDraw = False
+44.3213 	EXP 	image: autoDraw = False
+44.3213 	EXP 	fixationOutside: autoDraw = False
+44.3213 	EXP 	fixationResponse: autoDraw = False
+44.3213 	EXP 	fixationInside: autoDraw = False
+44.3213 	EXP 	image: size = array([0.75, 0.75])
+44.3213 	EXP 	image: image = 'Stimuli/P014/things_girl_07s.jpg'
+44.3213 	EXP 	image: autoDraw = True
+44.3213 	EXP 	fixationOutside: autoDraw = True
+44.3213 	EXP 	fixationResponse: autoDraw = True
+44.3213 	EXP 	fixationInside: autoDraw = True
+44.7773 	DATA 	Keypress: 1
+45.0552 	EXP 	fixationResponse: autoDraw = False
+45.0577 	EXP 	New trial (rep=0, index=8): OrderedDict([('eventStartTime', 16.75), ('eventEndTime', 20.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+45.0720 	EXP 	image: autoDraw = False
+45.0720 	EXP 	fixationOutside: autoDraw = False
+45.0720 	EXP 	fixationInside: autoDraw = False
+45.0720 	EXP 	image: autoDraw = False
+45.0720 	EXP 	fixationOutside: autoDraw = False
+45.0720 	EXP 	fixationResponse: autoDraw = False
+45.0720 	EXP 	fixationInside: autoDraw = False
+45.0720 	EXP 	image: size = array([0., 0.])
+45.0720 	EXP 	image: image = 'Stimuli/Blank.png'
+45.0720 	EXP 	image: autoDraw = True
+45.0720 	EXP 	fixationOutside: autoDraw = True
+45.0720 	EXP 	fixationResponse: autoDraw = True
+45.0720 	EXP 	fixationResponse: autoDraw = False
+45.0720 	EXP 	fixationInside: autoDraw = True
+46.2955 	DATA 	Keypress: 5
+48.2965 	EXP 	New trial (rep=0, index=9): OrderedDict([('eventStartTime', 20.0), ('eventEndTime', 20.75), ('eventCond', 21), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_baby_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+48.3086 	DATA 	Keypress: 5
+48.3248 	EXP 	image: autoDraw = False
+48.3248 	EXP 	fixationOutside: autoDraw = False
+48.3248 	EXP 	fixationInside: autoDraw = False
+48.3248 	EXP 	image: autoDraw = False
+48.3248 	EXP 	fixationOutside: autoDraw = False
+48.3248 	EXP 	fixationResponse: autoDraw = False
+48.3248 	EXP 	fixationInside: autoDraw = False
+48.3248 	EXP 	image: size = array([0.75, 0.75])
+48.3248 	EXP 	image: image = 'Stimuli/P014/things_baby_07s.jpg'
+48.3248 	EXP 	image: autoDraw = True
+48.3248 	EXP 	fixationOutside: autoDraw = True
+48.3248 	EXP 	fixationResponse: autoDraw = True
+48.3248 	EXP 	fixationResponse: autoDraw = False
+48.3248 	EXP 	fixationInside: autoDraw = True
+49.0612 	EXP 	New trial (rep=0, index=10): OrderedDict([('eventStartTime', 20.75), ('eventEndTime', 24.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+49.0755 	EXP 	image: autoDraw = False
+49.0755 	EXP 	fixationOutside: autoDraw = False
+49.0755 	EXP 	fixationInside: autoDraw = False
+49.0755 	EXP 	image: autoDraw = False
+49.0755 	EXP 	fixationOutside: autoDraw = False
+49.0755 	EXP 	fixationResponse: autoDraw = False
+49.0755 	EXP 	fixationInside: autoDraw = False
+49.0755 	EXP 	image: size = array([0., 0.])
+49.0755 	EXP 	image: image = 'Stimuli/Blank.png'
+49.0755 	EXP 	image: autoDraw = True
+49.0755 	EXP 	fixationOutside: autoDraw = True
+49.0755 	EXP 	fixationResponse: autoDraw = True
+49.0755 	EXP 	fixationResponse: autoDraw = False
+49.0755 	EXP 	fixationInside: autoDraw = True
+50.2979 	DATA 	Keypress: 5
+52.2877 	DATA 	Keypress: 5
+52.2972 	EXP 	New trial (rep=0, index=11): OrderedDict([('eventStartTime', 24.0), ('eventEndTime', 24.75), ('eventCond', 40), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_woman_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+52.3284 	EXP 	image: autoDraw = False
+52.3284 	EXP 	fixationOutside: autoDraw = False
+52.3284 	EXP 	fixationInside: autoDraw = False
+52.3284 	EXP 	image: autoDraw = False
+52.3284 	EXP 	fixationOutside: autoDraw = False
+52.3284 	EXP 	fixationResponse: autoDraw = False
+52.3284 	EXP 	fixationInside: autoDraw = False
+52.3284 	EXP 	image: size = array([0.75, 0.75])
+52.3284 	EXP 	image: image = 'Stimuli/P014/things_woman_07s.jpg'
+52.3284 	EXP 	image: autoDraw = True
+52.3284 	EXP 	fixationOutside: autoDraw = True
+52.3284 	EXP 	fixationResponse: autoDraw = True
+52.3284 	EXP 	fixationResponse: autoDraw = False
+52.3284 	EXP 	fixationInside: autoDraw = True
+53.0644 	EXP 	New trial (rep=0, index=12): OrderedDict([('eventStartTime', 24.75), ('eventEndTime', 28.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+53.0791 	EXP 	image: autoDraw = False
+53.0791 	EXP 	fixationOutside: autoDraw = False
+53.0791 	EXP 	fixationInside: autoDraw = False
+53.0791 	EXP 	image: autoDraw = False
+53.0791 	EXP 	fixationOutside: autoDraw = False
+53.0791 	EXP 	fixationResponse: autoDraw = False
+53.0791 	EXP 	fixationInside: autoDraw = False
+53.0791 	EXP 	image: size = array([0., 0.])
+53.0791 	EXP 	image: image = 'Stimuli/Blank.png'
+53.0791 	EXP 	image: autoDraw = True
+53.0791 	EXP 	fixationOutside: autoDraw = True
+53.0791 	EXP 	fixationResponse: autoDraw = True
+53.0791 	EXP 	fixationResponse: autoDraw = False
+53.0791 	EXP 	fixationInside: autoDraw = True
+54.2883 	DATA 	Keypress: 5
+56.2872 	DATA 	Keypress: 5
+56.3013 	EXP 	New trial (rep=0, index=13): OrderedDict([('eventStartTime', 28.0), ('eventEndTime', 28.75), ('eventCond', 39), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_violin_07n.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+56.3152 	EXP 	image: autoDraw = False
+56.3152 	EXP 	fixationOutside: autoDraw = False
+56.3152 	EXP 	fixationInside: autoDraw = False
+56.3152 	EXP 	image: autoDraw = False
+56.3152 	EXP 	fixationOutside: autoDraw = False
+56.3152 	EXP 	fixationResponse: autoDraw = False
+56.3152 	EXP 	fixationInside: autoDraw = False
+56.3152 	EXP 	image: size = array([0.75, 0.75])
+56.3152 	EXP 	image: image = 'Stimuli/P014/things_violin_07n.jpg'
+56.3152 	EXP 	image: autoDraw = True
+56.3152 	EXP 	fixationOutside: autoDraw = True
+56.3152 	EXP 	fixationResponse: autoDraw = True
+56.3152 	EXP 	fixationResponse: autoDraw = False
+56.3152 	EXP 	fixationInside: autoDraw = True
+57.0512 	EXP 	New trial (rep=0, index=14): OrderedDict([('eventStartTime', 28.75), ('eventEndTime', 32.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+57.0659 	EXP 	image: autoDraw = False
+57.0659 	EXP 	fixationOutside: autoDraw = False
+57.0659 	EXP 	fixationInside: autoDraw = False
+57.0659 	EXP 	image: autoDraw = False
+57.0659 	EXP 	fixationOutside: autoDraw = False
+57.0659 	EXP 	fixationResponse: autoDraw = False
+57.0659 	EXP 	fixationInside: autoDraw = False
+57.0659 	EXP 	image: size = array([0., 0.])
+57.0659 	EXP 	image: image = 'Stimuli/Blank.png'
+57.0659 	EXP 	image: autoDraw = True
+57.0659 	EXP 	fixationOutside: autoDraw = True
+57.0659 	EXP 	fixationResponse: autoDraw = True
+57.0659 	EXP 	fixationResponse: autoDraw = False
+57.0659 	EXP 	fixationInside: autoDraw = True
+58.2887 	DATA 	Keypress: 5
+60.2911 	DATA 	Keypress: 5
+60.3041 	EXP 	New trial (rep=0, index=15): OrderedDict([('eventStartTime', 32.0), ('eventEndTime', 32.75), ('eventCond', 27), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_face_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+60.3188 	EXP 	image: autoDraw = False
+60.3188 	EXP 	fixationOutside: autoDraw = False
+60.3188 	EXP 	fixationInside: autoDraw = False
+60.3188 	EXP 	image: autoDraw = False
+60.3188 	EXP 	fixationOutside: autoDraw = False
+60.3188 	EXP 	fixationResponse: autoDraw = False
+60.3188 	EXP 	fixationInside: autoDraw = False
+60.3188 	EXP 	image: size = array([0.75, 0.75])
+60.3188 	EXP 	image: image = 'Stimuli/P014/things_face_07s.jpg'
+60.3188 	EXP 	image: autoDraw = True
+60.3188 	EXP 	fixationOutside: autoDraw = True
+60.3188 	EXP 	fixationResponse: autoDraw = True
+60.3188 	EXP 	fixationResponse: autoDraw = False
+60.3188 	EXP 	fixationInside: autoDraw = True
+61.0547 	EXP 	New trial (rep=0, index=16): OrderedDict([('eventStartTime', 32.75), ('eventEndTime', 36.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+61.0694 	EXP 	image: autoDraw = False
+61.0694 	EXP 	fixationOutside: autoDraw = False
+61.0694 	EXP 	fixationInside: autoDraw = False
+61.0694 	EXP 	image: autoDraw = False
+61.0694 	EXP 	fixationOutside: autoDraw = False
+61.0694 	EXP 	fixationResponse: autoDraw = False
+61.0694 	EXP 	fixationInside: autoDraw = False
+61.0694 	EXP 	image: size = array([0., 0.])
+61.0694 	EXP 	image: image = 'Stimuli/Blank.png'
+61.0694 	EXP 	image: autoDraw = True
+61.0694 	EXP 	fixationOutside: autoDraw = True
+61.0694 	EXP 	fixationResponse: autoDraw = True
+61.0694 	EXP 	fixationResponse: autoDraw = False
+61.0694 	EXP 	fixationInside: autoDraw = True
+62.2931 	DATA 	Keypress: 5
+64.2927 	DATA 	Keypress: 5
+64.3083 	EXP 	New trial (rep=0, index=17): OrderedDict([('eventStartTime', 36.0), ('eventEndTime', 36.75), ('eventCond', 4), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_afgoiykvchxqotyz.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+64.3223 	EXP 	image: autoDraw = False
+64.3223 	EXP 	fixationOutside: autoDraw = False
+64.3223 	EXP 	fixationInside: autoDraw = False
+64.3223 	EXP 	image: autoDraw = False
+64.3223 	EXP 	fixationOutside: autoDraw = False
+64.3223 	EXP 	fixationResponse: autoDraw = False
+64.3223 	EXP 	fixationInside: autoDraw = False
+64.3223 	EXP 	image: size = array([0.75, 0.75])
+64.3223 	EXP 	image: image = 'Stimuli/P014/sun_afgoiykvchxqotyz.jpg'
+64.3223 	EXP 	image: autoDraw = True
+64.3223 	EXP 	fixationOutside: autoDraw = True
+64.3223 	EXP 	fixationResponse: autoDraw = True
+64.3223 	EXP 	fixationResponse: autoDraw = False
+64.3223 	EXP 	fixationInside: autoDraw = True
+65.0596 	EXP 	New trial (rep=0, index=18): OrderedDict([('eventStartTime', 36.75), ('eventEndTime', 40.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+65.0730 	EXP 	image: autoDraw = False
+65.0730 	EXP 	fixationOutside: autoDraw = False
+65.0730 	EXP 	fixationInside: autoDraw = False
+65.0730 	EXP 	image: autoDraw = False
+65.0730 	EXP 	fixationOutside: autoDraw = False
+65.0730 	EXP 	fixationResponse: autoDraw = False
+65.0730 	EXP 	fixationInside: autoDraw = False
+65.0730 	EXP 	image: size = array([0., 0.])
+65.0730 	EXP 	image: image = 'Stimuli/Blank.png'
+65.0730 	EXP 	image: autoDraw = True
+65.0730 	EXP 	fixationOutside: autoDraw = True
+65.0730 	EXP 	fixationResponse: autoDraw = True
+65.0730 	EXP 	fixationResponse: autoDraw = False
+65.0730 	EXP 	fixationInside: autoDraw = True
+66.2986 	DATA 	Keypress: 5
+68.2959 	EXP 	New trial (rep=0, index=19): OrderedDict([('eventStartTime', 40.0), ('eventEndTime', 40.75), ('eventCond', 22), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_banner_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+68.3069 	DATA 	Keypress: 5
+68.3259 	EXP 	image: autoDraw = False
+68.3259 	EXP 	fixationOutside: autoDraw = False
+68.3259 	EXP 	fixationInside: autoDraw = False
+68.3259 	EXP 	image: autoDraw = False
+68.3259 	EXP 	fixationOutside: autoDraw = False
+68.3259 	EXP 	fixationResponse: autoDraw = False
+68.3259 	EXP 	fixationInside: autoDraw = False
+68.3259 	EXP 	image: size = array([0.75, 0.75])
+68.3259 	EXP 	image: image = 'Stimuli/P014/things_banner_07s.jpg'
+68.3259 	EXP 	image: autoDraw = True
+68.3259 	EXP 	fixationOutside: autoDraw = True
+68.3259 	EXP 	fixationResponse: autoDraw = True
+68.3259 	EXP 	fixationResponse: autoDraw = False
+68.3259 	EXP 	fixationInside: autoDraw = True
+69.0621 	EXP 	New trial (rep=0, index=20): OrderedDict([('eventStartTime', 40.75), ('eventEndTime', 44.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 1), ('fixRespStart', 0.25), ('fixRespEnd', 1.0)])
+69.0766 	EXP 	image: autoDraw = False
+69.0766 	EXP 	fixationOutside: autoDraw = False
+69.0766 	EXP 	fixationInside: autoDraw = False
+69.0766 	EXP 	image: autoDraw = False
+69.0766 	EXP 	fixationOutside: autoDraw = False
+69.0766 	EXP 	fixationResponse: autoDraw = False
+69.0766 	EXP 	fixationInside: autoDraw = False
+69.0766 	EXP 	image: size = array([0., 0.])
+69.0766 	EXP 	image: image = 'Stimuli/Blank.png'
+69.0766 	EXP 	image: autoDraw = True
+69.0766 	EXP 	fixationOutside: autoDraw = True
+69.0766 	EXP 	fixationInside: autoDraw = True
+69.3101 	EXP 	fixationResponse: autoDraw = True
+69.6980 	DATA 	Keypress: 1
+70.0607 	EXP 	fixationResponse: autoDraw = False
+70.2998 	DATA 	Keypress: 5
+72.2874 	DATA 	Keypress: 5
+72.2982 	EXP 	New trial (rep=0, index=21): OrderedDict([('eventStartTime', 44.0), ('eventEndTime', 44.75), ('eventCond', 7), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_aojplsluiikxrfxc.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+72.3127 	EXP 	image: autoDraw = False
+72.3127 	EXP 	fixationOutside: autoDraw = False
+72.3127 	EXP 	fixationInside: autoDraw = False
+72.3127 	EXP 	image: autoDraw = False
+72.3127 	EXP 	fixationOutside: autoDraw = False
+72.3127 	EXP 	fixationResponse: autoDraw = False
+72.3127 	EXP 	fixationInside: autoDraw = False
+72.3127 	EXP 	image: size = array([0.75, 0.75])
+72.3127 	EXP 	image: image = 'Stimuli/P014/sun_aojplsluiikxrfxc.jpg'
+72.3127 	EXP 	image: autoDraw = True
+72.3127 	EXP 	fixationOutside: autoDraw = True
+72.3127 	EXP 	fixationResponse: autoDraw = True
+72.3127 	EXP 	fixationResponse: autoDraw = False
+72.3127 	EXP 	fixationInside: autoDraw = True
+73.0497 	EXP 	New trial (rep=0, index=22): OrderedDict([('eventStartTime', 44.75), ('eventEndTime', 48.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+73.0634 	EXP 	image: autoDraw = False
+73.0634 	EXP 	fixationOutside: autoDraw = False
+73.0634 	EXP 	fixationInside: autoDraw = False
+73.0634 	EXP 	image: autoDraw = False
+73.0634 	EXP 	fixationOutside: autoDraw = False
+73.0634 	EXP 	fixationResponse: autoDraw = False
+73.0634 	EXP 	fixationInside: autoDraw = False
+73.0634 	EXP 	image: size = array([0., 0.])
+73.0634 	EXP 	image: image = 'Stimuli/Blank.png'
+73.0634 	EXP 	image: autoDraw = True
+73.0634 	EXP 	fixationOutside: autoDraw = True
+73.0634 	EXP 	fixationResponse: autoDraw = True
+73.0634 	EXP 	fixationResponse: autoDraw = False
+73.0634 	EXP 	fixationInside: autoDraw = True
+74.2873 	DATA 	Keypress: 5
+76.2877 	DATA 	Keypress: 5
+76.3021 	EXP 	New trial (rep=0, index=23): OrderedDict([('eventStartTime', 48.0), ('eventEndTime', 48.75), ('eventCond', 38), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_spark_plug_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+76.3163 	EXP 	image: autoDraw = False
+76.3163 	EXP 	fixationOutside: autoDraw = False
+76.3163 	EXP 	fixationInside: autoDraw = False
+76.3163 	EXP 	image: autoDraw = False
+76.3163 	EXP 	fixationOutside: autoDraw = False
+76.3163 	EXP 	fixationResponse: autoDraw = False
+76.3163 	EXP 	fixationInside: autoDraw = False
+76.3163 	EXP 	image: size = array([0.75, 0.75])
+76.3163 	EXP 	image: image = 'Stimuli/P014/things_spark_plug_07s.jpg'
+76.3163 	EXP 	image: autoDraw = True
+76.3163 	EXP 	fixationOutside: autoDraw = True
+76.3163 	EXP 	fixationResponse: autoDraw = True
+76.3163 	EXP 	fixationResponse: autoDraw = False
+76.3163 	EXP 	fixationInside: autoDraw = True
+77.0539 	EXP 	New trial (rep=0, index=24): OrderedDict([('eventStartTime', 48.75), ('eventEndTime', 52.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+77.0836 	EXP 	image: autoDraw = False
+77.0836 	EXP 	fixationOutside: autoDraw = False
+77.0836 	EXP 	fixationInside: autoDraw = False
+77.0836 	EXP 	image: autoDraw = False
+77.0836 	EXP 	fixationOutside: autoDraw = False
+77.0836 	EXP 	fixationResponse: autoDraw = False
+77.0836 	EXP 	fixationInside: autoDraw = False
+77.0836 	EXP 	image: size = array([0., 0.])
+77.0836 	EXP 	image: image = 'Stimuli/Blank.png'
+77.0836 	EXP 	image: autoDraw = True
+77.0836 	EXP 	fixationOutside: autoDraw = True
+77.0836 	EXP 	fixationResponse: autoDraw = True
+77.0836 	EXP 	fixationResponse: autoDraw = False
+77.0836 	EXP 	fixationInside: autoDraw = True
+78.2902 	DATA 	Keypress: 5
+80.2943 	DATA 	Keypress: 5
+80.3228 	EXP 	New trial (rep=0, index=25): OrderedDict([('eventStartTime', 52.0), ('eventEndTime', 52.75), ('eventCond', 10), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bdhxnzyleoiflyak.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+80.3532 	EXP 	image: autoDraw = False
+80.3532 	EXP 	fixationOutside: autoDraw = False
+80.3532 	EXP 	fixationInside: autoDraw = False
+80.3532 	EXP 	image: autoDraw = False
+80.3532 	EXP 	fixationOutside: autoDraw = False
+80.3532 	EXP 	fixationResponse: autoDraw = False
+80.3532 	EXP 	fixationInside: autoDraw = False
+80.3532 	EXP 	image: size = array([0.75, 0.75])
+80.3532 	EXP 	image: image = 'Stimuli/P014/sun_bdhxnzyleoiflyak.jpg'
+80.3532 	EXP 	image: autoDraw = True
+80.3532 	EXP 	fixationOutside: autoDraw = True
+80.3532 	EXP 	fixationResponse: autoDraw = True
+80.3532 	EXP 	fixationResponse: autoDraw = False
+80.3532 	EXP 	fixationInside: autoDraw = True
+81.0749 	EXP 	New trial (rep=0, index=26): OrderedDict([('eventStartTime', 52.75), ('eventEndTime', 56.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+81.1039 	EXP 	image: autoDraw = False
+81.1039 	EXP 	fixationOutside: autoDraw = False
+81.1039 	EXP 	fixationInside: autoDraw = False
+81.1039 	EXP 	image: autoDraw = False
+81.1039 	EXP 	fixationOutside: autoDraw = False
+81.1039 	EXP 	fixationResponse: autoDraw = False
+81.1039 	EXP 	fixationInside: autoDraw = False
+81.1039 	EXP 	image: size = array([0., 0.])
+81.1039 	EXP 	image: image = 'Stimuli/Blank.png'
+81.1039 	EXP 	image: autoDraw = True
+81.1039 	EXP 	fixationOutside: autoDraw = True
+81.1039 	EXP 	fixationResponse: autoDraw = True
+81.1039 	EXP 	fixationResponse: autoDraw = False
+81.1039 	EXP 	fixationInside: autoDraw = True
+82.2943 	DATA 	Keypress: 5
+84.2949 	DATA 	Keypress: 5
+84.3112 	EXP 	New trial (rep=0, index=27): OrderedDict([('eventStartTime', 56.0), ('eventEndTime', 56.75), ('eventCond', 8), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_auqrilekgmdmrncq.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+84.3401 	EXP 	image: autoDraw = False
+84.3401 	EXP 	fixationOutside: autoDraw = False
+84.3401 	EXP 	fixationInside: autoDraw = False
+84.3401 	EXP 	image: autoDraw = False
+84.3401 	EXP 	fixationOutside: autoDraw = False
+84.3401 	EXP 	fixationResponse: autoDraw = False
+84.3401 	EXP 	fixationInside: autoDraw = False
+84.3401 	EXP 	image: size = array([0.75, 0.75])
+84.3401 	EXP 	image: image = 'Stimuli/P014/sun_auqrilekgmdmrncq.jpg'
+84.3401 	EXP 	image: autoDraw = True
+84.3401 	EXP 	fixationOutside: autoDraw = True
+84.3401 	EXP 	fixationResponse: autoDraw = True
+84.3401 	EXP 	fixationResponse: autoDraw = False
+84.3401 	EXP 	fixationInside: autoDraw = True
+85.0608 	EXP 	New trial (rep=0, index=28): OrderedDict([('eventStartTime', 56.75), ('eventEndTime', 60.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+85.0740 	EXP 	image: autoDraw = False
+85.0740 	EXP 	fixationOutside: autoDraw = False
+85.0740 	EXP 	fixationInside: autoDraw = False
+85.0740 	EXP 	image: autoDraw = False
+85.0740 	EXP 	fixationOutside: autoDraw = False
+85.0740 	EXP 	fixationResponse: autoDraw = False
+85.0740 	EXP 	fixationInside: autoDraw = False
+85.0740 	EXP 	image: size = array([0., 0.])
+85.0740 	EXP 	image: image = 'Stimuli/Blank.png'
+85.0740 	EXP 	image: autoDraw = True
+85.0740 	EXP 	fixationOutside: autoDraw = True
+85.0740 	EXP 	fixationResponse: autoDraw = True
+85.0740 	EXP 	fixationResponse: autoDraw = False
+85.0740 	EXP 	fixationInside: autoDraw = True
+86.2991 	DATA 	Keypress: 5
+88.2962 	EXP 	New trial (rep=0, index=29): OrderedDict([('eventStartTime', 60.0), ('eventEndTime', 60.75), ('eventCond', 36), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_seafood_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+88.3088 	DATA 	Keypress: 5
+88.3269 	EXP 	image: autoDraw = False
+88.3269 	EXP 	fixationOutside: autoDraw = False
+88.3269 	EXP 	fixationInside: autoDraw = False
+88.3269 	EXP 	image: autoDraw = False
+88.3269 	EXP 	fixationOutside: autoDraw = False
+88.3269 	EXP 	fixationResponse: autoDraw = False
+88.3269 	EXP 	fixationInside: autoDraw = False
+88.3269 	EXP 	image: size = array([0.75, 0.75])
+88.3269 	EXP 	image: image = 'Stimuli/P014/things_seafood_07s.jpg'
+88.3269 	EXP 	image: autoDraw = True
+88.3269 	EXP 	fixationOutside: autoDraw = True
+88.3269 	EXP 	fixationResponse: autoDraw = True
+88.3269 	EXP 	fixationResponse: autoDraw = False
+88.3269 	EXP 	fixationInside: autoDraw = True
+89.0636 	EXP 	New trial (rep=0, index=30): OrderedDict([('eventStartTime', 60.75), ('eventEndTime', 64.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+89.0776 	EXP 	image: autoDraw = False
+89.0776 	EXP 	fixationOutside: autoDraw = False
+89.0776 	EXP 	fixationInside: autoDraw = False
+89.0776 	EXP 	image: autoDraw = False
+89.0776 	EXP 	fixationOutside: autoDraw = False
+89.0776 	EXP 	fixationResponse: autoDraw = False
+89.0776 	EXP 	fixationInside: autoDraw = False
+89.0776 	EXP 	image: size = array([0., 0.])
+89.0776 	EXP 	image: image = 'Stimuli/Blank.png'
+89.0776 	EXP 	image: autoDraw = True
+89.0776 	EXP 	fixationOutside: autoDraw = True
+89.0776 	EXP 	fixationResponse: autoDraw = True
+89.0776 	EXP 	fixationResponse: autoDraw = False
+89.0776 	EXP 	fixationInside: autoDraw = True
+90.3004 	DATA 	Keypress: 5
+92.2884 	DATA 	Keypress: 5
+92.2999 	EXP 	New trial (rep=0, index=31): OrderedDict([('eventStartTime', 64.0), ('eventEndTime', 64.75), ('eventCond', 29), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_iguana_07s.jpg'), ('responseEvent', 1), ('fixRespStart', 0.0), ('fixRespEnd', 0.75)])
+92.3305 	EXP 	image: autoDraw = False
+92.3305 	EXP 	fixationOutside: autoDraw = False
+92.3305 	EXP 	fixationInside: autoDraw = False
+92.3305 	EXP 	image: autoDraw = False
+92.3305 	EXP 	fixationOutside: autoDraw = False
+92.3305 	EXP 	fixationResponse: autoDraw = False
+92.3305 	EXP 	fixationInside: autoDraw = False
+92.3305 	EXP 	image: size = array([0.75, 0.75])
+92.3305 	EXP 	image: image = 'Stimuli/P014/things_iguana_07s.jpg'
+92.3305 	EXP 	image: autoDraw = True
+92.3305 	EXP 	fixationOutside: autoDraw = True
+92.3305 	EXP 	fixationResponse: autoDraw = True
+92.3305 	EXP 	fixationInside: autoDraw = True
+92.7862 	DATA 	Keypress: 1
+93.0478 	EXP 	fixationResponse: autoDraw = False
+93.0665 	EXP 	New trial (rep=0, index=32): OrderedDict([('eventStartTime', 64.75), ('eventEndTime', 68.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+93.0811 	EXP 	image: autoDraw = False
+93.0811 	EXP 	fixationOutside: autoDraw = False
+93.0811 	EXP 	fixationInside: autoDraw = False
+93.0811 	EXP 	image: autoDraw = False
+93.0811 	EXP 	fixationOutside: autoDraw = False
+93.0811 	EXP 	fixationResponse: autoDraw = False
+93.0811 	EXP 	fixationInside: autoDraw = False
+93.0811 	EXP 	image: size = array([0., 0.])
+93.0811 	EXP 	image: image = 'Stimuli/Blank.png'
+93.0811 	EXP 	image: autoDraw = True
+93.0811 	EXP 	fixationOutside: autoDraw = True
+93.0811 	EXP 	fixationResponse: autoDraw = True
+93.0811 	EXP 	fixationResponse: autoDraw = False
+93.0811 	EXP 	fixationInside: autoDraw = True
+94.3039 	DATA 	Keypress: 5
+96.2887 	DATA 	Keypress: 5
+96.3058 	EXP 	New trial (rep=0, index=33): OrderedDict([('eventStartTime', 68.0), ('eventEndTime', 68.75), ('eventCond', 33), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_piglet_07s.jpg'), ('responseEvent', 1), ('fixRespStart', 0.0), ('fixRespEnd', 0.75)])
+96.3340 	EXP 	image: autoDraw = False
+96.3340 	EXP 	fixationOutside: autoDraw = False
+96.3340 	EXP 	fixationInside: autoDraw = False
+96.3340 	EXP 	image: autoDraw = False
+96.3340 	EXP 	fixationOutside: autoDraw = False
+96.3340 	EXP 	fixationResponse: autoDraw = False
+96.3340 	EXP 	fixationInside: autoDraw = False
+96.3340 	EXP 	image: size = array([0.75, 0.75])
+96.3340 	EXP 	image: image = 'Stimuli/P014/things_piglet_07s.jpg'
+96.3340 	EXP 	image: autoDraw = True
+96.3340 	EXP 	fixationOutside: autoDraw = True
+96.3340 	EXP 	fixationResponse: autoDraw = True
+96.3340 	EXP 	fixationInside: autoDraw = True
+96.7578 	DATA 	Keypress: 1
+97.0680 	EXP 	fixationResponse: autoDraw = False
+97.0700 	EXP 	New trial (rep=0, index=34): OrderedDict([('eventStartTime', 68.75), ('eventEndTime', 72.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+97.0847 	EXP 	image: autoDraw = False
+97.0847 	EXP 	fixationOutside: autoDraw = False
+97.0847 	EXP 	fixationInside: autoDraw = False
+97.0847 	EXP 	image: autoDraw = False
+97.0847 	EXP 	fixationOutside: autoDraw = False
+97.0847 	EXP 	fixationResponse: autoDraw = False
+97.0847 	EXP 	fixationInside: autoDraw = False
+97.0847 	EXP 	image: size = array([0., 0.])
+97.0847 	EXP 	image: image = 'Stimuli/Blank.png'
+97.0847 	EXP 	image: autoDraw = True
+97.0847 	EXP 	fixationOutside: autoDraw = True
+97.0847 	EXP 	fixationResponse: autoDraw = True
+97.0847 	EXP 	fixationResponse: autoDraw = False
+97.0847 	EXP 	fixationInside: autoDraw = True
+98.2944 	DATA 	Keypress: 5
+100.2933 	DATA 	Keypress: 5
+100.3070 	EXP 	New trial (rep=0, index=35): OrderedDict([('eventStartTime', 72.0), ('eventEndTime', 72.75), ('eventCond', 9), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bdgwqzttihopmpbf.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+100.3209 	EXP 	image: autoDraw = False
+100.3209 	EXP 	fixationOutside: autoDraw = False
+100.3209 	EXP 	fixationInside: autoDraw = False
+100.3209 	EXP 	image: autoDraw = False
+100.3209 	EXP 	fixationOutside: autoDraw = False
+100.3209 	EXP 	fixationResponse: autoDraw = False
+100.3209 	EXP 	fixationInside: autoDraw = False
+100.3209 	EXP 	image: size = array([0.75, 0.75])
+100.3209 	EXP 	image: image = 'Stimuli/P014/sun_bdgwqzttihopmpbf.jpg'
+100.3209 	EXP 	image: autoDraw = True
+100.3209 	EXP 	fixationOutside: autoDraw = True
+100.3209 	EXP 	fixationResponse: autoDraw = True
+100.3209 	EXP 	fixationResponse: autoDraw = False
+100.3209 	EXP 	fixationInside: autoDraw = True
+101.0575 	EXP 	New trial (rep=0, index=36): OrderedDict([('eventStartTime', 72.75), ('eventEndTime', 76.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+101.0715 	EXP 	image: autoDraw = False
+101.0715 	EXP 	fixationOutside: autoDraw = False
+101.0715 	EXP 	fixationInside: autoDraw = False
+101.0715 	EXP 	image: autoDraw = False
+101.0715 	EXP 	fixationOutside: autoDraw = False
+101.0715 	EXP 	fixationResponse: autoDraw = False
+101.0715 	EXP 	fixationInside: autoDraw = False
+101.0715 	EXP 	image: size = array([0., 0.])
+101.0715 	EXP 	image: image = 'Stimuli/Blank.png'
+101.0715 	EXP 	image: autoDraw = True
+101.0715 	EXP 	fixationOutside: autoDraw = True
+101.0715 	EXP 	fixationResponse: autoDraw = True
+101.0715 	EXP 	fixationResponse: autoDraw = False
+101.0715 	EXP 	fixationInside: autoDraw = True
+102.2947 	DATA 	Keypress: 5
+104.2934 	EXP 	New trial (rep=0, index=37): OrderedDict([('eventStartTime', 76.0), ('eventEndTime', 76.75), ('eventCond', 26), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_cougar_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+104.3000 	DATA 	Keypress: 5
+104.3077 	EXP 	image: autoDraw = False
+104.3077 	EXP 	fixationOutside: autoDraw = False
+104.3077 	EXP 	fixationInside: autoDraw = False
+104.3077 	EXP 	image: autoDraw = False
+104.3077 	EXP 	fixationOutside: autoDraw = False
+104.3077 	EXP 	fixationResponse: autoDraw = False
+104.3077 	EXP 	fixationInside: autoDraw = False
+104.3077 	EXP 	image: size = array([0.75, 0.75])
+104.3077 	EXP 	image: image = 'Stimuli/P014/things_cougar_07s.jpg'
+104.3077 	EXP 	image: autoDraw = True
+104.3077 	EXP 	fixationOutside: autoDraw = True
+104.3077 	EXP 	fixationResponse: autoDraw = True
+104.3077 	EXP 	fixationResponse: autoDraw = False
+104.3077 	EXP 	fixationInside: autoDraw = True
+105.0436 	EXP 	New trial (rep=0, index=38): OrderedDict([('eventStartTime', 76.75), ('eventEndTime', 80.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+105.0584 	EXP 	image: autoDraw = False
+105.0584 	EXP 	fixationOutside: autoDraw = False
+105.0584 	EXP 	fixationInside: autoDraw = False
+105.0584 	EXP 	image: autoDraw = False
+105.0584 	EXP 	fixationOutside: autoDraw = False
+105.0584 	EXP 	fixationResponse: autoDraw = False
+105.0584 	EXP 	fixationInside: autoDraw = False
+105.0584 	EXP 	image: size = array([0., 0.])
+105.0584 	EXP 	image: image = 'Stimuli/Blank.png'
+105.0584 	EXP 	image: autoDraw = True
+105.0584 	EXP 	fixationOutside: autoDraw = True
+105.0584 	EXP 	fixationResponse: autoDraw = True
+105.0584 	EXP 	fixationResponse: autoDraw = False
+105.0584 	EXP 	fixationInside: autoDraw = True
+106.3015 	DATA 	Keypress: 5
+108.2977 	EXP 	New trial (rep=0, index=39): OrderedDict([('eventStartTime', 80.0), ('eventEndTime', 80.75), ('eventCond', 5), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_aidrxvbfhxtsusrf.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+108.3044 	DATA 	Keypress: 5
+108.3115 	EXP 	image: autoDraw = False
+108.3115 	EXP 	fixationOutside: autoDraw = False
+108.3115 	EXP 	fixationInside: autoDraw = False
+108.3115 	EXP 	image: autoDraw = False
+108.3115 	EXP 	fixationOutside: autoDraw = False
+108.3115 	EXP 	fixationResponse: autoDraw = False
+108.3115 	EXP 	fixationInside: autoDraw = False
+108.3115 	EXP 	image: size = array([0.75, 0.75])
+108.3115 	EXP 	image: image = 'Stimuli/P014/sun_aidrxvbfhxtsusrf.jpg'
+108.3115 	EXP 	image: autoDraw = True
+108.3115 	EXP 	fixationOutside: autoDraw = True
+108.3115 	EXP 	fixationResponse: autoDraw = True
+108.3115 	EXP 	fixationResponse: autoDraw = False
+108.3115 	EXP 	fixationInside: autoDraw = True
+109.0481 	EXP 	New trial (rep=0, index=40): OrderedDict([('eventStartTime', 80.75), ('eventEndTime', 84.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 1), ('fixRespStart', 1.25), ('fixRespEnd', 2.0)])
+109.0619 	EXP 	image: autoDraw = False
+109.0619 	EXP 	fixationOutside: autoDraw = False
+109.0619 	EXP 	fixationInside: autoDraw = False
+109.0619 	EXP 	image: autoDraw = False
+109.0619 	EXP 	fixationOutside: autoDraw = False
+109.0619 	EXP 	fixationResponse: autoDraw = False
+109.0619 	EXP 	fixationInside: autoDraw = False
+109.0619 	EXP 	image: size = array([0., 0.])
+109.0619 	EXP 	image: image = 'Stimuli/Blank.png'
+109.0619 	EXP 	image: autoDraw = True
+109.0619 	EXP 	fixationOutside: autoDraw = True
+109.0619 	EXP 	fixationInside: autoDraw = True
+110.2964 	EXP 	fixationResponse: autoDraw = True
+110.3057 	DATA 	Keypress: 5
+110.6592 	DATA 	Keypress: 1
+111.0471 	EXP 	fixationResponse: autoDraw = False
+112.2869 	DATA 	Keypress: 5
+112.3003 	EXP 	New trial (rep=0, index=41): OrderedDict([('eventStartTime', 84.0), ('eventEndTime', 100.0), ('eventCond', 0), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 1), ('fixRespStart', 1.0), ('fixRespEnd', 1.75)])
+112.3149 	EXP 	image: autoDraw = False
+112.3149 	EXP 	fixationOutside: autoDraw = False
+112.3149 	EXP 	fixationInside: autoDraw = False
+112.3149 	EXP 	image: autoDraw = False
+112.3149 	EXP 	fixationOutside: autoDraw = False
+112.3149 	EXP 	fixationResponse: autoDraw = False
+112.3149 	EXP 	fixationInside: autoDraw = False
+112.3149 	EXP 	image: size = array([0., 0.])
+112.3149 	EXP 	image: image = 'Stimuli/Blank.png'
+112.3149 	EXP 	image: autoDraw = True
+112.3149 	EXP 	fixationOutside: autoDraw = True
+112.3149 	EXP 	fixationInside: autoDraw = True
+113.2991 	EXP 	fixationResponse: autoDraw = True
+113.7215 	DATA 	Keypress: 1
+114.0497 	EXP 	fixationResponse: autoDraw = False
+114.2906 	DATA 	Keypress: 5
+116.2936 	DATA 	Keypress: 5
+118.2948 	DATA 	Keypress: 5
+120.2936 	DATA 	Keypress: 5
+122.2941 	DATA 	Keypress: 5
+124.2969 	DATA 	Keypress: 5
+126.2998 	DATA 	Keypress: 5
+128.2874 	DATA 	Keypress: 5
+128.2982 	EXP 	New trial (rep=0, index=42): OrderedDict([('eventStartTime', 100.0), ('eventEndTime', 100.75), ('eventCond', 17), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bsguftphqnrkbedw.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+128.3123 	EXP 	image: autoDraw = False
+128.3123 	EXP 	fixationOutside: autoDraw = False
+128.3123 	EXP 	fixationInside: autoDraw = False
+128.3123 	EXP 	image: autoDraw = False
+128.3123 	EXP 	fixationOutside: autoDraw = False
+128.3123 	EXP 	fixationResponse: autoDraw = False
+128.3123 	EXP 	fixationInside: autoDraw = False
+128.3123 	EXP 	image: size = array([0.75, 0.75])
+128.3123 	EXP 	image: image = 'Stimuli/P014/sun_bsguftphqnrkbedw.jpg'
+128.3123 	EXP 	image: autoDraw = True
+128.3123 	EXP 	fixationOutside: autoDraw = True
+128.3123 	EXP 	fixationResponse: autoDraw = True
+128.3123 	EXP 	fixationResponse: autoDraw = False
+128.3123 	EXP 	fixationInside: autoDraw = True
+129.0491 	EXP 	New trial (rep=0, index=43): OrderedDict([('eventStartTime', 100.75), ('eventEndTime', 104.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 1), ('fixRespStart', 1.25), ('fixRespEnd', 2.0)])
+129.0630 	EXP 	image: autoDraw = False
+129.0630 	EXP 	fixationOutside: autoDraw = False
+129.0630 	EXP 	fixationInside: autoDraw = False
+129.0630 	EXP 	image: autoDraw = False
+129.0630 	EXP 	fixationOutside: autoDraw = False
+129.0630 	EXP 	fixationResponse: autoDraw = False
+129.0630 	EXP 	fixationInside: autoDraw = False
+129.0630 	EXP 	image: size = array([0., 0.])
+129.0630 	EXP 	image: image = 'Stimuli/Blank.png'
+129.0630 	EXP 	image: autoDraw = True
+129.0630 	EXP 	fixationOutside: autoDraw = True
+129.0630 	EXP 	fixationInside: autoDraw = True
+130.2889 	DATA 	Keypress: 5
+130.2974 	EXP 	fixationResponse: autoDraw = True
+130.6706 	DATA 	Keypress: 1
+131.0481 	EXP 	fixationResponse: autoDraw = False
+132.2879 	DATA 	Keypress: 5
+132.3032 	EXP 	New trial (rep=0, index=44): OrderedDict([('eventStartTime', 104.0), ('eventEndTime', 104.75), ('eventCond', 24), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_bungee_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+132.3326 	EXP 	image: autoDraw = False
+132.3326 	EXP 	fixationOutside: autoDraw = False
+132.3326 	EXP 	fixationInside: autoDraw = False
+132.3326 	EXP 	image: autoDraw = False
+132.3326 	EXP 	fixationOutside: autoDraw = False
+132.3326 	EXP 	fixationResponse: autoDraw = False
+132.3326 	EXP 	fixationInside: autoDraw = False
+132.3326 	EXP 	image: size = array([0.75, 0.75])
+132.3326 	EXP 	image: image = 'Stimuli/P014/things_bungee_07s.jpg'
+132.3326 	EXP 	image: autoDraw = True
+132.3326 	EXP 	fixationOutside: autoDraw = True
+132.3326 	EXP 	fixationResponse: autoDraw = True
+132.3326 	EXP 	fixationResponse: autoDraw = False
+132.3326 	EXP 	fixationInside: autoDraw = True
+133.0693 	EXP 	New trial (rep=0, index=45): OrderedDict([('eventStartTime', 104.75), ('eventEndTime', 108.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+133.0832 	EXP 	image: autoDraw = False
+133.0832 	EXP 	fixationOutside: autoDraw = False
+133.0832 	EXP 	fixationInside: autoDraw = False
+133.0832 	EXP 	image: autoDraw = False
+133.0832 	EXP 	fixationOutside: autoDraw = False
+133.0832 	EXP 	fixationResponse: autoDraw = False
+133.0832 	EXP 	fixationInside: autoDraw = False
+133.0832 	EXP 	image: size = array([0., 0.])
+133.0832 	EXP 	image: image = 'Stimuli/Blank.png'
+133.0832 	EXP 	image: autoDraw = True
+133.0832 	EXP 	fixationOutside: autoDraw = True
+133.0832 	EXP 	fixationResponse: autoDraw = True
+133.0832 	EXP 	fixationResponse: autoDraw = False
+133.0832 	EXP 	fixationInside: autoDraw = True
+134.2909 	DATA 	Keypress: 5
+136.2932 	DATA 	Keypress: 5
+136.3050 	EXP 	New trial (rep=0, index=46): OrderedDict([('eventStartTime', 108.0), ('eventEndTime', 108.75), ('eventCond', 35), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_road_sign_07s.jpg'), ('responseEvent', 1), ('fixRespStart', 0.0), ('fixRespEnd', 0.75)])
+136.3361 	EXP 	image: autoDraw = False
+136.3361 	EXP 	fixationOutside: autoDraw = False
+136.3361 	EXP 	fixationInside: autoDraw = False
+136.3361 	EXP 	image: autoDraw = False
+136.3361 	EXP 	fixationOutside: autoDraw = False
+136.3361 	EXP 	fixationResponse: autoDraw = False
+136.3361 	EXP 	fixationInside: autoDraw = False
+136.3361 	EXP 	image: size = array([0.75, 0.75])
+136.3361 	EXP 	image: image = 'Stimuli/P014/things_road_sign_07s.jpg'
+136.3361 	EXP 	image: autoDraw = True
+136.3361 	EXP 	fixationOutside: autoDraw = True
+136.3361 	EXP 	fixationResponse: autoDraw = True
+136.3361 	EXP 	fixationInside: autoDraw = True
+136.9595 	DATA 	Keypress: 1
+137.0534 	EXP 	fixationResponse: autoDraw = False
+137.0729 	EXP 	New trial (rep=0, index=47): OrderedDict([('eventStartTime', 108.75), ('eventEndTime', 112.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+137.0868 	EXP 	image: autoDraw = False
+137.0868 	EXP 	fixationOutside: autoDraw = False
+137.0868 	EXP 	fixationInside: autoDraw = False
+137.0868 	EXP 	image: autoDraw = False
+137.0868 	EXP 	fixationOutside: autoDraw = False
+137.0868 	EXP 	fixationResponse: autoDraw = False
+137.0868 	EXP 	fixationInside: autoDraw = False
+137.0868 	EXP 	image: size = array([0., 0.])
+137.0868 	EXP 	image: image = 'Stimuli/Blank.png'
+137.0868 	EXP 	image: autoDraw = True
+137.0868 	EXP 	fixationOutside: autoDraw = True
+137.0868 	EXP 	fixationResponse: autoDraw = True
+137.0868 	EXP 	fixationResponse: autoDraw = False
+137.0868 	EXP 	fixationInside: autoDraw = True
+138.2928 	DATA 	Keypress: 5
+140.2941 	DATA 	Keypress: 5
+140.3087 	EXP 	New trial (rep=0, index=48): OrderedDict([('eventStartTime', 112.0), ('eventEndTime', 112.75), ('eventCond', 16), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bsgtkqjrnrvttrax.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+140.3230 	EXP 	image: autoDraw = False
+140.3230 	EXP 	fixationOutside: autoDraw = False
+140.3230 	EXP 	fixationInside: autoDraw = False
+140.3230 	EXP 	image: autoDraw = False
+140.3230 	EXP 	fixationOutside: autoDraw = False
+140.3230 	EXP 	fixationResponse: autoDraw = False
+140.3230 	EXP 	fixationInside: autoDraw = False
+140.3230 	EXP 	image: size = array([0.75, 0.75])
+140.3230 	EXP 	image: image = 'Stimuli/P014/sun_bsgtkqjrnrvttrax.jpg'
+140.3230 	EXP 	image: autoDraw = True
+140.3230 	EXP 	fixationOutside: autoDraw = True
+140.3230 	EXP 	fixationResponse: autoDraw = True
+140.3230 	EXP 	fixationResponse: autoDraw = False
+140.3230 	EXP 	fixationInside: autoDraw = True
+141.0590 	EXP 	New trial (rep=0, index=49): OrderedDict([('eventStartTime', 112.75), ('eventEndTime', 116.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+141.0736 	EXP 	image: autoDraw = False
+141.0736 	EXP 	fixationOutside: autoDraw = False
+141.0736 	EXP 	fixationInside: autoDraw = False
+141.0736 	EXP 	image: autoDraw = False
+141.0736 	EXP 	fixationOutside: autoDraw = False
+141.0736 	EXP 	fixationResponse: autoDraw = False
+141.0736 	EXP 	fixationInside: autoDraw = False
+141.0736 	EXP 	image: size = array([0., 0.])
+141.0736 	EXP 	image: image = 'Stimuli/Blank.png'
+141.0736 	EXP 	image: autoDraw = True
+141.0736 	EXP 	fixationOutside: autoDraw = True
+141.0736 	EXP 	fixationResponse: autoDraw = True
+141.0736 	EXP 	fixationResponse: autoDraw = False
+141.0736 	EXP 	fixationInside: autoDraw = True
+142.2961 	DATA 	Keypress: 5
+143.6475 	DATA 	Keypress: 1
+144.2952 	EXP 	New trial (rep=0, index=50): OrderedDict([('eventStartTime', 116.0), ('eventEndTime', 116.75), ('eventCond', 11), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bfyxzbjsvqsobbky.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+144.3024 	DATA 	Keypress: 5
+144.3099 	EXP 	image: autoDraw = False
+144.3099 	EXP 	fixationOutside: autoDraw = False
+144.3099 	EXP 	fixationInside: autoDraw = False
+144.3099 	EXP 	image: autoDraw = False
+144.3099 	EXP 	fixationOutside: autoDraw = False
+144.3099 	EXP 	fixationResponse: autoDraw = False
+144.3099 	EXP 	fixationInside: autoDraw = False
+144.3099 	EXP 	image: size = array([0.75, 0.75])
+144.3099 	EXP 	image: image = 'Stimuli/P014/sun_bfyxzbjsvqsobbky.jpg'
+144.3099 	EXP 	image: autoDraw = True
+144.3099 	EXP 	fixationOutside: autoDraw = True
+144.3099 	EXP 	fixationResponse: autoDraw = True
+144.3099 	EXP 	fixationResponse: autoDraw = False
+144.3099 	EXP 	fixationInside: autoDraw = True
+145.0459 	EXP 	New trial (rep=0, index=51): OrderedDict([('eventStartTime', 116.75), ('eventEndTime', 120.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+145.0605 	EXP 	image: autoDraw = False
+145.0605 	EXP 	fixationOutside: autoDraw = False
+145.0605 	EXP 	fixationInside: autoDraw = False
+145.0605 	EXP 	image: autoDraw = False
+145.0605 	EXP 	fixationOutside: autoDraw = False
+145.0605 	EXP 	fixationResponse: autoDraw = False
+145.0605 	EXP 	fixationInside: autoDraw = False
+145.0605 	EXP 	image: size = array([0., 0.])
+145.0605 	EXP 	image: image = 'Stimuli/Blank.png'
+145.0605 	EXP 	image: autoDraw = True
+145.0605 	EXP 	fixationOutside: autoDraw = True
+145.0605 	EXP 	fixationResponse: autoDraw = True
+145.0605 	EXP 	fixationResponse: autoDraw = False
+145.0605 	EXP 	fixationInside: autoDraw = True
+146.3027 	DATA 	Keypress: 5
+148.2992 	EXP 	New trial (rep=0, index=52): OrderedDict([('eventStartTime', 120.0), ('eventEndTime', 120.75), ('eventCond', 15), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_brezwczwwllviogu.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+148.3058 	DATA 	Keypress: 5
+148.3134 	EXP 	image: autoDraw = False
+148.3134 	EXP 	fixationOutside: autoDraw = False
+148.3134 	EXP 	fixationInside: autoDraw = False
+148.3134 	EXP 	image: autoDraw = False
+148.3134 	EXP 	fixationOutside: autoDraw = False
+148.3134 	EXP 	fixationResponse: autoDraw = False
+148.3134 	EXP 	fixationInside: autoDraw = False
+148.3134 	EXP 	image: size = array([0.75, 0.75])
+148.3134 	EXP 	image: image = 'Stimuli/P014/sun_brezwczwwllviogu.jpg'
+148.3134 	EXP 	image: autoDraw = True
+148.3134 	EXP 	fixationOutside: autoDraw = True
+148.3134 	EXP 	fixationResponse: autoDraw = True
+148.3134 	EXP 	fixationResponse: autoDraw = False
+148.3134 	EXP 	fixationInside: autoDraw = True
+149.0500 	EXP 	New trial (rep=0, index=53): OrderedDict([('eventStartTime', 120.75), ('eventEndTime', 124.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+149.0641 	EXP 	image: autoDraw = False
+149.0641 	EXP 	fixationOutside: autoDraw = False
+149.0641 	EXP 	fixationInside: autoDraw = False
+149.0641 	EXP 	image: autoDraw = False
+149.0641 	EXP 	fixationOutside: autoDraw = False
+149.0641 	EXP 	fixationResponse: autoDraw = False
+149.0641 	EXP 	fixationInside: autoDraw = False
+149.0641 	EXP 	image: size = array([0., 0.])
+149.0641 	EXP 	image: image = 'Stimuli/Blank.png'
+149.0641 	EXP 	image: autoDraw = True
+149.0641 	EXP 	fixationOutside: autoDraw = True
+149.0641 	EXP 	fixationResponse: autoDraw = True
+149.0641 	EXP 	fixationResponse: autoDraw = False
+149.0641 	EXP 	fixationInside: autoDraw = True
+150.3033 	DATA 	Keypress: 5
+152.2883 	DATA 	Keypress: 5
+152.3029 	EXP 	New trial (rep=0, index=54): OrderedDict([('eventStartTime', 124.0), ('eventEndTime', 124.75), ('eventCond', 37), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_slug_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+152.3169 	EXP 	image: autoDraw = False
+152.3169 	EXP 	fixationOutside: autoDraw = False
+152.3169 	EXP 	fixationInside: autoDraw = False
+152.3169 	EXP 	image: autoDraw = False
+152.3169 	EXP 	fixationOutside: autoDraw = False
+152.3169 	EXP 	fixationResponse: autoDraw = False
+152.3169 	EXP 	fixationInside: autoDraw = False
+152.3169 	EXP 	image: size = array([0.75, 0.75])
+152.3169 	EXP 	image: image = 'Stimuli/P014/things_slug_07s.jpg'
+152.3169 	EXP 	image: autoDraw = True
+152.3169 	EXP 	fixationOutside: autoDraw = True
+152.3169 	EXP 	fixationResponse: autoDraw = True
+152.3169 	EXP 	fixationResponse: autoDraw = False
+152.3169 	EXP 	fixationInside: autoDraw = True
+153.0545 	EXP 	New trial (rep=0, index=55): OrderedDict([('eventStartTime', 124.75), ('eventEndTime', 128.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+153.0676 	EXP 	image: autoDraw = False
+153.0676 	EXP 	fixationOutside: autoDraw = False
+153.0676 	EXP 	fixationInside: autoDraw = False
+153.0676 	EXP 	image: autoDraw = False
+153.0676 	EXP 	fixationOutside: autoDraw = False
+153.0676 	EXP 	fixationResponse: autoDraw = False
+153.0676 	EXP 	fixationInside: autoDraw = False
+153.0676 	EXP 	image: size = array([0., 0.])
+153.0676 	EXP 	image: image = 'Stimuli/Blank.png'
+153.0676 	EXP 	image: autoDraw = True
+153.0676 	EXP 	fixationOutside: autoDraw = True
+153.0676 	EXP 	fixationResponse: autoDraw = True
+153.0676 	EXP 	fixationResponse: autoDraw = False
+153.0676 	EXP 	fixationInside: autoDraw = True
+154.2894 	DATA 	Keypress: 5
+156.2932 	DATA 	Keypress: 5
+156.3064 	EXP 	New trial (rep=0, index=56): OrderedDict([('eventStartTime', 128.0), ('eventEndTime', 128.75), ('eventCond', 30), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_man_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+156.3205 	EXP 	image: autoDraw = False
+156.3205 	EXP 	fixationOutside: autoDraw = False
+156.3205 	EXP 	fixationInside: autoDraw = False
+156.3205 	EXP 	image: autoDraw = False
+156.3205 	EXP 	fixationOutside: autoDraw = False
+156.3205 	EXP 	fixationResponse: autoDraw = False
+156.3205 	EXP 	fixationInside: autoDraw = False
+156.3205 	EXP 	image: size = array([0.75, 0.75])
+156.3205 	EXP 	image: image = 'Stimuli/P014/things_man_07s.jpg'
+156.3205 	EXP 	image: autoDraw = True
+156.3205 	EXP 	fixationOutside: autoDraw = True
+156.3205 	EXP 	fixationResponse: autoDraw = True
+156.3205 	EXP 	fixationResponse: autoDraw = False
+156.3205 	EXP 	fixationInside: autoDraw = True
+157.0572 	EXP 	New trial (rep=0, index=57): OrderedDict([('eventStartTime', 128.75), ('eventEndTime', 132.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+157.0712 	EXP 	image: autoDraw = False
+157.0712 	EXP 	fixationOutside: autoDraw = False
+157.0712 	EXP 	fixationInside: autoDraw = False
+157.0712 	EXP 	image: autoDraw = False
+157.0712 	EXP 	fixationOutside: autoDraw = False
+157.0712 	EXP 	fixationResponse: autoDraw = False
+157.0712 	EXP 	fixationInside: autoDraw = False
+157.0712 	EXP 	image: size = array([0., 0.])
+157.0712 	EXP 	image: image = 'Stimuli/Blank.png'
+157.0712 	EXP 	image: autoDraw = True
+157.0712 	EXP 	fixationOutside: autoDraw = True
+157.0712 	EXP 	fixationResponse: autoDraw = True
+157.0712 	EXP 	fixationResponse: autoDraw = False
+157.0712 	EXP 	fixationInside: autoDraw = True
+158.2937 	DATA 	Keypress: 5
+160.2932 	EXP 	New trial (rep=0, index=58): OrderedDict([('eventStartTime', 132.0), ('eventEndTime', 132.75), ('eventCond', 18), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_btohwudpiusfvpvl.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+160.3035 	DATA 	Keypress: 5
+160.3240 	EXP 	image: autoDraw = False
+160.3240 	EXP 	fixationOutside: autoDraw = False
+160.3240 	EXP 	fixationInside: autoDraw = False
+160.3240 	EXP 	image: autoDraw = False
+160.3240 	EXP 	fixationOutside: autoDraw = False
+160.3240 	EXP 	fixationResponse: autoDraw = False
+160.3240 	EXP 	fixationInside: autoDraw = False
+160.3240 	EXP 	image: size = array([0.75, 0.75])
+160.3240 	EXP 	image: image = 'Stimuli/P014/sun_btohwudpiusfvpvl.jpg'
+160.3240 	EXP 	image: autoDraw = True
+160.3240 	EXP 	fixationOutside: autoDraw = True
+160.3240 	EXP 	fixationResponse: autoDraw = True
+160.3240 	EXP 	fixationResponse: autoDraw = False
+160.3240 	EXP 	fixationInside: autoDraw = True
+161.0604 	EXP 	New trial (rep=0, index=59): OrderedDict([('eventStartTime', 132.75), ('eventEndTime', 136.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+161.0747 	EXP 	image: autoDraw = False
+161.0747 	EXP 	fixationOutside: autoDraw = False
+161.0747 	EXP 	fixationInside: autoDraw = False
+161.0747 	EXP 	image: autoDraw = False
+161.0747 	EXP 	fixationOutside: autoDraw = False
+161.0747 	EXP 	fixationResponse: autoDraw = False
+161.0747 	EXP 	fixationInside: autoDraw = False
+161.0747 	EXP 	image: size = array([0., 0.])
+161.0747 	EXP 	image: image = 'Stimuli/Blank.png'
+161.0747 	EXP 	image: autoDraw = True
+161.0747 	EXP 	fixationOutside: autoDraw = True
+161.0747 	EXP 	fixationResponse: autoDraw = True
+161.0747 	EXP 	fixationResponse: autoDraw = False
+161.0747 	EXP 	fixationInside: autoDraw = True
+162.2971 	DATA 	Keypress: 5
+164.2970 	EXP 	New trial (rep=0, index=60): OrderedDict([('eventStartTime', 136.0), ('eventEndTime', 136.75), ('eventCond', 6), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_aoejkkmwkfegacni.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+164.3082 	DATA 	Keypress: 5
+164.3276 	EXP 	image: autoDraw = False
+164.3276 	EXP 	fixationOutside: autoDraw = False
+164.3276 	EXP 	fixationInside: autoDraw = False
+164.3276 	EXP 	image: autoDraw = False
+164.3276 	EXP 	fixationOutside: autoDraw = False
+164.3276 	EXP 	fixationResponse: autoDraw = False
+164.3276 	EXP 	fixationInside: autoDraw = False
+164.3276 	EXP 	image: size = array([0.75, 0.75])
+164.3276 	EXP 	image: image = 'Stimuli/P014/sun_aoejkkmwkfegacni.jpg'
+164.3276 	EXP 	image: autoDraw = True
+164.3276 	EXP 	fixationOutside: autoDraw = True
+164.3276 	EXP 	fixationResponse: autoDraw = True
+164.3276 	EXP 	fixationResponse: autoDraw = False
+164.3276 	EXP 	fixationInside: autoDraw = True
+165.0634 	EXP 	New trial (rep=0, index=61): OrderedDict([('eventStartTime', 136.75), ('eventEndTime', 140.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+165.0783 	EXP 	image: autoDraw = False
+165.0783 	EXP 	fixationOutside: autoDraw = False
+165.0783 	EXP 	fixationInside: autoDraw = False
+165.0783 	EXP 	image: autoDraw = False
+165.0783 	EXP 	fixationOutside: autoDraw = False
+165.0783 	EXP 	fixationResponse: autoDraw = False
+165.0783 	EXP 	fixationInside: autoDraw = False
+165.0783 	EXP 	image: size = array([0., 0.])
+165.0783 	EXP 	image: image = 'Stimuli/Blank.png'
+165.0783 	EXP 	image: autoDraw = True
+165.0783 	EXP 	fixationOutside: autoDraw = True
+165.0783 	EXP 	fixationResponse: autoDraw = True
+165.0783 	EXP 	fixationResponse: autoDraw = False
+165.0783 	EXP 	fixationInside: autoDraw = True
+166.2888 	DATA 	Keypress: 5
+168.3002 	EXP 	New trial (rep=0, index=62): OrderedDict([('eventStartTime', 140.0), ('eventEndTime', 140.75), ('eventCond', 34), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_radio_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+168.3098 	DATA 	Keypress: 5
+168.3311 	EXP 	image: autoDraw = False
+168.3311 	EXP 	fixationOutside: autoDraw = False
+168.3311 	EXP 	fixationInside: autoDraw = False
+168.3311 	EXP 	image: autoDraw = False
+168.3311 	EXP 	fixationOutside: autoDraw = False
+168.3311 	EXP 	fixationResponse: autoDraw = False
+168.3311 	EXP 	fixationInside: autoDraw = False
+168.3311 	EXP 	image: size = array([0.75, 0.75])
+168.3311 	EXP 	image: image = 'Stimuli/P014/things_radio_07s.jpg'
+168.3311 	EXP 	image: autoDraw = True
+168.3311 	EXP 	fixationOutside: autoDraw = True
+168.3311 	EXP 	fixationResponse: autoDraw = True
+168.3311 	EXP 	fixationResponse: autoDraw = False
+168.3311 	EXP 	fixationInside: autoDraw = True
+169.0671 	EXP 	New trial (rep=0, index=63): OrderedDict([('eventStartTime', 140.75), ('eventEndTime', 144.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+169.0818 	EXP 	image: autoDraw = False
+169.0818 	EXP 	fixationOutside: autoDraw = False
+169.0818 	EXP 	fixationInside: autoDraw = False
+169.0818 	EXP 	image: autoDraw = False
+169.0818 	EXP 	fixationOutside: autoDraw = False
+169.0818 	EXP 	fixationResponse: autoDraw = False
+169.0818 	EXP 	fixationInside: autoDraw = False
+169.0818 	EXP 	image: size = array([0., 0.])
+169.0818 	EXP 	image: image = 'Stimuli/Blank.png'
+169.0818 	EXP 	image: autoDraw = True
+169.0818 	EXP 	fixationOutside: autoDraw = True
+169.0818 	EXP 	fixationResponse: autoDraw = True
+169.0818 	EXP 	fixationResponse: autoDraw = False
+169.0818 	EXP 	fixationInside: autoDraw = True
+170.3054 	DATA 	Keypress: 5
+172.2895 	DATA 	Keypress: 5
+172.3050 	EXP 	New trial (rep=0, index=64): OrderedDict([('eventStartTime', 144.0), ('eventEndTime', 144.75), ('eventCond', 13), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bpccpwpohfirajtf.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+172.3347 	EXP 	image: autoDraw = False
+172.3347 	EXP 	fixationOutside: autoDraw = False
+172.3347 	EXP 	fixationInside: autoDraw = False
+172.3347 	EXP 	image: autoDraw = False
+172.3347 	EXP 	fixationOutside: autoDraw = False
+172.3347 	EXP 	fixationResponse: autoDraw = False
+172.3347 	EXP 	fixationInside: autoDraw = False
+172.3347 	EXP 	image: size = array([0.75, 0.75])
+172.3347 	EXP 	image: image = 'Stimuli/P014/sun_bpccpwpohfirajtf.jpg'
+172.3347 	EXP 	image: autoDraw = True
+172.3347 	EXP 	fixationOutside: autoDraw = True
+172.3347 	EXP 	fixationResponse: autoDraw = True
+172.3347 	EXP 	fixationResponse: autoDraw = False
+172.3347 	EXP 	fixationInside: autoDraw = True
+173.0715 	EXP 	New trial (rep=0, index=65): OrderedDict([('eventStartTime', 144.75), ('eventEndTime', 148.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+173.0854 	EXP 	image: autoDraw = False
+173.0854 	EXP 	fixationOutside: autoDraw = False
+173.0854 	EXP 	fixationInside: autoDraw = False
+173.0854 	EXP 	image: autoDraw = False
+173.0854 	EXP 	fixationOutside: autoDraw = False
+173.0854 	EXP 	fixationResponse: autoDraw = False
+173.0854 	EXP 	fixationInside: autoDraw = False
+173.0854 	EXP 	image: size = array([0., 0.])
+173.0854 	EXP 	image: image = 'Stimuli/Blank.png'
+173.0854 	EXP 	image: autoDraw = True
+173.0854 	EXP 	fixationOutside: autoDraw = True
+173.0854 	EXP 	fixationResponse: autoDraw = True
+173.0854 	EXP 	fixationResponse: autoDraw = False
+173.0854 	EXP 	fixationInside: autoDraw = True
+174.2911 	DATA 	Keypress: 5
+176.2931 	DATA 	Keypress: 5
+176.3068 	EXP 	New trial (rep=0, index=66): OrderedDict([('eventStartTime', 148.0), ('eventEndTime', 148.75), ('eventCond', 19), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_buphlelowxjnoygy.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+176.3215 	EXP 	image: autoDraw = False
+176.3215 	EXP 	fixationOutside: autoDraw = False
+176.3215 	EXP 	fixationInside: autoDraw = False
+176.3215 	EXP 	image: autoDraw = False
+176.3215 	EXP 	fixationOutside: autoDraw = False
+176.3215 	EXP 	fixationResponse: autoDraw = False
+176.3215 	EXP 	fixationInside: autoDraw = False
+176.3215 	EXP 	image: size = array([0.75, 0.75])
+176.3215 	EXP 	image: image = 'Stimuli/P014/sun_buphlelowxjnoygy.jpg'
+176.3215 	EXP 	image: autoDraw = True
+176.3215 	EXP 	fixationOutside: autoDraw = True
+176.3215 	EXP 	fixationResponse: autoDraw = True
+176.3215 	EXP 	fixationResponse: autoDraw = False
+176.3215 	EXP 	fixationInside: autoDraw = True
+177.0573 	EXP 	New trial (rep=0, index=67): OrderedDict([('eventStartTime', 148.75), ('eventEndTime', 152.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 1), ('fixRespStart', 0.25), ('fixRespEnd', 1.0)])
+177.0722 	EXP 	image: autoDraw = False
+177.0722 	EXP 	fixationOutside: autoDraw = False
+177.0722 	EXP 	fixationInside: autoDraw = False
+177.0722 	EXP 	image: autoDraw = False
+177.0722 	EXP 	fixationOutside: autoDraw = False
+177.0722 	EXP 	fixationResponse: autoDraw = False
+177.0722 	EXP 	fixationInside: autoDraw = False
+177.0722 	EXP 	image: size = array([0., 0.])
+177.0722 	EXP 	image: image = 'Stimuli/Blank.png'
+177.0722 	EXP 	image: autoDraw = True
+177.0722 	EXP 	fixationOutside: autoDraw = True
+177.0722 	EXP 	fixationInside: autoDraw = True
+177.3057 	EXP 	fixationResponse: autoDraw = True
+177.7318 	DATA 	Keypress: 1
+178.0564 	EXP 	fixationResponse: autoDraw = False
+178.2956 	DATA 	Keypress: 5
+179.9953 	DATA 	Keypress: 2
+180.2946 	EXP 	New trial (rep=0, index=68): OrderedDict([('eventStartTime', 152.0), ('eventEndTime', 152.75), ('eventCond', 32), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_mistletoe_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+180.3055 	DATA 	Keypress: 5
+180.3251 	EXP 	image: autoDraw = False
+180.3251 	EXP 	fixationOutside: autoDraw = False
+180.3251 	EXP 	fixationInside: autoDraw = False
+180.3251 	EXP 	image: autoDraw = False
+180.3251 	EXP 	fixationOutside: autoDraw = False
+180.3251 	EXP 	fixationResponse: autoDraw = False
+180.3251 	EXP 	fixationInside: autoDraw = False
+180.3251 	EXP 	image: size = array([0.75, 0.75])
+180.3251 	EXP 	image: image = 'Stimuli/P014/things_mistletoe_07s.jpg'
+180.3251 	EXP 	image: autoDraw = True
+180.3251 	EXP 	fixationOutside: autoDraw = True
+180.3251 	EXP 	fixationResponse: autoDraw = True
+180.3251 	EXP 	fixationResponse: autoDraw = False
+180.3251 	EXP 	fixationInside: autoDraw = True
+181.0622 	EXP 	New trial (rep=0, index=69): OrderedDict([('eventStartTime', 152.75), ('eventEndTime', 156.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 1), ('fixRespStart', 0.25), ('fixRespEnd', 1.0)])
+181.0757 	EXP 	image: autoDraw = False
+181.0757 	EXP 	fixationOutside: autoDraw = False
+181.0757 	EXP 	fixationInside: autoDraw = False
+181.0757 	EXP 	image: autoDraw = False
+181.0757 	EXP 	fixationOutside: autoDraw = False
+181.0757 	EXP 	fixationResponse: autoDraw = False
+181.0757 	EXP 	fixationInside: autoDraw = False
+181.0757 	EXP 	image: size = array([0., 0.])
+181.0757 	EXP 	image: image = 'Stimuli/Blank.png'
+181.0757 	EXP 	image: autoDraw = True
+181.0757 	EXP 	fixationOutside: autoDraw = True
+181.0757 	EXP 	fixationInside: autoDraw = True
+181.3093 	EXP 	fixationResponse: autoDraw = True
+181.8029 	DATA 	Keypress: 1
+182.0599 	EXP 	fixationResponse: autoDraw = False
+182.3014 	DATA 	Keypress: 5
+184.2972 	EXP 	New trial (rep=0, index=70): OrderedDict([('eventStartTime', 156.0), ('eventEndTime', 156.75), ('eventCond', 2), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_adotnsaifoooswkf.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+184.3039 	DATA 	Keypress: 5
+184.3119 	EXP 	image: autoDraw = False
+184.3119 	EXP 	fixationOutside: autoDraw = False
+184.3119 	EXP 	fixationInside: autoDraw = False
+184.3119 	EXP 	image: autoDraw = False
+184.3119 	EXP 	fixationOutside: autoDraw = False
+184.3119 	EXP 	fixationResponse: autoDraw = False
+184.3119 	EXP 	fixationInside: autoDraw = False
+184.3119 	EXP 	image: size = array([0.75, 0.75])
+184.3119 	EXP 	image: image = 'Stimuli/P014/sun_adotnsaifoooswkf.jpg'
+184.3119 	EXP 	image: autoDraw = True
+184.3119 	EXP 	fixationOutside: autoDraw = True
+184.3119 	EXP 	fixationResponse: autoDraw = True
+184.3119 	EXP 	fixationResponse: autoDraw = False
+184.3119 	EXP 	fixationInside: autoDraw = True
+185.0480 	EXP 	New trial (rep=0, index=71): OrderedDict([('eventStartTime', 156.75), ('eventEndTime', 160.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+185.0626 	EXP 	image: autoDraw = False
+185.0626 	EXP 	fixationOutside: autoDraw = False
+185.0626 	EXP 	fixationInside: autoDraw = False
+185.0626 	EXP 	image: autoDraw = False
+185.0626 	EXP 	fixationOutside: autoDraw = False
+185.0626 	EXP 	fixationResponse: autoDraw = False
+185.0626 	EXP 	fixationInside: autoDraw = False
+185.0626 	EXP 	image: size = array([0., 0.])
+185.0626 	EXP 	image: image = 'Stimuli/Blank.png'
+185.0626 	EXP 	image: autoDraw = True
+185.0626 	EXP 	fixationOutside: autoDraw = True
+185.0626 	EXP 	fixationResponse: autoDraw = True
+185.0626 	EXP 	fixationResponse: autoDraw = False
+185.0626 	EXP 	fixationInside: autoDraw = True
+186.3051 	DATA 	Keypress: 5
+188.3007 	EXP 	New trial (rep=0, index=72): OrderedDict([('eventStartTime', 160.0), ('eventEndTime', 160.75), ('eventCond', 20), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_cidodcxikcyrdglc.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+188.3112 	DATA 	Keypress: 5
+188.3321 	EXP 	image: autoDraw = False
+188.3321 	EXP 	fixationOutside: autoDraw = False
+188.3321 	EXP 	fixationInside: autoDraw = False
+188.3321 	EXP 	image: autoDraw = False
+188.3321 	EXP 	fixationOutside: autoDraw = False
+188.3321 	EXP 	fixationResponse: autoDraw = False
+188.3321 	EXP 	fixationInside: autoDraw = False
+188.3321 	EXP 	image: size = array([0.75, 0.75])
+188.3321 	EXP 	image: image = 'Stimuli/P014/sun_cidodcxikcyrdglc.jpg'
+188.3321 	EXP 	image: autoDraw = True
+188.3321 	EXP 	fixationOutside: autoDraw = True
+188.3321 	EXP 	fixationResponse: autoDraw = True
+188.3321 	EXP 	fixationResponse: autoDraw = False
+188.3321 	EXP 	fixationInside: autoDraw = True
+189.0695 	EXP 	New trial (rep=0, index=73): OrderedDict([('eventStartTime', 160.75), ('eventEndTime', 164.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+189.0828 	EXP 	image: autoDraw = False
+189.0828 	EXP 	fixationOutside: autoDraw = False
+189.0828 	EXP 	fixationInside: autoDraw = False
+189.0828 	EXP 	image: autoDraw = False
+189.0828 	EXP 	fixationOutside: autoDraw = False
+189.0828 	EXP 	fixationResponse: autoDraw = False
+189.0828 	EXP 	fixationInside: autoDraw = False
+189.0828 	EXP 	image: size = array([0., 0.])
+189.0828 	EXP 	image: image = 'Stimuli/Blank.png'
+189.0828 	EXP 	image: autoDraw = True
+189.0828 	EXP 	fixationOutside: autoDraw = True
+189.0828 	EXP 	fixationResponse: autoDraw = True
+189.0828 	EXP 	fixationResponse: autoDraw = False
+189.0828 	EXP 	fixationInside: autoDraw = True
+190.2919 	DATA 	Keypress: 5
+192.2924 	DATA 	Keypress: 5
+192.3049 	EXP 	New trial (rep=0, index=74): OrderedDict([('eventStartTime', 164.0), ('eventEndTime', 164.75), ('eventCond', 1), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_adkmgqclfrkhfxbd.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+192.3357 	EXP 	image: autoDraw = False
+192.3357 	EXP 	fixationOutside: autoDraw = False
+192.3357 	EXP 	fixationInside: autoDraw = False
+192.3357 	EXP 	image: autoDraw = False
+192.3357 	EXP 	fixationOutside: autoDraw = False
+192.3357 	EXP 	fixationResponse: autoDraw = False
+192.3357 	EXP 	fixationInside: autoDraw = False
+192.3357 	EXP 	image: size = array([0.75, 0.75])
+192.3357 	EXP 	image: image = 'Stimuli/P014/sun_adkmgqclfrkhfxbd.jpg'
+192.3357 	EXP 	image: autoDraw = True
+192.3357 	EXP 	fixationOutside: autoDraw = True
+192.3357 	EXP 	fixationResponse: autoDraw = True
+192.3357 	EXP 	fixationResponse: autoDraw = False
+192.3357 	EXP 	fixationInside: autoDraw = True
+193.0737 	EXP 	New trial (rep=0, index=75): OrderedDict([('eventStartTime', 164.75), ('eventEndTime', 168.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+193.1031 	EXP 	image: autoDraw = False
+193.1031 	EXP 	fixationOutside: autoDraw = False
+193.1031 	EXP 	fixationInside: autoDraw = False
+193.1031 	EXP 	image: autoDraw = False
+193.1031 	EXP 	fixationOutside: autoDraw = False
+193.1031 	EXP 	fixationResponse: autoDraw = False
+193.1031 	EXP 	fixationInside: autoDraw = False
+193.1031 	EXP 	image: size = array([0., 0.])
+193.1031 	EXP 	image: image = 'Stimuli/Blank.png'
+193.1031 	EXP 	image: autoDraw = True
+193.1031 	EXP 	fixationOutside: autoDraw = True
+193.1031 	EXP 	fixationResponse: autoDraw = True
+193.1031 	EXP 	fixationResponse: autoDraw = False
+193.1031 	EXP 	fixationInside: autoDraw = True
+194.2928 	DATA 	Keypress: 5
+196.2942 	DATA 	Keypress: 5
+196.3096 	EXP 	New trial (rep=0, index=76): OrderedDict([('eventStartTime', 168.0), ('eventEndTime', 168.75), ('eventCond', 31), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_mask_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+196.3393 	EXP 	image: autoDraw = False
+196.3393 	EXP 	fixationOutside: autoDraw = False
+196.3393 	EXP 	fixationInside: autoDraw = False
+196.3393 	EXP 	image: autoDraw = False
+196.3393 	EXP 	fixationOutside: autoDraw = False
+196.3393 	EXP 	fixationResponse: autoDraw = False
+196.3393 	EXP 	fixationInside: autoDraw = False
+196.3393 	EXP 	image: size = array([0.75, 0.75])
+196.3393 	EXP 	image: image = 'Stimuli/P014/things_mask_07s.jpg'
+196.3393 	EXP 	image: autoDraw = True
+196.3393 	EXP 	fixationOutside: autoDraw = True
+196.3393 	EXP 	fixationResponse: autoDraw = True
+196.3393 	EXP 	fixationResponse: autoDraw = False
+196.3393 	EXP 	fixationInside: autoDraw = True
+197.0592 	EXP 	New trial (rep=0, index=77): OrderedDict([('eventStartTime', 168.75), ('eventEndTime', 172.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 1), ('fixRespStart', 0.25), ('fixRespEnd', 1.0)])
+197.0732 	EXP 	image: autoDraw = False
+197.0732 	EXP 	fixationOutside: autoDraw = False
+197.0732 	EXP 	fixationInside: autoDraw = False
+197.0732 	EXP 	image: autoDraw = False
+197.0732 	EXP 	fixationOutside: autoDraw = False
+197.0732 	EXP 	fixationResponse: autoDraw = False
+197.0732 	EXP 	fixationInside: autoDraw = False
+197.0732 	EXP 	image: size = array([0., 0.])
+197.0732 	EXP 	image: image = 'Stimuli/Blank.png'
+197.0732 	EXP 	image: autoDraw = True
+197.0732 	EXP 	fixationOutside: autoDraw = True
+197.0732 	EXP 	fixationInside: autoDraw = True
+197.3067 	EXP 	fixationResponse: autoDraw = True
+197.7292 	DATA 	Keypress: 1
+198.0574 	EXP 	fixationResponse: autoDraw = False
+198.2957 	DATA 	Keypress: 5
+200.2953 	EXP 	New trial (rep=0, index=78): OrderedDict([('eventStartTime', 172.0), ('eventEndTime', 172.75), ('eventCond', 14), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bqhfterhwnqrbnzg.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+200.3058 	DATA 	Keypress: 5
+200.3261 	EXP 	image: autoDraw = False
+200.3261 	EXP 	fixationOutside: autoDraw = False
+200.3261 	EXP 	fixationInside: autoDraw = False
+200.3261 	EXP 	image: autoDraw = False
+200.3261 	EXP 	fixationOutside: autoDraw = False
+200.3261 	EXP 	fixationResponse: autoDraw = False
+200.3261 	EXP 	fixationInside: autoDraw = False
+200.3261 	EXP 	image: size = array([0.75, 0.75])
+200.3261 	EXP 	image: image = 'Stimuli/P014/sun_bqhfterhwnqrbnzg.jpg'
+200.3261 	EXP 	image: autoDraw = True
+200.3261 	EXP 	fixationOutside: autoDraw = True
+200.3261 	EXP 	fixationResponse: autoDraw = True
+200.3261 	EXP 	fixationResponse: autoDraw = False
+200.3261 	EXP 	fixationInside: autoDraw = True
+201.0629 	EXP 	New trial (rep=0, index=79): OrderedDict([('eventStartTime', 172.75), ('eventEndTime', 176.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+201.0768 	EXP 	image: autoDraw = False
+201.0768 	EXP 	fixationOutside: autoDraw = False
+201.0768 	EXP 	fixationInside: autoDraw = False
+201.0768 	EXP 	image: autoDraw = False
+201.0768 	EXP 	fixationOutside: autoDraw = False
+201.0768 	EXP 	fixationResponse: autoDraw = False
+201.0768 	EXP 	fixationInside: autoDraw = False
+201.0768 	EXP 	image: size = array([0., 0.])
+201.0768 	EXP 	image: image = 'Stimuli/Blank.png'
+201.0768 	EXP 	image: autoDraw = True
+201.0768 	EXP 	fixationOutside: autoDraw = True
+201.0768 	EXP 	fixationResponse: autoDraw = True
+201.0768 	EXP 	fixationResponse: autoDraw = False
+201.0768 	EXP 	fixationInside: autoDraw = True
+202.3000 	DATA 	Keypress: 5
+204.2987 	EXP 	New trial (rep=0, index=80): OrderedDict([('eventStartTime', 176.0), ('eventEndTime', 176.75), ('eventCond', 3), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_aengzsmykwchlrdn.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+204.3062 	DATA 	Keypress: 5
+204.3130 	EXP 	image: autoDraw = False
+204.3130 	EXP 	fixationOutside: autoDraw = False
+204.3130 	EXP 	fixationInside: autoDraw = False
+204.3130 	EXP 	image: autoDraw = False
+204.3130 	EXP 	fixationOutside: autoDraw = False
+204.3130 	EXP 	fixationResponse: autoDraw = False
+204.3130 	EXP 	fixationInside: autoDraw = False
+204.3130 	EXP 	image: size = array([0.75, 0.75])
+204.3130 	EXP 	image: image = 'Stimuli/P014/sun_aengzsmykwchlrdn.jpg'
+204.3130 	EXP 	image: autoDraw = True
+204.3130 	EXP 	fixationOutside: autoDraw = True
+204.3130 	EXP 	fixationResponse: autoDraw = True
+204.3130 	EXP 	fixationResponse: autoDraw = False
+204.3130 	EXP 	fixationInside: autoDraw = True
+205.0504 	EXP 	New trial (rep=0, index=81): OrderedDict([('eventStartTime', 176.75), ('eventEndTime', 180.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+205.0803 	EXP 	image: autoDraw = False
+205.0803 	EXP 	fixationOutside: autoDraw = False
+205.0803 	EXP 	fixationInside: autoDraw = False
+205.0803 	EXP 	image: autoDraw = False
+205.0803 	EXP 	fixationOutside: autoDraw = False
+205.0803 	EXP 	fixationResponse: autoDraw = False
+205.0803 	EXP 	fixationInside: autoDraw = False
+205.0803 	EXP 	image: size = array([0., 0.])
+205.0803 	EXP 	image: image = 'Stimuli/Blank.png'
+205.0803 	EXP 	image: autoDraw = True
+205.0803 	EXP 	fixationOutside: autoDraw = True
+205.0803 	EXP 	fixationResponse: autoDraw = True
+205.0803 	EXP 	fixationResponse: autoDraw = False
+205.0803 	EXP 	fixationInside: autoDraw = True
+206.2886 	DATA 	Keypress: 5
+208.2879 	DATA 	Keypress: 5
+208.3194 	EXP 	New trial (rep=0, index=82): OrderedDict([('eventStartTime', 180.0), ('eventEndTime', 196.0), ('eventCond', 0), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 1), ('fixRespStart', 13.0), ('fixRespEnd', 13.75)])
+208.3332 	EXP 	image: autoDraw = False
+208.3332 	EXP 	fixationOutside: autoDraw = False
+208.3332 	EXP 	fixationInside: autoDraw = False
+208.3332 	EXP 	image: autoDraw = False
+208.3332 	EXP 	fixationOutside: autoDraw = False
+208.3332 	EXP 	fixationResponse: autoDraw = False
+208.3332 	EXP 	fixationInside: autoDraw = False
+208.3332 	EXP 	image: size = array([0., 0.])
+208.3332 	EXP 	image: image = 'Stimuli/Blank.png'
+208.3332 	EXP 	image: autoDraw = True
+208.3332 	EXP 	fixationOutside: autoDraw = True
+208.3332 	EXP 	fixationInside: autoDraw = True
+210.2921 	DATA 	Keypress: 5
+212.2921 	DATA 	Keypress: 5
+214.2942 	DATA 	Keypress: 5
+216.3001 	DATA 	Keypress: 5
+218.3003 	DATA 	Keypress: 5
+220.2993 	DATA 	Keypress: 5
+221.3280 	EXP 	fixationResponse: autoDraw = True
+221.6998 	DATA 	Keypress: 1
+222.0787 	EXP 	fixationResponse: autoDraw = False
+222.2999 	DATA 	Keypress: 5
+224.3001 	EXP 	New trial (rep=0, index=83): OrderedDict([('eventStartTime', 196.0), ('eventEndTime', 196.75), ('eventCond', 6), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_aoejkkmwkfegacni.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+224.3065 	DATA 	Keypress: 5
+224.3140 	EXP 	image: autoDraw = False
+224.3140 	EXP 	fixationOutside: autoDraw = False
+224.3140 	EXP 	fixationInside: autoDraw = False
+224.3140 	EXP 	image: autoDraw = False
+224.3140 	EXP 	fixationOutside: autoDraw = False
+224.3140 	EXP 	fixationResponse: autoDraw = False
+224.3140 	EXP 	fixationInside: autoDraw = False
+224.3140 	EXP 	image: size = array([0.75, 0.75])
+224.3140 	EXP 	image: image = 'Stimuli/P014/sun_aoejkkmwkfegacni.jpg'
+224.3140 	EXP 	image: autoDraw = True
+224.3140 	EXP 	fixationOutside: autoDraw = True
+224.3140 	EXP 	fixationResponse: autoDraw = True
+224.3140 	EXP 	fixationResponse: autoDraw = False
+224.3140 	EXP 	fixationInside: autoDraw = True
+225.0505 	EXP 	New trial (rep=0, index=84): OrderedDict([('eventStartTime', 196.75), ('eventEndTime', 200.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+225.0814 	EXP 	image: autoDraw = False
+225.0814 	EXP 	fixationOutside: autoDraw = False
+225.0814 	EXP 	fixationInside: autoDraw = False
+225.0814 	EXP 	image: autoDraw = False
+225.0814 	EXP 	fixationOutside: autoDraw = False
+225.0814 	EXP 	fixationResponse: autoDraw = False
+225.0814 	EXP 	fixationInside: autoDraw = False
+225.0814 	EXP 	image: size = array([0., 0.])
+225.0814 	EXP 	image: image = 'Stimuli/Blank.png'
+225.0814 	EXP 	image: autoDraw = True
+225.0814 	EXP 	fixationOutside: autoDraw = True
+225.0814 	EXP 	fixationResponse: autoDraw = True
+225.0814 	EXP 	fixationResponse: autoDraw = False
+225.0814 	EXP 	fixationInside: autoDraw = True
+226.2917 	DATA 	Keypress: 5
+228.2906 	DATA 	Keypress: 5
+228.3204 	EXP 	New trial (rep=0, index=85): OrderedDict([('eventStartTime', 200.0), ('eventEndTime', 200.75), ('eventCond', 2), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_adotnsaifoooswkf.jpg'), ('responseEvent', 1), ('fixRespStart', 0.0), ('fixRespEnd', 0.75)])
+228.3509 	EXP 	image: autoDraw = False
+228.3509 	EXP 	fixationOutside: autoDraw = False
+228.3509 	EXP 	fixationInside: autoDraw = False
+228.3509 	EXP 	image: autoDraw = False
+228.3509 	EXP 	fixationOutside: autoDraw = False
+228.3509 	EXP 	fixationResponse: autoDraw = False
+228.3509 	EXP 	fixationInside: autoDraw = False
+228.3509 	EXP 	image: size = array([0.75, 0.75])
+228.3509 	EXP 	image: image = 'Stimuli/P014/sun_adotnsaifoooswkf.jpg'
+228.3509 	EXP 	image: autoDraw = True
+228.3509 	EXP 	fixationOutside: autoDraw = True
+228.3509 	EXP 	fixationResponse: autoDraw = True
+228.3509 	EXP 	fixationInside: autoDraw = True
+228.7779 	DATA 	Keypress: 1
+229.0682 	EXP 	fixationResponse: autoDraw = False
+229.0703 	EXP 	New trial (rep=0, index=86): OrderedDict([('eventStartTime', 200.75), ('eventEndTime', 204.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+229.0849 	EXP 	image: autoDraw = False
+229.0849 	EXP 	fixationOutside: autoDraw = False
+229.0849 	EXP 	fixationInside: autoDraw = False
+229.0849 	EXP 	image: autoDraw = False
+229.0849 	EXP 	fixationOutside: autoDraw = False
+229.0849 	EXP 	fixationResponse: autoDraw = False
+229.0849 	EXP 	fixationInside: autoDraw = False
+229.0849 	EXP 	image: size = array([0., 0.])
+229.0849 	EXP 	image: image = 'Stimuli/Blank.png'
+229.0849 	EXP 	image: autoDraw = True
+229.0849 	EXP 	fixationOutside: autoDraw = True
+229.0849 	EXP 	fixationResponse: autoDraw = True
+229.0849 	EXP 	fixationResponse: autoDraw = False
+229.0849 	EXP 	fixationInside: autoDraw = True
+230.2910 	DATA 	Keypress: 5
+232.2940 	DATA 	Keypress: 5
+232.3074 	EXP 	New trial (rep=0, index=87): OrderedDict([('eventStartTime', 204.0), ('eventEndTime', 204.75), ('eventCond', 23), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_bug_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+232.3211 	EXP 	image: autoDraw = False
+232.3211 	EXP 	fixationOutside: autoDraw = False
+232.3211 	EXP 	fixationInside: autoDraw = False
+232.3211 	EXP 	image: autoDraw = False
+232.3211 	EXP 	fixationOutside: autoDraw = False
+232.3211 	EXP 	fixationResponse: autoDraw = False
+232.3211 	EXP 	fixationInside: autoDraw = False
+232.3211 	EXP 	image: size = array([0.75, 0.75])
+232.3211 	EXP 	image: image = 'Stimuli/P014/things_bug_07s.jpg'
+232.3211 	EXP 	image: autoDraw = True
+232.3211 	EXP 	fixationOutside: autoDraw = True
+232.3211 	EXP 	fixationResponse: autoDraw = True
+232.3211 	EXP 	fixationResponse: autoDraw = False
+232.3211 	EXP 	fixationInside: autoDraw = True
+233.0581 	EXP 	New trial (rep=0, index=88): OrderedDict([('eventStartTime', 204.75), ('eventEndTime', 208.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+233.0718 	EXP 	image: autoDraw = False
+233.0718 	EXP 	fixationOutside: autoDraw = False
+233.0718 	EXP 	fixationInside: autoDraw = False
+233.0718 	EXP 	image: autoDraw = False
+233.0718 	EXP 	fixationOutside: autoDraw = False
+233.0718 	EXP 	fixationResponse: autoDraw = False
+233.0718 	EXP 	fixationInside: autoDraw = False
+233.0718 	EXP 	image: size = array([0., 0.])
+233.0718 	EXP 	image: image = 'Stimuli/Blank.png'
+233.0718 	EXP 	image: autoDraw = True
+233.0718 	EXP 	fixationOutside: autoDraw = True
+233.0718 	EXP 	fixationResponse: autoDraw = True
+233.0718 	EXP 	fixationResponse: autoDraw = False
+233.0718 	EXP 	fixationInside: autoDraw = True
+234.2944 	DATA 	Keypress: 5
+236.2939 	EXP 	New trial (rep=0, index=89): OrderedDict([('eventStartTime', 208.0), ('eventEndTime', 208.75), ('eventCond', 12), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bjyrrxiwsnbmkbqs.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+236.3009 	DATA 	Keypress: 5
+236.3079 	EXP 	image: autoDraw = False
+236.3079 	EXP 	fixationOutside: autoDraw = False
+236.3079 	EXP 	fixationInside: autoDraw = False
+236.3079 	EXP 	image: autoDraw = False
+236.3079 	EXP 	fixationOutside: autoDraw = False
+236.3079 	EXP 	fixationResponse: autoDraw = False
+236.3079 	EXP 	fixationInside: autoDraw = False
+236.3079 	EXP 	image: size = array([0.75, 0.75])
+236.3079 	EXP 	image: image = 'Stimuli/P014/sun_bjyrrxiwsnbmkbqs.jpg'
+236.3079 	EXP 	image: autoDraw = True
+236.3079 	EXP 	fixationOutside: autoDraw = True
+236.3079 	EXP 	fixationResponse: autoDraw = True
+236.3079 	EXP 	fixationResponse: autoDraw = False
+236.3079 	EXP 	fixationInside: autoDraw = True
+237.0444 	EXP 	New trial (rep=0, index=90): OrderedDict([('eventStartTime', 208.75), ('eventEndTime', 212.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 1), ('fixRespStart', 2.25), ('fixRespEnd', 3.0)])
+237.0586 	EXP 	image: autoDraw = False
+237.0586 	EXP 	fixationOutside: autoDraw = False
+237.0586 	EXP 	fixationInside: autoDraw = False
+237.0586 	EXP 	image: autoDraw = False
+237.0586 	EXP 	fixationOutside: autoDraw = False
+237.0586 	EXP 	fixationResponse: autoDraw = False
+237.0586 	EXP 	fixationInside: autoDraw = False
+237.0586 	EXP 	image: size = array([0., 0.])
+237.0586 	EXP 	image: image = 'Stimuli/Blank.png'
+237.0586 	EXP 	image: autoDraw = True
+237.0586 	EXP 	fixationOutside: autoDraw = True
+237.0586 	EXP 	fixationInside: autoDraw = True
+238.2995 	DATA 	Keypress: 5
+239.2940 	EXP 	fixationResponse: autoDraw = True
+239.7327 	DATA 	Keypress: 1
+240.0447 	EXP 	fixationResponse: autoDraw = False
+240.2978 	EXP 	New trial (rep=0, index=91): OrderedDict([('eventStartTime', 212.0), ('eventEndTime', 212.75), ('eventCond', 4), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_afgoiykvchxqotyz.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+240.3051 	DATA 	Keypress: 5
+240.3115 	EXP 	image: autoDraw = False
+240.3115 	EXP 	fixationOutside: autoDraw = False
+240.3115 	EXP 	fixationInside: autoDraw = False
+240.3115 	EXP 	image: autoDraw = False
+240.3115 	EXP 	fixationOutside: autoDraw = False
+240.3115 	EXP 	fixationResponse: autoDraw = False
+240.3115 	EXP 	fixationInside: autoDraw = False
+240.3115 	EXP 	image: size = array([0.75, 0.75])
+240.3115 	EXP 	image: image = 'Stimuli/P014/sun_afgoiykvchxqotyz.jpg'
+240.3115 	EXP 	image: autoDraw = True
+240.3115 	EXP 	fixationOutside: autoDraw = True
+240.3115 	EXP 	fixationResponse: autoDraw = True
+240.3115 	EXP 	fixationResponse: autoDraw = False
+240.3115 	EXP 	fixationInside: autoDraw = True
+241.0476 	EXP 	New trial (rep=0, index=92): OrderedDict([('eventStartTime', 212.75), ('eventEndTime', 216.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+241.0622 	EXP 	image: autoDraw = False
+241.0622 	EXP 	fixationOutside: autoDraw = False
+241.0622 	EXP 	fixationInside: autoDraw = False
+241.0622 	EXP 	image: autoDraw = False
+241.0622 	EXP 	fixationOutside: autoDraw = False
+241.0622 	EXP 	fixationResponse: autoDraw = False
+241.0622 	EXP 	fixationInside: autoDraw = False
+241.0622 	EXP 	image: size = array([0., 0.])
+241.0622 	EXP 	image: image = 'Stimuli/Blank.png'
+241.0622 	EXP 	image: autoDraw = True
+241.0622 	EXP 	fixationOutside: autoDraw = True
+241.0622 	EXP 	fixationResponse: autoDraw = True
+241.0622 	EXP 	fixationResponse: autoDraw = False
+241.0622 	EXP 	fixationInside: autoDraw = True
+242.3059 	DATA 	Keypress: 5
+244.2899 	DATA 	Keypress: 5
+244.3010 	EXP 	New trial (rep=0, index=93): OrderedDict([('eventStartTime', 216.0), ('eventEndTime', 216.75), ('eventCond', 8), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_auqrilekgmdmrncq.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+244.3317 	EXP 	image: autoDraw = False
+244.3317 	EXP 	fixationOutside: autoDraw = False
+244.3317 	EXP 	fixationInside: autoDraw = False
+244.3317 	EXP 	image: autoDraw = False
+244.3317 	EXP 	fixationOutside: autoDraw = False
+244.3317 	EXP 	fixationResponse: autoDraw = False
+244.3317 	EXP 	fixationInside: autoDraw = False
+244.3317 	EXP 	image: size = array([0.75, 0.75])
+244.3317 	EXP 	image: image = 'Stimuli/P014/sun_auqrilekgmdmrncq.jpg'
+244.3317 	EXP 	image: autoDraw = True
+244.3317 	EXP 	fixationOutside: autoDraw = True
+244.3317 	EXP 	fixationResponse: autoDraw = True
+244.3317 	EXP 	fixationResponse: autoDraw = False
+244.3317 	EXP 	fixationInside: autoDraw = True
+245.0681 	EXP 	New trial (rep=0, index=94): OrderedDict([('eventStartTime', 216.75), ('eventEndTime', 220.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+245.0824 	EXP 	image: autoDraw = False
+245.0824 	EXP 	fixationOutside: autoDraw = False
+245.0824 	EXP 	fixationInside: autoDraw = False
+245.0824 	EXP 	image: autoDraw = False
+245.0824 	EXP 	fixationOutside: autoDraw = False
+245.0824 	EXP 	fixationResponse: autoDraw = False
+245.0824 	EXP 	fixationInside: autoDraw = False
+245.0824 	EXP 	image: size = array([0., 0.])
+245.0824 	EXP 	image: image = 'Stimuli/Blank.png'
+245.0824 	EXP 	image: autoDraw = True
+245.0824 	EXP 	fixationOutside: autoDraw = True
+245.0824 	EXP 	fixationResponse: autoDraw = True
+245.0824 	EXP 	fixationResponse: autoDraw = False
+245.0824 	EXP 	fixationInside: autoDraw = True
+246.2900 	DATA 	Keypress: 5
+248.2955 	DATA 	Keypress: 5
+248.3066 	EXP 	New trial (rep=0, index=95): OrderedDict([('eventStartTime', 220.0), ('eventEndTime', 220.75), ('eventCond', 28), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_girl_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+248.3353 	EXP 	image: autoDraw = False
+248.3353 	EXP 	fixationOutside: autoDraw = False
+248.3353 	EXP 	fixationInside: autoDraw = False
+248.3353 	EXP 	image: autoDraw = False
+248.3353 	EXP 	fixationOutside: autoDraw = False
+248.3353 	EXP 	fixationResponse: autoDraw = False
+248.3353 	EXP 	fixationInside: autoDraw = False
+248.3353 	EXP 	image: size = array([0.75, 0.75])
+248.3353 	EXP 	image: image = 'Stimuli/P014/things_girl_07s.jpg'
+248.3353 	EXP 	image: autoDraw = True
+248.3353 	EXP 	fixationOutside: autoDraw = True
+248.3353 	EXP 	fixationResponse: autoDraw = True
+248.3353 	EXP 	fixationResponse: autoDraw = False
+248.3353 	EXP 	fixationInside: autoDraw = True
+249.0726 	EXP 	New trial (rep=0, index=96): OrderedDict([('eventStartTime', 220.75), ('eventEndTime', 224.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+249.1026 	EXP 	image: autoDraw = False
+249.1026 	EXP 	fixationOutside: autoDraw = False
+249.1026 	EXP 	fixationInside: autoDraw = False
+249.1026 	EXP 	image: autoDraw = False
+249.1026 	EXP 	fixationOutside: autoDraw = False
+249.1026 	EXP 	fixationResponse: autoDraw = False
+249.1026 	EXP 	fixationInside: autoDraw = False
+249.1026 	EXP 	image: size = array([0., 0.])
+249.1026 	EXP 	image: image = 'Stimuli/Blank.png'
+249.1026 	EXP 	image: autoDraw = True
+249.1026 	EXP 	fixationOutside: autoDraw = True
+249.1026 	EXP 	fixationResponse: autoDraw = True
+249.1026 	EXP 	fixationResponse: autoDraw = False
+249.1026 	EXP 	fixationInside: autoDraw = True
+250.2957 	DATA 	Keypress: 5
+252.2969 	DATA 	Keypress: 5
+252.3246 	EXP 	New trial (rep=0, index=97): OrderedDict([('eventStartTime', 224.0), ('eventEndTime', 224.75), ('eventCond', 10), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bdhxnzyleoiflyak.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+252.3388 	EXP 	image: autoDraw = False
+252.3388 	EXP 	fixationOutside: autoDraw = False
+252.3388 	EXP 	fixationInside: autoDraw = False
+252.3388 	EXP 	image: autoDraw = False
+252.3388 	EXP 	fixationOutside: autoDraw = False
+252.3388 	EXP 	fixationResponse: autoDraw = False
+252.3388 	EXP 	fixationInside: autoDraw = False
+252.3388 	EXP 	image: size = array([0.75, 0.75])
+252.3388 	EXP 	image: image = 'Stimuli/P014/sun_bdhxnzyleoiflyak.jpg'
+252.3388 	EXP 	image: autoDraw = True
+252.3388 	EXP 	fixationOutside: autoDraw = True
+252.3388 	EXP 	fixationResponse: autoDraw = True
+252.3388 	EXP 	fixationResponse: autoDraw = False
+252.3388 	EXP 	fixationInside: autoDraw = True
+253.0589 	EXP 	New trial (rep=0, index=98): OrderedDict([('eventStartTime', 224.75), ('eventEndTime', 228.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+253.0729 	EXP 	image: autoDraw = False
+253.0729 	EXP 	fixationOutside: autoDraw = False
+253.0729 	EXP 	fixationInside: autoDraw = False
+253.0729 	EXP 	image: autoDraw = False
+253.0729 	EXP 	fixationOutside: autoDraw = False
+253.0729 	EXP 	fixationResponse: autoDraw = False
+253.0729 	EXP 	fixationInside: autoDraw = False
+253.0729 	EXP 	image: size = array([0., 0.])
+253.0729 	EXP 	image: image = 'Stimuli/Blank.png'
+253.0729 	EXP 	image: autoDraw = True
+253.0729 	EXP 	fixationOutside: autoDraw = True
+253.0729 	EXP 	fixationResponse: autoDraw = True
+253.0729 	EXP 	fixationResponse: autoDraw = False
+253.0729 	EXP 	fixationInside: autoDraw = True
+254.2957 	DATA 	Keypress: 5
+256.2948 	EXP 	New trial (rep=0, index=99): OrderedDict([('eventStartTime', 228.0), ('eventEndTime', 228.75), ('eventCond', 18), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_btohwudpiusfvpvl.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+256.3074 	DATA 	Keypress: 5
+256.3257 	EXP 	image: autoDraw = False
+256.3257 	EXP 	fixationOutside: autoDraw = False
+256.3257 	EXP 	fixationInside: autoDraw = False
+256.3257 	EXP 	image: autoDraw = False
+256.3257 	EXP 	fixationOutside: autoDraw = False
+256.3257 	EXP 	fixationResponse: autoDraw = False
+256.3257 	EXP 	fixationInside: autoDraw = False
+256.3257 	EXP 	image: size = array([0.75, 0.75])
+256.3257 	EXP 	image: image = 'Stimuli/P014/sun_btohwudpiusfvpvl.jpg'
+256.3257 	EXP 	image: autoDraw = True
+256.3257 	EXP 	fixationOutside: autoDraw = True
+256.3257 	EXP 	fixationResponse: autoDraw = True
+256.3257 	EXP 	fixationResponse: autoDraw = False
+256.3257 	EXP 	fixationInside: autoDraw = True
+257.0615 	EXP 	New trial (rep=0, index=100): OrderedDict([('eventStartTime', 228.75), ('eventEndTime', 232.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+257.0763 	EXP 	image: autoDraw = False
+257.0763 	EXP 	fixationOutside: autoDraw = False
+257.0763 	EXP 	fixationInside: autoDraw = False
+257.0763 	EXP 	image: autoDraw = False
+257.0763 	EXP 	fixationOutside: autoDraw = False
+257.0763 	EXP 	fixationResponse: autoDraw = False
+257.0763 	EXP 	fixationInside: autoDraw = False
+257.0763 	EXP 	image: size = array([0., 0.])
+257.0763 	EXP 	image: image = 'Stimuli/Blank.png'
+257.0763 	EXP 	image: autoDraw = True
+257.0763 	EXP 	fixationOutside: autoDraw = True
+257.0763 	EXP 	fixationResponse: autoDraw = True
+257.0763 	EXP 	fixationResponse: autoDraw = False
+257.0763 	EXP 	fixationInside: autoDraw = True
+258.2998 	DATA 	Keypress: 5
+260.3003 	EXP 	New trial (rep=0, index=101): OrderedDict([('eventStartTime', 232.0), ('eventEndTime', 232.75), ('eventCond', 11), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bfyxzbjsvqsobbky.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+260.3143 	DATA 	Keypress: 5
+260.3292 	EXP 	image: autoDraw = False
+260.3292 	EXP 	fixationOutside: autoDraw = False
+260.3292 	EXP 	fixationInside: autoDraw = False
+260.3292 	EXP 	image: autoDraw = False
+260.3292 	EXP 	fixationOutside: autoDraw = False
+260.3292 	EXP 	fixationResponse: autoDraw = False
+260.3292 	EXP 	fixationInside: autoDraw = False
+260.3292 	EXP 	image: size = array([0.75, 0.75])
+260.3292 	EXP 	image: image = 'Stimuli/P014/sun_bfyxzbjsvqsobbky.jpg'
+260.3292 	EXP 	image: autoDraw = True
+260.3292 	EXP 	fixationOutside: autoDraw = True
+260.3292 	EXP 	fixationResponse: autoDraw = True
+260.3292 	EXP 	fixationResponse: autoDraw = False
+260.3292 	EXP 	fixationInside: autoDraw = True
+261.0658 	EXP 	New trial (rep=0, index=102): OrderedDict([('eventStartTime', 232.75), ('eventEndTime', 236.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+261.0799 	EXP 	image: autoDraw = False
+261.0799 	EXP 	fixationOutside: autoDraw = False
+261.0799 	EXP 	fixationInside: autoDraw = False
+261.0799 	EXP 	image: autoDraw = False
+261.0799 	EXP 	fixationOutside: autoDraw = False
+261.0799 	EXP 	fixationResponse: autoDraw = False
+261.0799 	EXP 	fixationInside: autoDraw = False
+261.0799 	EXP 	image: size = array([0., 0.])
+261.0799 	EXP 	image: image = 'Stimuli/Blank.png'
+261.0799 	EXP 	image: autoDraw = True
+261.0799 	EXP 	fixationOutside: autoDraw = True
+261.0799 	EXP 	fixationResponse: autoDraw = True
+261.0799 	EXP 	fixationResponse: autoDraw = False
+261.0799 	EXP 	fixationInside: autoDraw = True
+262.3023 	DATA 	Keypress: 5
+264.2879 	DATA 	Keypress: 5
+264.3049 	EXP 	New trial (rep=0, index=103): OrderedDict([('eventStartTime', 236.0), ('eventEndTime', 236.75), ('eventCond', 24), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_bungee_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+264.3328 	EXP 	image: autoDraw = False
+264.3328 	EXP 	fixationOutside: autoDraw = False
+264.3328 	EXP 	fixationInside: autoDraw = False
+264.3328 	EXP 	image: autoDraw = False
+264.3328 	EXP 	fixationOutside: autoDraw = False
+264.3328 	EXP 	fixationResponse: autoDraw = False
+264.3328 	EXP 	fixationInside: autoDraw = False
+264.3328 	EXP 	image: size = array([0.75, 0.75])
+264.3328 	EXP 	image: image = 'Stimuli/P014/things_bungee_07s.jpg'
+264.3328 	EXP 	image: autoDraw = True
+264.3328 	EXP 	fixationOutside: autoDraw = True
+264.3328 	EXP 	fixationResponse: autoDraw = True
+264.3328 	EXP 	fixationResponse: autoDraw = False
+264.3328 	EXP 	fixationInside: autoDraw = True
+265.0687 	EXP 	New trial (rep=0, index=104): OrderedDict([('eventStartTime', 236.75), ('eventEndTime', 240.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+265.0834 	EXP 	image: autoDraw = False
+265.0834 	EXP 	fixationOutside: autoDraw = False
+265.0834 	EXP 	fixationInside: autoDraw = False
+265.0834 	EXP 	image: autoDraw = False
+265.0834 	EXP 	fixationOutside: autoDraw = False
+265.0834 	EXP 	fixationResponse: autoDraw = False
+265.0834 	EXP 	fixationInside: autoDraw = False
+265.0834 	EXP 	image: size = array([0., 0.])
+265.0834 	EXP 	image: image = 'Stimuli/Blank.png'
+265.0834 	EXP 	image: autoDraw = True
+265.0834 	EXP 	fixationOutside: autoDraw = True
+265.0834 	EXP 	fixationResponse: autoDraw = True
+265.0834 	EXP 	fixationResponse: autoDraw = False
+265.0834 	EXP 	fixationInside: autoDraw = True
+266.2888 	DATA 	Keypress: 5
+268.2928 	DATA 	Keypress: 5
+268.3054 	EXP 	New trial (rep=0, index=105): OrderedDict([('eventStartTime', 240.0), ('eventEndTime', 240.75), ('eventCond', 40), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_woman_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+268.3196 	EXP 	image: autoDraw = False
+268.3196 	EXP 	fixationOutside: autoDraw = False
+268.3196 	EXP 	fixationInside: autoDraw = False
+268.3196 	EXP 	image: autoDraw = False
+268.3196 	EXP 	fixationOutside: autoDraw = False
+268.3196 	EXP 	fixationResponse: autoDraw = False
+268.3196 	EXP 	fixationInside: autoDraw = False
+268.3196 	EXP 	image: size = array([0.75, 0.75])
+268.3196 	EXP 	image: image = 'Stimuli/P014/things_woman_07s.jpg'
+268.3196 	EXP 	image: autoDraw = True
+268.3196 	EXP 	fixationOutside: autoDraw = True
+268.3196 	EXP 	fixationResponse: autoDraw = True
+268.3196 	EXP 	fixationResponse: autoDraw = False
+268.3196 	EXP 	fixationInside: autoDraw = True
+269.0570 	EXP 	New trial (rep=0, index=106): OrderedDict([('eventStartTime', 240.75), ('eventEndTime', 244.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+269.0703 	EXP 	image: autoDraw = False
+269.0703 	EXP 	fixationOutside: autoDraw = False
+269.0703 	EXP 	fixationInside: autoDraw = False
+269.0703 	EXP 	image: autoDraw = False
+269.0703 	EXP 	fixationOutside: autoDraw = False
+269.0703 	EXP 	fixationResponse: autoDraw = False
+269.0703 	EXP 	fixationInside: autoDraw = False
+269.0703 	EXP 	image: size = array([0., 0.])
+269.0703 	EXP 	image: image = 'Stimuli/Blank.png'
+269.0703 	EXP 	image: autoDraw = True
+269.0703 	EXP 	fixationOutside: autoDraw = True
+269.0703 	EXP 	fixationResponse: autoDraw = True
+269.0703 	EXP 	fixationResponse: autoDraw = False
+269.0703 	EXP 	fixationInside: autoDraw = True
+270.2921 	DATA 	Keypress: 5
+272.2921 	EXP 	New trial (rep=0, index=107): OrderedDict([('eventStartTime', 244.0), ('eventEndTime', 244.75), ('eventCond', 32), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_mistletoe_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+272.3031 	DATA 	Keypress: 5
+272.3232 	EXP 	image: autoDraw = False
+272.3232 	EXP 	fixationOutside: autoDraw = False
+272.3232 	EXP 	fixationInside: autoDraw = False
+272.3232 	EXP 	image: autoDraw = False
+272.3232 	EXP 	fixationOutside: autoDraw = False
+272.3232 	EXP 	fixationResponse: autoDraw = False
+272.3232 	EXP 	fixationInside: autoDraw = False
+272.3232 	EXP 	image: size = array([0.75, 0.75])
+272.3232 	EXP 	image: image = 'Stimuli/P014/things_mistletoe_07s.jpg'
+272.3232 	EXP 	image: autoDraw = True
+272.3232 	EXP 	fixationOutside: autoDraw = True
+272.3232 	EXP 	fixationResponse: autoDraw = True
+272.3232 	EXP 	fixationResponse: autoDraw = False
+272.3232 	EXP 	fixationInside: autoDraw = True
+273.0618 	EXP 	New trial (rep=0, index=108): OrderedDict([('eventStartTime', 244.75), ('eventEndTime', 248.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 1), ('fixRespStart', 2.25), ('fixRespEnd', 3.0)])
+273.0905 	EXP 	image: autoDraw = False
+273.0905 	EXP 	fixationOutside: autoDraw = False
+273.0905 	EXP 	fixationInside: autoDraw = False
+273.0905 	EXP 	image: autoDraw = False
+273.0905 	EXP 	fixationOutside: autoDraw = False
+273.0905 	EXP 	fixationResponse: autoDraw = False
+273.0905 	EXP 	fixationInside: autoDraw = False
+273.0905 	EXP 	image: size = array([0., 0.])
+273.0905 	EXP 	image: image = 'Stimuli/Blank.png'
+273.0905 	EXP 	image: autoDraw = True
+273.0905 	EXP 	fixationOutside: autoDraw = True
+273.0905 	EXP 	fixationInside: autoDraw = True
+274.3017 	DATA 	Keypress: 5
+275.3259 	EXP 	fixationResponse: autoDraw = True
+275.7048 	DATA 	Keypress: 1
+276.0765 	EXP 	fixationResponse: autoDraw = False
+276.2982 	DATA 	Keypress: 5
+276.3120 	EXP 	New trial (rep=0, index=109): OrderedDict([('eventStartTime', 248.0), ('eventEndTime', 248.75), ('eventCond', 30), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_man_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+276.3267 	EXP 	image: autoDraw = False
+276.3267 	EXP 	fixationOutside: autoDraw = False
+276.3267 	EXP 	fixationInside: autoDraw = False
+276.3267 	EXP 	image: autoDraw = False
+276.3267 	EXP 	fixationOutside: autoDraw = False
+276.3267 	EXP 	fixationResponse: autoDraw = False
+276.3267 	EXP 	fixationInside: autoDraw = False
+276.3267 	EXP 	image: size = array([0.75, 0.75])
+276.3267 	EXP 	image: image = 'Stimuli/P014/things_man_07s.jpg'
+276.3267 	EXP 	image: autoDraw = True
+276.3267 	EXP 	fixationOutside: autoDraw = True
+276.3267 	EXP 	fixationResponse: autoDraw = True
+276.3267 	EXP 	fixationResponse: autoDraw = False
+276.3267 	EXP 	fixationInside: autoDraw = True
+277.0477 	EXP 	New trial (rep=0, index=110): OrderedDict([('eventStartTime', 248.75), ('eventEndTime', 252.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+277.0774 	EXP 	image: autoDraw = False
+277.0774 	EXP 	fixationOutside: autoDraw = False
+277.0774 	EXP 	fixationInside: autoDraw = False
+277.0774 	EXP 	image: autoDraw = False
+277.0774 	EXP 	fixationOutside: autoDraw = False
+277.0774 	EXP 	fixationResponse: autoDraw = False
+277.0774 	EXP 	fixationInside: autoDraw = False
+277.0774 	EXP 	image: size = array([0., 0.])
+277.0774 	EXP 	image: image = 'Stimuli/Blank.png'
+277.0774 	EXP 	image: autoDraw = True
+277.0774 	EXP 	fixationOutside: autoDraw = True
+277.0774 	EXP 	fixationResponse: autoDraw = True
+277.0774 	EXP 	fixationResponse: autoDraw = False
+277.0774 	EXP 	fixationInside: autoDraw = True
+278.3005 	DATA 	Keypress: 5
+280.3025 	DATA 	Keypress: 5
+280.3157 	EXP 	New trial (rep=0, index=111): OrderedDict([('eventStartTime', 252.0), ('eventEndTime', 252.75), ('eventCond', 37), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_slug_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+280.3470 	EXP 	image: autoDraw = False
+280.3470 	EXP 	fixationOutside: autoDraw = False
+280.3470 	EXP 	fixationInside: autoDraw = False
+280.3470 	EXP 	image: autoDraw = False
+280.3470 	EXP 	fixationOutside: autoDraw = False
+280.3470 	EXP 	fixationResponse: autoDraw = False
+280.3470 	EXP 	fixationInside: autoDraw = False
+280.3470 	EXP 	image: size = array([0.75, 0.75])
+280.3470 	EXP 	image: image = 'Stimuli/P014/things_slug_07s.jpg'
+280.3470 	EXP 	image: autoDraw = True
+280.3470 	EXP 	fixationOutside: autoDraw = True
+280.3470 	EXP 	fixationResponse: autoDraw = True
+280.3470 	EXP 	fixationResponse: autoDraw = False
+280.3470 	EXP 	fixationInside: autoDraw = True
+281.0686 	EXP 	New trial (rep=0, index=112): OrderedDict([('eventStartTime', 252.75), ('eventEndTime', 256.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+281.0976 	EXP 	image: autoDraw = False
+281.0976 	EXP 	fixationOutside: autoDraw = False
+281.0976 	EXP 	fixationInside: autoDraw = False
+281.0976 	EXP 	image: autoDraw = False
+281.0976 	EXP 	fixationOutside: autoDraw = False
+281.0976 	EXP 	fixationResponse: autoDraw = False
+281.0976 	EXP 	fixationInside: autoDraw = False
+281.0976 	EXP 	image: size = array([0., 0.])
+281.0976 	EXP 	image: image = 'Stimuli/Blank.png'
+281.0976 	EXP 	image: autoDraw = True
+281.0976 	EXP 	fixationOutside: autoDraw = True
+281.0976 	EXP 	fixationResponse: autoDraw = True
+281.0976 	EXP 	fixationResponse: autoDraw = False
+281.0976 	EXP 	fixationInside: autoDraw = True
+282.3039 	DATA 	Keypress: 5
+284.2920 	DATA 	Keypress: 5
+284.3201 	EXP 	New trial (rep=0, index=113): OrderedDict([('eventStartTime', 256.0), ('eventEndTime', 256.75), ('eventCond', 29), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_iguana_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+284.3338 	EXP 	image: autoDraw = False
+284.3338 	EXP 	fixationOutside: autoDraw = False
+284.3338 	EXP 	fixationInside: autoDraw = False
+284.3338 	EXP 	image: autoDraw = False
+284.3338 	EXP 	fixationOutside: autoDraw = False
+284.3338 	EXP 	fixationResponse: autoDraw = False
+284.3338 	EXP 	fixationInside: autoDraw = False
+284.3338 	EXP 	image: size = array([0.75, 0.75])
+284.3338 	EXP 	image: image = 'Stimuli/P014/things_iguana_07s.jpg'
+284.3338 	EXP 	image: autoDraw = True
+284.3338 	EXP 	fixationOutside: autoDraw = True
+284.3338 	EXP 	fixationResponse: autoDraw = True
+284.3338 	EXP 	fixationResponse: autoDraw = False
+284.3338 	EXP 	fixationInside: autoDraw = True
+285.0536 	EXP 	New trial (rep=0, index=114): OrderedDict([('eventStartTime', 256.75), ('eventEndTime', 260.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+285.0678 	EXP 	image: autoDraw = False
+285.0678 	EXP 	fixationOutside: autoDraw = False
+285.0678 	EXP 	fixationInside: autoDraw = False
+285.0678 	EXP 	image: autoDraw = False
+285.0678 	EXP 	fixationOutside: autoDraw = False
+285.0678 	EXP 	fixationResponse: autoDraw = False
+285.0678 	EXP 	fixationInside: autoDraw = False
+285.0678 	EXP 	image: size = array([0., 0.])
+285.0678 	EXP 	image: image = 'Stimuli/Blank.png'
+285.0678 	EXP 	image: autoDraw = True
+285.0678 	EXP 	fixationOutside: autoDraw = True
+285.0678 	EXP 	fixationResponse: autoDraw = True
+285.0678 	EXP 	fixationResponse: autoDraw = False
+285.0678 	EXP 	fixationInside: autoDraw = True
+286.2943 	DATA 	Keypress: 5
+288.2931 	DATA 	Keypress: 5
+288.3064 	EXP 	New trial (rep=0, index=115): OrderedDict([('eventStartTime', 260.0), ('eventEndTime', 260.75), ('eventCond', 17), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bsguftphqnrkbedw.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+288.3207 	EXP 	image: autoDraw = False
+288.3207 	EXP 	fixationOutside: autoDraw = False
+288.3207 	EXP 	fixationInside: autoDraw = False
+288.3207 	EXP 	image: autoDraw = False
+288.3207 	EXP 	fixationOutside: autoDraw = False
+288.3207 	EXP 	fixationResponse: autoDraw = False
+288.3207 	EXP 	fixationInside: autoDraw = False
+288.3207 	EXP 	image: size = array([0.75, 0.75])
+288.3207 	EXP 	image: image = 'Stimuli/P014/sun_bsguftphqnrkbedw.jpg'
+288.3207 	EXP 	image: autoDraw = True
+288.3207 	EXP 	fixationOutside: autoDraw = True
+288.3207 	EXP 	fixationResponse: autoDraw = True
+288.3207 	EXP 	fixationResponse: autoDraw = False
+288.3207 	EXP 	fixationInside: autoDraw = True
+289.0568 	EXP 	New trial (rep=0, index=116): OrderedDict([('eventStartTime', 260.75), ('eventEndTime', 264.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+289.0714 	EXP 	image: autoDraw = False
+289.0714 	EXP 	fixationOutside: autoDraw = False
+289.0714 	EXP 	fixationInside: autoDraw = False
+289.0714 	EXP 	image: autoDraw = False
+289.0714 	EXP 	fixationOutside: autoDraw = False
+289.0714 	EXP 	fixationResponse: autoDraw = False
+289.0714 	EXP 	fixationInside: autoDraw = False
+289.0714 	EXP 	image: size = array([0., 0.])
+289.0714 	EXP 	image: image = 'Stimuli/Blank.png'
+289.0714 	EXP 	image: autoDraw = True
+289.0714 	EXP 	fixationOutside: autoDraw = True
+289.0714 	EXP 	fixationResponse: autoDraw = True
+289.0714 	EXP 	fixationResponse: autoDraw = False
+289.0714 	EXP 	fixationInside: autoDraw = True
+290.2940 	DATA 	Keypress: 5
+292.2934 	EXP 	New trial (rep=0, index=117): OrderedDict([('eventStartTime', 264.0), ('eventEndTime', 264.75), ('eventCond', 5), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_aidrxvbfhxtsusrf.jpg'), ('responseEvent', 1), ('fixRespStart', 0.0), ('fixRespEnd', 0.75)])
+292.3004 	DATA 	Keypress: 5
+292.3075 	EXP 	image: autoDraw = False
+292.3075 	EXP 	fixationOutside: autoDraw = False
+292.3075 	EXP 	fixationInside: autoDraw = False
+292.3075 	EXP 	image: autoDraw = False
+292.3075 	EXP 	fixationOutside: autoDraw = False
+292.3075 	EXP 	fixationResponse: autoDraw = False
+292.3075 	EXP 	fixationInside: autoDraw = False
+292.3075 	EXP 	image: size = array([0.75, 0.75])
+292.3075 	EXP 	image: image = 'Stimuli/P014/sun_aidrxvbfhxtsusrf.jpg'
+292.3075 	EXP 	image: autoDraw = True
+292.3075 	EXP 	fixationOutside: autoDraw = True
+292.3075 	EXP 	fixationResponse: autoDraw = True
+292.3075 	EXP 	fixationInside: autoDraw = True
+292.8202 	DATA 	Keypress: 1
+293.0415 	EXP 	fixationResponse: autoDraw = False
+293.0441 	EXP 	New trial (rep=0, index=118): OrderedDict([('eventStartTime', 264.75), ('eventEndTime', 268.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+293.0582 	EXP 	image: autoDraw = False
+293.0582 	EXP 	fixationOutside: autoDraw = False
+293.0582 	EXP 	fixationInside: autoDraw = False
+293.0582 	EXP 	image: autoDraw = False
+293.0582 	EXP 	fixationOutside: autoDraw = False
+293.0582 	EXP 	fixationResponse: autoDraw = False
+293.0582 	EXP 	fixationInside: autoDraw = False
+293.0582 	EXP 	image: size = array([0., 0.])
+293.0582 	EXP 	image: image = 'Stimuli/Blank.png'
+293.0582 	EXP 	image: autoDraw = True
+293.0582 	EXP 	fixationOutside: autoDraw = True
+293.0582 	EXP 	fixationResponse: autoDraw = True
+293.0582 	EXP 	fixationResponse: autoDraw = False
+293.0582 	EXP 	fixationInside: autoDraw = True
+294.3006 	DATA 	Keypress: 5
+296.2965 	EXP 	New trial (rep=0, index=119): OrderedDict([('eventStartTime', 268.0), ('eventEndTime', 268.75), ('eventCond', 1), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_adkmgqclfrkhfxbd.jpg'), ('responseEvent', 1), ('fixRespStart', 0.0), ('fixRespEnd', 0.75)])
+296.3047 	DATA 	Keypress: 5
+296.3111 	EXP 	image: autoDraw = False
+296.3111 	EXP 	fixationOutside: autoDraw = False
+296.3111 	EXP 	fixationInside: autoDraw = False
+296.3111 	EXP 	image: autoDraw = False
+296.3111 	EXP 	fixationOutside: autoDraw = False
+296.3111 	EXP 	fixationResponse: autoDraw = False
+296.3111 	EXP 	fixationInside: autoDraw = False
+296.3111 	EXP 	image: size = array([0.75, 0.75])
+296.3111 	EXP 	image: image = 'Stimuli/P014/sun_adkmgqclfrkhfxbd.jpg'
+296.3111 	EXP 	image: autoDraw = True
+296.3111 	EXP 	fixationOutside: autoDraw = True
+296.3111 	EXP 	fixationResponse: autoDraw = True
+296.3111 	EXP 	fixationInside: autoDraw = True
+296.7208 	DATA 	Keypress: 1
+297.0451 	EXP 	fixationResponse: autoDraw = False
+297.0472 	EXP 	New trial (rep=0, index=120): OrderedDict([('eventStartTime', 268.75), ('eventEndTime', 272.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+297.0617 	EXP 	image: autoDraw = False
+297.0617 	EXP 	fixationOutside: autoDraw = False
+297.0617 	EXP 	fixationInside: autoDraw = False
+297.0617 	EXP 	image: autoDraw = False
+297.0617 	EXP 	fixationOutside: autoDraw = False
+297.0617 	EXP 	fixationResponse: autoDraw = False
+297.0617 	EXP 	fixationInside: autoDraw = False
+297.0617 	EXP 	image: size = array([0., 0.])
+297.0617 	EXP 	image: image = 'Stimuli/Blank.png'
+297.0617 	EXP 	image: autoDraw = True
+297.0617 	EXP 	fixationOutside: autoDraw = True
+297.0617 	EXP 	fixationResponse: autoDraw = True
+297.0617 	EXP 	fixationResponse: autoDraw = False
+297.0617 	EXP 	fixationInside: autoDraw = True
+298.3022 	DATA 	Keypress: 5
+300.3007 	EXP 	New trial (rep=0, index=121): OrderedDict([('eventStartTime', 272.0), ('eventEndTime', 272.75), ('eventCond', 9), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bdgwqzttihopmpbf.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+300.3122 	DATA 	Keypress: 5
+300.3313 	EXP 	image: autoDraw = False
+300.3313 	EXP 	fixationOutside: autoDraw = False
+300.3313 	EXP 	fixationInside: autoDraw = False
+300.3313 	EXP 	image: autoDraw = False
+300.3313 	EXP 	fixationOutside: autoDraw = False
+300.3313 	EXP 	fixationResponse: autoDraw = False
+300.3313 	EXP 	fixationInside: autoDraw = False
+300.3313 	EXP 	image: size = array([0.75, 0.75])
+300.3313 	EXP 	image: image = 'Stimuli/P014/sun_bdgwqzttihopmpbf.jpg'
+300.3313 	EXP 	image: autoDraw = True
+300.3313 	EXP 	fixationOutside: autoDraw = True
+300.3313 	EXP 	fixationResponse: autoDraw = True
+300.3313 	EXP 	fixationResponse: autoDraw = False
+300.3313 	EXP 	fixationInside: autoDraw = True
+301.0681 	EXP 	New trial (rep=0, index=122): OrderedDict([('eventStartTime', 272.75), ('eventEndTime', 276.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+301.0820 	EXP 	image: autoDraw = False
+301.0820 	EXP 	fixationOutside: autoDraw = False
+301.0820 	EXP 	fixationInside: autoDraw = False
+301.0820 	EXP 	image: autoDraw = False
+301.0820 	EXP 	fixationOutside: autoDraw = False
+301.0820 	EXP 	fixationResponse: autoDraw = False
+301.0820 	EXP 	fixationInside: autoDraw = False
+301.0820 	EXP 	image: size = array([0., 0.])
+301.0820 	EXP 	image: image = 'Stimuli/Blank.png'
+301.0820 	EXP 	image: autoDraw = True
+301.0820 	EXP 	fixationOutside: autoDraw = True
+301.0820 	EXP 	fixationResponse: autoDraw = True
+301.0820 	EXP 	fixationResponse: autoDraw = False
+301.0820 	EXP 	fixationInside: autoDraw = True
+302.2933 	DATA 	Keypress: 5
+304.2903 	DATA 	Keypress: 5
+304.3046 	EXP 	New trial (rep=0, index=123): OrderedDict([('eventStartTime', 276.0), ('eventEndTime', 292.0), ('eventCond', 0), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 1), ('fixRespStart', 1.0), ('fixRespEnd', 1.75)])
+304.3182 	EXP 	image: autoDraw = False
+304.3182 	EXP 	fixationOutside: autoDraw = False
+304.3182 	EXP 	fixationInside: autoDraw = False
+304.3182 	EXP 	image: autoDraw = False
+304.3182 	EXP 	fixationOutside: autoDraw = False
+304.3182 	EXP 	fixationResponse: autoDraw = False
+304.3182 	EXP 	fixationInside: autoDraw = False
+304.3182 	EXP 	image: size = array([0., 0.])
+304.3182 	EXP 	image: image = 'Stimuli/Blank.png'
+304.3182 	EXP 	image: autoDraw = True
+304.3182 	EXP 	fixationOutside: autoDraw = True
+304.3182 	EXP 	fixationInside: autoDraw = True
+305.3024 	EXP 	fixationResponse: autoDraw = True
+305.6588 	DATA 	Keypress: 1
+306.0531 	EXP 	fixationResponse: autoDraw = False
+306.2949 	DATA 	Keypress: 5
+308.2961 	DATA 	Keypress: 5
+310.2984 	DATA 	Keypress: 5
+312.2966 	DATA 	Keypress: 5
+314.3012 	DATA 	Keypress: 5
+316.3011 	DATA 	Keypress: 5
+318.3009 	DATA 	Keypress: 5
+320.2909 	DATA 	Keypress: 5
+320.3025 	EXP 	New trial (rep=0, index=124): OrderedDict([('eventStartTime', 292.0), ('eventEndTime', 292.75), ('eventCond', 21), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_baby_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+320.3323 	EXP 	image: autoDraw = False
+320.3323 	EXP 	fixationOutside: autoDraw = False
+320.3323 	EXP 	fixationInside: autoDraw = False
+320.3323 	EXP 	image: autoDraw = False
+320.3323 	EXP 	fixationOutside: autoDraw = False
+320.3323 	EXP 	fixationResponse: autoDraw = False
+320.3323 	EXP 	fixationInside: autoDraw = False
+320.3323 	EXP 	image: size = array([0.75, 0.75])
+320.3323 	EXP 	image: image = 'Stimuli/P014/things_baby_07s.jpg'
+320.3323 	EXP 	image: autoDraw = True
+320.3323 	EXP 	fixationOutside: autoDraw = True
+320.3323 	EXP 	fixationResponse: autoDraw = True
+320.3323 	EXP 	fixationResponse: autoDraw = False
+320.3323 	EXP 	fixationInside: autoDraw = True
+321.0689 	EXP 	New trial (rep=0, index=125): OrderedDict([('eventStartTime', 292.75), ('eventEndTime', 296.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+321.0830 	EXP 	image: autoDraw = False
+321.0830 	EXP 	fixationOutside: autoDraw = False
+321.0830 	EXP 	fixationInside: autoDraw = False
+321.0830 	EXP 	image: autoDraw = False
+321.0830 	EXP 	fixationOutside: autoDraw = False
+321.0830 	EXP 	fixationResponse: autoDraw = False
+321.0830 	EXP 	fixationInside: autoDraw = False
+321.0830 	EXP 	image: size = array([0., 0.])
+321.0830 	EXP 	image: image = 'Stimuli/Blank.png'
+321.0830 	EXP 	image: autoDraw = True
+321.0830 	EXP 	fixationOutside: autoDraw = True
+321.0830 	EXP 	fixationResponse: autoDraw = True
+321.0830 	EXP 	fixationResponse: autoDraw = False
+321.0830 	EXP 	fixationInside: autoDraw = True
+322.2886 	DATA 	Keypress: 5
+324.2904 	DATA 	Keypress: 5
+324.3044 	EXP 	New trial (rep=0, index=126): OrderedDict([('eventStartTime', 296.0), ('eventEndTime', 296.75), ('eventCond', 39), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_violin_07n.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+324.3192 	EXP 	image: autoDraw = False
+324.3192 	EXP 	fixationOutside: autoDraw = False
+324.3192 	EXP 	fixationInside: autoDraw = False
+324.3192 	EXP 	image: autoDraw = False
+324.3192 	EXP 	fixationOutside: autoDraw = False
+324.3192 	EXP 	fixationResponse: autoDraw = False
+324.3192 	EXP 	fixationInside: autoDraw = False
+324.3192 	EXP 	image: size = array([0.75, 0.75])
+324.3192 	EXP 	image: image = 'Stimuli/P014/things_violin_07n.jpg'
+324.3192 	EXP 	image: autoDraw = True
+324.3192 	EXP 	fixationOutside: autoDraw = True
+324.3192 	EXP 	fixationResponse: autoDraw = True
+324.3192 	EXP 	fixationResponse: autoDraw = False
+324.3192 	EXP 	fixationInside: autoDraw = True
+325.0558 	EXP 	New trial (rep=0, index=127): OrderedDict([('eventStartTime', 296.75), ('eventEndTime', 300.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+325.0699 	EXP 	image: autoDraw = False
+325.0699 	EXP 	fixationOutside: autoDraw = False
+325.0699 	EXP 	fixationInside: autoDraw = False
+325.0699 	EXP 	image: autoDraw = False
+325.0699 	EXP 	fixationOutside: autoDraw = False
+325.0699 	EXP 	fixationResponse: autoDraw = False
+325.0699 	EXP 	fixationInside: autoDraw = False
+325.0699 	EXP 	image: size = array([0., 0.])
+325.0699 	EXP 	image: image = 'Stimuli/Blank.png'
+325.0699 	EXP 	image: autoDraw = True
+325.0699 	EXP 	fixationOutside: autoDraw = True
+325.0699 	EXP 	fixationResponse: autoDraw = True
+325.0699 	EXP 	fixationResponse: autoDraw = False
+325.0699 	EXP 	fixationInside: autoDraw = True
+326.2930 	DATA 	Keypress: 5
+328.2958 	DATA 	Keypress: 5
+328.3085 	EXP 	New trial (rep=0, index=128): OrderedDict([('eventStartTime', 300.0), ('eventEndTime', 300.75), ('eventCond', 35), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_road_sign_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+328.3227 	EXP 	image: autoDraw = False
+328.3227 	EXP 	fixationOutside: autoDraw = False
+328.3227 	EXP 	fixationInside: autoDraw = False
+328.3227 	EXP 	image: autoDraw = False
+328.3227 	EXP 	fixationOutside: autoDraw = False
+328.3227 	EXP 	fixationResponse: autoDraw = False
+328.3227 	EXP 	fixationInside: autoDraw = False
+328.3227 	EXP 	image: size = array([0.75, 0.75])
+328.3227 	EXP 	image: image = 'Stimuli/P014/things_road_sign_07s.jpg'
+328.3227 	EXP 	image: autoDraw = True
+328.3227 	EXP 	fixationOutside: autoDraw = True
+328.3227 	EXP 	fixationResponse: autoDraw = True
+328.3227 	EXP 	fixationResponse: autoDraw = False
+328.3227 	EXP 	fixationInside: autoDraw = True
+329.0587 	EXP 	New trial (rep=0, index=129): OrderedDict([('eventStartTime', 300.75), ('eventEndTime', 304.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+329.0734 	EXP 	image: autoDraw = False
+329.0734 	EXP 	fixationOutside: autoDraw = False
+329.0734 	EXP 	fixationInside: autoDraw = False
+329.0734 	EXP 	image: autoDraw = False
+329.0734 	EXP 	fixationOutside: autoDraw = False
+329.0734 	EXP 	fixationResponse: autoDraw = False
+329.0734 	EXP 	fixationInside: autoDraw = False
+329.0734 	EXP 	image: size = array([0., 0.])
+329.0734 	EXP 	image: image = 'Stimuli/Blank.png'
+329.0734 	EXP 	image: autoDraw = True
+329.0734 	EXP 	fixationOutside: autoDraw = True
+329.0734 	EXP 	fixationResponse: autoDraw = True
+329.0734 	EXP 	fixationResponse: autoDraw = False
+329.0734 	EXP 	fixationInside: autoDraw = True
+330.3001 	DATA 	Keypress: 5
+332.2949 	EXP 	New trial (rep=0, index=130): OrderedDict([('eventStartTime', 304.0), ('eventEndTime', 304.75), ('eventCond', 34), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_radio_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+332.3057 	DATA 	Keypress: 5
+332.3263 	EXP 	image: autoDraw = False
+332.3263 	EXP 	fixationOutside: autoDraw = False
+332.3263 	EXP 	fixationInside: autoDraw = False
+332.3263 	EXP 	image: autoDraw = False
+332.3263 	EXP 	fixationOutside: autoDraw = False
+332.3263 	EXP 	fixationResponse: autoDraw = False
+332.3263 	EXP 	fixationInside: autoDraw = False
+332.3263 	EXP 	image: size = array([0.75, 0.75])
+332.3263 	EXP 	image: image = 'Stimuli/P014/things_radio_07s.jpg'
+332.3263 	EXP 	image: autoDraw = True
+332.3263 	EXP 	fixationOutside: autoDraw = True
+332.3263 	EXP 	fixationResponse: autoDraw = True
+332.3263 	EXP 	fixationResponse: autoDraw = False
+332.3263 	EXP 	fixationInside: autoDraw = True
+333.0622 	EXP 	New trial (rep=0, index=131): OrderedDict([('eventStartTime', 304.75), ('eventEndTime', 308.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+333.0770 	EXP 	image: autoDraw = False
+333.0770 	EXP 	fixationOutside: autoDraw = False
+333.0770 	EXP 	fixationInside: autoDraw = False
+333.0770 	EXP 	image: autoDraw = False
+333.0770 	EXP 	fixationOutside: autoDraw = False
+333.0770 	EXP 	fixationResponse: autoDraw = False
+333.0770 	EXP 	fixationInside: autoDraw = False
+333.0770 	EXP 	image: size = array([0., 0.])
+333.0770 	EXP 	image: image = 'Stimuli/Blank.png'
+333.0770 	EXP 	image: autoDraw = True
+333.0770 	EXP 	fixationOutside: autoDraw = True
+333.0770 	EXP 	fixationResponse: autoDraw = True
+333.0770 	EXP 	fixationResponse: autoDraw = False
+333.0770 	EXP 	fixationInside: autoDraw = True
+334.2996 	DATA 	Keypress: 5
+336.2991 	EXP 	New trial (rep=0, index=132): OrderedDict([('eventStartTime', 308.0), ('eventEndTime', 308.75), ('eventCond', 33), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_piglet_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+336.3090 	DATA 	Keypress: 5
+336.3298 	EXP 	image: autoDraw = False
+336.3298 	EXP 	fixationOutside: autoDraw = False
+336.3298 	EXP 	fixationInside: autoDraw = False
+336.3298 	EXP 	image: autoDraw = False
+336.3298 	EXP 	fixationOutside: autoDraw = False
+336.3298 	EXP 	fixationResponse: autoDraw = False
+336.3298 	EXP 	fixationInside: autoDraw = False
+336.3298 	EXP 	image: size = array([0.75, 0.75])
+336.3298 	EXP 	image: image = 'Stimuli/P014/things_piglet_07s.jpg'
+336.3298 	EXP 	image: autoDraw = True
+336.3298 	EXP 	fixationOutside: autoDraw = True
+336.3298 	EXP 	fixationResponse: autoDraw = True
+336.3298 	EXP 	fixationResponse: autoDraw = False
+336.3298 	EXP 	fixationInside: autoDraw = True
+337.0675 	EXP 	New trial (rep=0, index=133): OrderedDict([('eventStartTime', 308.75), ('eventEndTime', 312.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+337.0805 	EXP 	image: autoDraw = False
+337.0805 	EXP 	fixationOutside: autoDraw = False
+337.0805 	EXP 	fixationInside: autoDraw = False
+337.0805 	EXP 	image: autoDraw = False
+337.0805 	EXP 	fixationOutside: autoDraw = False
+337.0805 	EXP 	fixationResponse: autoDraw = False
+337.0805 	EXP 	fixationInside: autoDraw = False
+337.0805 	EXP 	image: size = array([0., 0.])
+337.0805 	EXP 	image: image = 'Stimuli/Blank.png'
+337.0805 	EXP 	image: autoDraw = True
+337.0805 	EXP 	fixationOutside: autoDraw = True
+337.0805 	EXP 	fixationResponse: autoDraw = True
+337.0805 	EXP 	fixationResponse: autoDraw = False
+337.0805 	EXP 	fixationInside: autoDraw = True
+338.2913 	DATA 	Keypress: 5
+340.2881 	DATA 	Keypress: 5
+340.3021 	EXP 	New trial (rep=0, index=134): OrderedDict([('eventStartTime', 312.0), ('eventEndTime', 312.75), ('eventCond', 36), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_seafood_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+340.3167 	EXP 	image: autoDraw = False
+340.3167 	EXP 	fixationOutside: autoDraw = False
+340.3167 	EXP 	fixationInside: autoDraw = False
+340.3167 	EXP 	image: autoDraw = False
+340.3167 	EXP 	fixationOutside: autoDraw = False
+340.3167 	EXP 	fixationResponse: autoDraw = False
+340.3167 	EXP 	fixationInside: autoDraw = False
+340.3167 	EXP 	image: size = array([0.75, 0.75])
+340.3167 	EXP 	image: image = 'Stimuli/P014/things_seafood_07s.jpg'
+340.3167 	EXP 	image: autoDraw = True
+340.3167 	EXP 	fixationOutside: autoDraw = True
+340.3167 	EXP 	fixationResponse: autoDraw = True
+340.3167 	EXP 	fixationResponse: autoDraw = False
+340.3167 	EXP 	fixationInside: autoDraw = True
+341.0532 	EXP 	New trial (rep=0, index=135): OrderedDict([('eventStartTime', 312.75), ('eventEndTime', 316.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+341.0674 	EXP 	image: autoDraw = False
+341.0674 	EXP 	fixationOutside: autoDraw = False
+341.0674 	EXP 	fixationInside: autoDraw = False
+341.0674 	EXP 	image: autoDraw = False
+341.0674 	EXP 	fixationOutside: autoDraw = False
+341.0674 	EXP 	fixationResponse: autoDraw = False
+341.0674 	EXP 	fixationInside: autoDraw = False
+341.0674 	EXP 	image: size = array([0., 0.])
+341.0674 	EXP 	image: image = 'Stimuli/Blank.png'
+341.0674 	EXP 	image: autoDraw = True
+341.0674 	EXP 	fixationOutside: autoDraw = True
+341.0674 	EXP 	fixationResponse: autoDraw = True
+341.0674 	EXP 	fixationResponse: autoDraw = False
+341.0674 	EXP 	fixationInside: autoDraw = True
+342.2906 	DATA 	Keypress: 5
+344.2956 	DATA 	Keypress: 5
+344.3084 	EXP 	New trial (rep=0, index=136): OrderedDict([('eventStartTime', 316.0), ('eventEndTime', 316.75), ('eventCond', 22), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_banner_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+344.3369 	EXP 	image: autoDraw = False
+344.3369 	EXP 	fixationOutside: autoDraw = False
+344.3369 	EXP 	fixationInside: autoDraw = False
+344.3369 	EXP 	image: autoDraw = False
+344.3369 	EXP 	fixationOutside: autoDraw = False
+344.3369 	EXP 	fixationResponse: autoDraw = False
+344.3369 	EXP 	fixationInside: autoDraw = False
+344.3369 	EXP 	image: size = array([0.75, 0.75])
+344.3369 	EXP 	image: image = 'Stimuli/P014/things_banner_07s.jpg'
+344.3369 	EXP 	image: autoDraw = True
+344.3369 	EXP 	fixationOutside: autoDraw = True
+344.3369 	EXP 	fixationResponse: autoDraw = True
+344.3369 	EXP 	fixationResponse: autoDraw = False
+344.3369 	EXP 	fixationInside: autoDraw = True
+345.0734 	EXP 	New trial (rep=0, index=137): OrderedDict([('eventStartTime', 316.75), ('eventEndTime', 320.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+345.0876 	EXP 	image: autoDraw = False
+345.0876 	EXP 	fixationOutside: autoDraw = False
+345.0876 	EXP 	fixationInside: autoDraw = False
+345.0876 	EXP 	image: autoDraw = False
+345.0876 	EXP 	fixationOutside: autoDraw = False
+345.0876 	EXP 	fixationResponse: autoDraw = False
+345.0876 	EXP 	fixationInside: autoDraw = False
+345.0876 	EXP 	image: size = array([0., 0.])
+345.0876 	EXP 	image: image = 'Stimuli/Blank.png'
+345.0876 	EXP 	image: autoDraw = True
+345.0876 	EXP 	fixationOutside: autoDraw = True
+345.0876 	EXP 	fixationResponse: autoDraw = True
+345.0876 	EXP 	fixationResponse: autoDraw = False
+345.0876 	EXP 	fixationInside: autoDraw = True
+346.2984 	DATA 	Keypress: 5
+348.2933 	EXP 	New trial (rep=0, index=138): OrderedDict([('eventStartTime', 320.0), ('eventEndTime', 320.75), ('eventCond', 16), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bsgtkqjrnrvttrax.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+348.2999 	DATA 	Keypress: 5
+348.3071 	EXP 	image: autoDraw = False
+348.3071 	EXP 	fixationOutside: autoDraw = False
+348.3071 	EXP 	fixationInside: autoDraw = False
+348.3071 	EXP 	image: autoDraw = False
+348.3071 	EXP 	fixationOutside: autoDraw = False
+348.3071 	EXP 	fixationResponse: autoDraw = False
+348.3071 	EXP 	fixationInside: autoDraw = False
+348.3071 	EXP 	image: size = array([0.75, 0.75])
+348.3071 	EXP 	image: image = 'Stimuli/P014/sun_bsgtkqjrnrvttrax.jpg'
+348.3071 	EXP 	image: autoDraw = True
+348.3071 	EXP 	fixationOutside: autoDraw = True
+348.3071 	EXP 	fixationResponse: autoDraw = True
+348.3071 	EXP 	fixationResponse: autoDraw = False
+348.3071 	EXP 	fixationInside: autoDraw = True
+349.0430 	EXP 	New trial (rep=0, index=139): OrderedDict([('eventStartTime', 320.75), ('eventEndTime', 324.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+349.0578 	EXP 	image: autoDraw = False
+349.0578 	EXP 	fixationOutside: autoDraw = False
+349.0578 	EXP 	fixationInside: autoDraw = False
+349.0578 	EXP 	image: autoDraw = False
+349.0578 	EXP 	fixationOutside: autoDraw = False
+349.0578 	EXP 	fixationResponse: autoDraw = False
+349.0578 	EXP 	fixationInside: autoDraw = False
+349.0578 	EXP 	image: size = array([0., 0.])
+349.0578 	EXP 	image: image = 'Stimuli/Blank.png'
+349.0578 	EXP 	image: autoDraw = True
+349.0578 	EXP 	fixationOutside: autoDraw = True
+349.0578 	EXP 	fixationResponse: autoDraw = True
+349.0578 	EXP 	fixationResponse: autoDraw = False
+349.0578 	EXP 	fixationInside: autoDraw = True
+350.3011 	DATA 	Keypress: 5
+352.2960 	EXP 	New trial (rep=0, index=140): OrderedDict([('eventStartTime', 324.0), ('eventEndTime', 324.75), ('eventCond', 14), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bqhfterhwnqrbnzg.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+352.3065 	DATA 	Keypress: 5
+352.3273 	EXP 	image: autoDraw = False
+352.3273 	EXP 	fixationOutside: autoDraw = False
+352.3273 	EXP 	fixationInside: autoDraw = False
+352.3273 	EXP 	image: autoDraw = False
+352.3273 	EXP 	fixationOutside: autoDraw = False
+352.3273 	EXP 	fixationResponse: autoDraw = False
+352.3273 	EXP 	fixationInside: autoDraw = False
+352.3273 	EXP 	image: size = array([0.75, 0.75])
+352.3273 	EXP 	image: image = 'Stimuli/P014/sun_bqhfterhwnqrbnzg.jpg'
+352.3273 	EXP 	image: autoDraw = True
+352.3273 	EXP 	fixationOutside: autoDraw = True
+352.3273 	EXP 	fixationResponse: autoDraw = True
+352.3273 	EXP 	fixationResponse: autoDraw = False
+352.3273 	EXP 	fixationInside: autoDraw = True
+353.0637 	EXP 	New trial (rep=0, index=141): OrderedDict([('eventStartTime', 324.75), ('eventEndTime', 328.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+353.0780 	EXP 	image: autoDraw = False
+353.0780 	EXP 	fixationOutside: autoDraw = False
+353.0780 	EXP 	fixationInside: autoDraw = False
+353.0780 	EXP 	image: autoDraw = False
+353.0780 	EXP 	fixationOutside: autoDraw = False
+353.0780 	EXP 	fixationResponse: autoDraw = False
+353.0780 	EXP 	fixationInside: autoDraw = False
+353.0780 	EXP 	image: size = array([0., 0.])
+353.0780 	EXP 	image: image = 'Stimuli/Blank.png'
+353.0780 	EXP 	image: autoDraw = True
+353.0780 	EXP 	fixationOutside: autoDraw = True
+353.0780 	EXP 	fixationResponse: autoDraw = True
+353.0780 	EXP 	fixationResponse: autoDraw = False
+353.0780 	EXP 	fixationInside: autoDraw = True
+354.3010 	DATA 	Keypress: 5
+356.2996 	EXP 	New trial (rep=0, index=142): OrderedDict([('eventStartTime', 328.0), ('eventEndTime', 328.75), ('eventCond', 25), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_cashew_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+356.3072 	DATA 	Keypress: 5
+356.3142 	EXP 	image: autoDraw = False
+356.3142 	EXP 	fixationOutside: autoDraw = False
+356.3142 	EXP 	fixationInside: autoDraw = False
+356.3142 	EXP 	image: autoDraw = False
+356.3142 	EXP 	fixationOutside: autoDraw = False
+356.3142 	EXP 	fixationResponse: autoDraw = False
+356.3142 	EXP 	fixationInside: autoDraw = False
+356.3142 	EXP 	image: size = array([0.75, 0.75])
+356.3142 	EXP 	image: image = 'Stimuli/P014/things_cashew_07s.jpg'
+356.3142 	EXP 	image: autoDraw = True
+356.3142 	EXP 	fixationOutside: autoDraw = True
+356.3142 	EXP 	fixationResponse: autoDraw = True
+356.3142 	EXP 	fixationResponse: autoDraw = False
+356.3142 	EXP 	fixationInside: autoDraw = True
+357.0502 	EXP 	New trial (rep=0, index=143): OrderedDict([('eventStartTime', 328.75), ('eventEndTime', 332.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+357.0649 	EXP 	image: autoDraw = False
+357.0649 	EXP 	fixationOutside: autoDraw = False
+357.0649 	EXP 	fixationInside: autoDraw = False
+357.0649 	EXP 	image: autoDraw = False
+357.0649 	EXP 	fixationOutside: autoDraw = False
+357.0649 	EXP 	fixationResponse: autoDraw = False
+357.0649 	EXP 	fixationInside: autoDraw = False
+357.0649 	EXP 	image: size = array([0., 0.])
+357.0649 	EXP 	image: image = 'Stimuli/Blank.png'
+357.0649 	EXP 	image: autoDraw = True
+357.0649 	EXP 	fixationOutside: autoDraw = True
+357.0649 	EXP 	fixationResponse: autoDraw = True
+357.0649 	EXP 	fixationResponse: autoDraw = False
+357.0649 	EXP 	fixationInside: autoDraw = True
+358.3030 	DATA 	Keypress: 5
+360.2894 	DATA 	Keypress: 5
+360.3049 	EXP 	New trial (rep=0, index=144): OrderedDict([('eventStartTime', 332.0), ('eventEndTime', 332.75), ('eventCond', 26), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_cougar_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+360.3344 	EXP 	image: autoDraw = False
+360.3344 	EXP 	fixationOutside: autoDraw = False
+360.3344 	EXP 	fixationInside: autoDraw = False
+360.3344 	EXP 	image: autoDraw = False
+360.3344 	EXP 	fixationOutside: autoDraw = False
+360.3344 	EXP 	fixationResponse: autoDraw = False
+360.3344 	EXP 	fixationInside: autoDraw = False
+360.3344 	EXP 	image: size = array([0.75, 0.75])
+360.3344 	EXP 	image: image = 'Stimuli/P014/things_cougar_07s.jpg'
+360.3344 	EXP 	image: autoDraw = True
+360.3344 	EXP 	fixationOutside: autoDraw = True
+360.3344 	EXP 	fixationResponse: autoDraw = True
+360.3344 	EXP 	fixationResponse: autoDraw = False
+360.3344 	EXP 	fixationInside: autoDraw = True
+361.0713 	EXP 	New trial (rep=0, index=145): OrderedDict([('eventStartTime', 332.75), ('eventEndTime', 336.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+361.0851 	EXP 	image: autoDraw = False
+361.0851 	EXP 	fixationOutside: autoDraw = False
+361.0851 	EXP 	fixationInside: autoDraw = False
+361.0851 	EXP 	image: autoDraw = False
+361.0851 	EXP 	fixationOutside: autoDraw = False
+361.0851 	EXP 	fixationResponse: autoDraw = False
+361.0851 	EXP 	fixationInside: autoDraw = False
+361.0851 	EXP 	image: size = array([0., 0.])
+361.0851 	EXP 	image: image = 'Stimuli/Blank.png'
+361.0851 	EXP 	image: autoDraw = True
+361.0851 	EXP 	fixationOutside: autoDraw = True
+361.0851 	EXP 	fixationResponse: autoDraw = True
+361.0851 	EXP 	fixationResponse: autoDraw = False
+361.0851 	EXP 	fixationInside: autoDraw = True
+362.2940 	DATA 	Keypress: 5
+364.2967 	DATA 	Keypress: 5
+364.3094 	EXP 	New trial (rep=0, index=146): OrderedDict([('eventStartTime', 336.0), ('eventEndTime', 336.75), ('eventCond', 38), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_spark_plug_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+364.3380 	EXP 	image: autoDraw = False
+364.3380 	EXP 	fixationOutside: autoDraw = False
+364.3380 	EXP 	fixationInside: autoDraw = False
+364.3380 	EXP 	image: autoDraw = False
+364.3380 	EXP 	fixationOutside: autoDraw = False
+364.3380 	EXP 	fixationResponse: autoDraw = False
+364.3380 	EXP 	fixationInside: autoDraw = False
+364.3380 	EXP 	image: size = array([0.75, 0.75])
+364.3380 	EXP 	image: image = 'Stimuli/P014/things_spark_plug_07s.jpg'
+364.3380 	EXP 	image: autoDraw = True
+364.3380 	EXP 	fixationOutside: autoDraw = True
+364.3380 	EXP 	fixationResponse: autoDraw = True
+364.3380 	EXP 	fixationResponse: autoDraw = False
+364.3380 	EXP 	fixationInside: autoDraw = True
+365.0579 	EXP 	New trial (rep=0, index=147): OrderedDict([('eventStartTime', 336.75), ('eventEndTime', 340.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+365.0720 	EXP 	image: autoDraw = False
+365.0720 	EXP 	fixationOutside: autoDraw = False
+365.0720 	EXP 	fixationInside: autoDraw = False
+365.0720 	EXP 	image: autoDraw = False
+365.0720 	EXP 	fixationOutside: autoDraw = False
+365.0720 	EXP 	fixationResponse: autoDraw = False
+365.0720 	EXP 	fixationInside: autoDraw = False
+365.0720 	EXP 	image: size = array([0., 0.])
+365.0720 	EXP 	image: image = 'Stimuli/Blank.png'
+365.0720 	EXP 	image: autoDraw = True
+365.0720 	EXP 	fixationOutside: autoDraw = True
+365.0720 	EXP 	fixationResponse: autoDraw = True
+365.0720 	EXP 	fixationResponse: autoDraw = False
+365.0720 	EXP 	fixationInside: autoDraw = True
+366.2978 	DATA 	Keypress: 5
+368.2939 	EXP 	New trial (rep=0, index=148): OrderedDict([('eventStartTime', 340.0), ('eventEndTime', 340.75), ('eventCond', 3), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_aengzsmykwchlrdn.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+368.3002 	DATA 	Keypress: 5
+368.3081 	EXP 	image: autoDraw = False
+368.3081 	EXP 	fixationOutside: autoDraw = False
+368.3081 	EXP 	fixationInside: autoDraw = False
+368.3081 	EXP 	image: autoDraw = False
+368.3081 	EXP 	fixationOutside: autoDraw = False
+368.3081 	EXP 	fixationResponse: autoDraw = False
+368.3081 	EXP 	fixationInside: autoDraw = False
+368.3081 	EXP 	image: size = array([0.75, 0.75])
+368.3081 	EXP 	image: image = 'Stimuli/P014/sun_aengzsmykwchlrdn.jpg'
+368.3081 	EXP 	image: autoDraw = True
+368.3081 	EXP 	fixationOutside: autoDraw = True
+368.3081 	EXP 	fixationResponse: autoDraw = True
+368.3081 	EXP 	fixationResponse: autoDraw = False
+368.3081 	EXP 	fixationInside: autoDraw = True
+369.0450 	EXP 	New trial (rep=0, index=149): OrderedDict([('eventStartTime', 340.75), ('eventEndTime', 344.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 1), ('fixRespStart', 1.25), ('fixRespEnd', 2.0)])
+369.0588 	EXP 	image: autoDraw = False
+369.0588 	EXP 	fixationOutside: autoDraw = False
+369.0588 	EXP 	fixationInside: autoDraw = False
+369.0588 	EXP 	image: autoDraw = False
+369.0588 	EXP 	fixationOutside: autoDraw = False
+369.0588 	EXP 	fixationResponse: autoDraw = False
+369.0588 	EXP 	fixationInside: autoDraw = False
+369.0588 	EXP 	image: size = array([0., 0.])
+369.0588 	EXP 	image: image = 'Stimuli/Blank.png'
+369.0588 	EXP 	image: autoDraw = True
+369.0588 	EXP 	fixationOutside: autoDraw = True
+369.0588 	EXP 	fixationInside: autoDraw = True
+370.2933 	EXP 	fixationResponse: autoDraw = True
+370.2990 	DATA 	Keypress: 5
+370.7157 	DATA 	Keypress: 1
+371.0439 	EXP 	fixationResponse: autoDraw = False
+372.2973 	EXP 	New trial (rep=0, index=150): OrderedDict([('eventStartTime', 344.0), ('eventEndTime', 344.75), ('eventCond', 15), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_brezwczwwllviogu.jpg'), ('responseEvent', 1), ('fixRespStart', 0.0), ('fixRespEnd', 0.75)])
+372.3054 	DATA 	Keypress: 5
+372.3117 	EXP 	image: autoDraw = False
+372.3117 	EXP 	fixationOutside: autoDraw = False
+372.3117 	EXP 	fixationInside: autoDraw = False
+372.3117 	EXP 	image: autoDraw = False
+372.3117 	EXP 	fixationOutside: autoDraw = False
+372.3117 	EXP 	fixationResponse: autoDraw = False
+372.3117 	EXP 	fixationInside: autoDraw = False
+372.3117 	EXP 	image: size = array([0.75, 0.75])
+372.3117 	EXP 	image: image = 'Stimuli/P014/sun_brezwczwwllviogu.jpg'
+372.3117 	EXP 	image: autoDraw = True
+372.3117 	EXP 	fixationOutside: autoDraw = True
+372.3117 	EXP 	fixationResponse: autoDraw = True
+372.3117 	EXP 	fixationInside: autoDraw = True
+372.9052 	DATA 	Keypress: 1
+373.0457 	EXP 	fixationResponse: autoDraw = False
+373.0500 	EXP 	New trial (rep=0, index=151): OrderedDict([('eventStartTime', 344.75), ('eventEndTime', 348.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+373.0790 	EXP 	image: autoDraw = False
+373.0790 	EXP 	fixationOutside: autoDraw = False
+373.0790 	EXP 	fixationInside: autoDraw = False
+373.0790 	EXP 	image: autoDraw = False
+373.0790 	EXP 	fixationOutside: autoDraw = False
+373.0790 	EXP 	fixationResponse: autoDraw = False
+373.0790 	EXP 	fixationInside: autoDraw = False
+373.0790 	EXP 	image: size = array([0., 0.])
+373.0790 	EXP 	image: image = 'Stimuli/Blank.png'
+373.0790 	EXP 	image: autoDraw = True
+373.0790 	EXP 	fixationOutside: autoDraw = True
+373.0790 	EXP 	fixationResponse: autoDraw = True
+373.0790 	EXP 	fixationResponse: autoDraw = False
+373.0790 	EXP 	fixationInside: autoDraw = True
+374.2885 	DATA 	Keypress: 5
+376.3059 	DATA 	Keypress: 5
+376.3183 	EXP 	New trial (rep=0, index=152): OrderedDict([('eventStartTime', 348.0), ('eventEndTime', 348.75), ('eventCond', 20), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_cidodcxikcyrdglc.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+376.3486 	EXP 	image: autoDraw = False
+376.3486 	EXP 	fixationOutside: autoDraw = False
+376.3486 	EXP 	fixationInside: autoDraw = False
+376.3486 	EXP 	image: autoDraw = False
+376.3486 	EXP 	fixationOutside: autoDraw = False
+376.3486 	EXP 	fixationResponse: autoDraw = False
+376.3486 	EXP 	fixationInside: autoDraw = False
+376.3486 	EXP 	image: size = array([0.75, 0.75])
+376.3486 	EXP 	image: image = 'Stimuli/P014/sun_cidodcxikcyrdglc.jpg'
+376.3486 	EXP 	image: autoDraw = True
+376.3486 	EXP 	fixationOutside: autoDraw = True
+376.3486 	EXP 	fixationResponse: autoDraw = True
+376.3486 	EXP 	fixationResponse: autoDraw = False
+376.3486 	EXP 	fixationInside: autoDraw = True
+377.0686 	EXP 	New trial (rep=0, index=153): OrderedDict([('eventStartTime', 348.75), ('eventEndTime', 352.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 1), ('fixRespStart', 0.25), ('fixRespEnd', 1.0)])
+377.0826 	EXP 	image: autoDraw = False
+377.0826 	EXP 	fixationOutside: autoDraw = False
+377.0826 	EXP 	fixationInside: autoDraw = False
+377.0826 	EXP 	image: autoDraw = False
+377.0826 	EXP 	fixationOutside: autoDraw = False
+377.0826 	EXP 	fixationResponse: autoDraw = False
+377.0826 	EXP 	fixationInside: autoDraw = False
+377.0826 	EXP 	image: size = array([0., 0.])
+377.0826 	EXP 	image: image = 'Stimuli/Blank.png'
+377.0826 	EXP 	image: autoDraw = True
+377.0826 	EXP 	fixationOutside: autoDraw = True
+377.0826 	EXP 	fixationInside: autoDraw = True
+377.3161 	EXP 	fixationResponse: autoDraw = True
+377.7585 	DATA 	Keypress: 1
+378.0668 	EXP 	fixationResponse: autoDraw = False
+378.2886 	DATA 	Keypress: 5
+380.2928 	DATA 	Keypress: 5
+380.3046 	EXP 	New trial (rep=0, index=154): OrderedDict([('eventStartTime', 352.0), ('eventEndTime', 352.75), ('eventCond', 27), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_face_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+380.3190 	EXP 	image: autoDraw = False
+380.3190 	EXP 	fixationOutside: autoDraw = False
+380.3190 	EXP 	fixationInside: autoDraw = False
+380.3190 	EXP 	image: autoDraw = False
+380.3190 	EXP 	fixationOutside: autoDraw = False
+380.3190 	EXP 	fixationResponse: autoDraw = False
+380.3190 	EXP 	fixationInside: autoDraw = False
+380.3190 	EXP 	image: size = array([0.75, 0.75])
+380.3190 	EXP 	image: image = 'Stimuli/P014/things_face_07s.jpg'
+380.3190 	EXP 	image: autoDraw = True
+380.3190 	EXP 	fixationOutside: autoDraw = True
+380.3190 	EXP 	fixationResponse: autoDraw = True
+380.3190 	EXP 	fixationResponse: autoDraw = False
+380.3190 	EXP 	fixationInside: autoDraw = True
+381.0553 	EXP 	New trial (rep=0, index=155): OrderedDict([('eventStartTime', 352.75), ('eventEndTime', 356.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+381.0694 	EXP 	image: autoDraw = False
+381.0694 	EXP 	fixationOutside: autoDraw = False
+381.0694 	EXP 	fixationInside: autoDraw = False
+381.0694 	EXP 	image: autoDraw = False
+381.0694 	EXP 	fixationOutside: autoDraw = False
+381.0694 	EXP 	fixationResponse: autoDraw = False
+381.0694 	EXP 	fixationInside: autoDraw = False
+381.0694 	EXP 	image: size = array([0., 0.])
+381.0694 	EXP 	image: image = 'Stimuli/Blank.png'
+381.0694 	EXP 	image: autoDraw = True
+381.0694 	EXP 	fixationOutside: autoDraw = True
+381.0694 	EXP 	fixationResponse: autoDraw = True
+381.0694 	EXP 	fixationResponse: autoDraw = False
+381.0694 	EXP 	fixationInside: autoDraw = True
+382.2936 	DATA 	Keypress: 5
+384.2984 	DATA 	Keypress: 5
+384.3097 	EXP 	New trial (rep=0, index=156): OrderedDict([('eventStartTime', 356.0), ('eventEndTime', 356.75), ('eventCond', 7), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_aojplsluiikxrfxc.jpg'), ('responseEvent', 1), ('fixRespStart', 0.0), ('fixRespEnd', 0.75)])
+384.3390 	EXP 	image: autoDraw = False
+384.3390 	EXP 	fixationOutside: autoDraw = False
+384.3390 	EXP 	fixationInside: autoDraw = False
+384.3390 	EXP 	image: autoDraw = False
+384.3390 	EXP 	fixationOutside: autoDraw = False
+384.3390 	EXP 	fixationResponse: autoDraw = False
+384.3390 	EXP 	fixationInside: autoDraw = False
+384.3390 	EXP 	image: size = array([0.75, 0.75])
+384.3390 	EXP 	image: image = 'Stimuli/P014/sun_aojplsluiikxrfxc.jpg'
+384.3390 	EXP 	image: autoDraw = True
+384.3390 	EXP 	fixationOutside: autoDraw = True
+384.3390 	EXP 	fixationResponse: autoDraw = True
+384.3390 	EXP 	fixationInside: autoDraw = True
+384.7150 	DATA 	Keypress: 1
+385.0593 	EXP 	New trial (rep=0, index=157): OrderedDict([('eventStartTime', 356.75), ('eventEndTime', 360.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+385.0730 	EXP 	image: autoDraw = False
+385.0730 	EXP 	fixationOutside: autoDraw = False
+385.0730 	EXP 	fixationResponse: autoDraw = False
+385.0730 	EXP 	fixationInside: autoDraw = False
+385.0730 	EXP 	image: autoDraw = False
+385.0730 	EXP 	fixationOutside: autoDraw = False
+385.0730 	EXP 	fixationResponse: autoDraw = False
+385.0730 	EXP 	fixationInside: autoDraw = False
+385.0730 	EXP 	image: size = array([0., 0.])
+385.0730 	EXP 	image: image = 'Stimuli/Blank.png'
+385.0730 	EXP 	image: autoDraw = True
+385.0730 	EXP 	fixationOutside: autoDraw = True
+385.0730 	EXP 	fixationResponse: autoDraw = True
+385.0730 	EXP 	fixationResponse: autoDraw = False
+385.0730 	EXP 	fixationInside: autoDraw = True
+386.2986 	DATA 	Keypress: 5
+388.2958 	EXP 	New trial (rep=0, index=158): OrderedDict([('eventStartTime', 360.0), ('eventEndTime', 360.75), ('eventCond', 31), ('imSize', 0.75), ('imFile', 'Stimuli/P014/things_mask_07s.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+388.3052 	DATA 	Keypress: 5
+388.3259 	EXP 	image: autoDraw = False
+388.3259 	EXP 	fixationOutside: autoDraw = False
+388.3259 	EXP 	fixationInside: autoDraw = False
+388.3259 	EXP 	image: autoDraw = False
+388.3259 	EXP 	fixationOutside: autoDraw = False
+388.3259 	EXP 	fixationResponse: autoDraw = False
+388.3259 	EXP 	fixationInside: autoDraw = False
+388.3259 	EXP 	image: size = array([0.75, 0.75])
+388.3259 	EXP 	image: image = 'Stimuli/P014/things_mask_07s.jpg'
+388.3259 	EXP 	image: autoDraw = True
+388.3259 	EXP 	fixationOutside: autoDraw = True
+388.3259 	EXP 	fixationResponse: autoDraw = True
+388.3259 	EXP 	fixationResponse: autoDraw = False
+388.3259 	EXP 	fixationInside: autoDraw = True
+389.0617 	EXP 	New trial (rep=0, index=159): OrderedDict([('eventStartTime', 360.75), ('eventEndTime', 364.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+389.0765 	EXP 	image: autoDraw = False
+389.0765 	EXP 	fixationOutside: autoDraw = False
+389.0765 	EXP 	fixationInside: autoDraw = False
+389.0765 	EXP 	image: autoDraw = False
+389.0765 	EXP 	fixationOutside: autoDraw = False
+389.0765 	EXP 	fixationResponse: autoDraw = False
+389.0765 	EXP 	fixationInside: autoDraw = False
+389.0765 	EXP 	image: size = array([0., 0.])
+389.0765 	EXP 	image: image = 'Stimuli/Blank.png'
+389.0765 	EXP 	image: autoDraw = True
+389.0765 	EXP 	fixationOutside: autoDraw = True
+389.0765 	EXP 	fixationResponse: autoDraw = True
+389.0765 	EXP 	fixationResponse: autoDraw = False
+389.0765 	EXP 	fixationInside: autoDraw = True
+390.3024 	DATA 	Keypress: 5
+392.3008 	EXP 	New trial (rep=0, index=160): OrderedDict([('eventStartTime', 364.0), ('eventEndTime', 364.75), ('eventCond', 19), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_buphlelowxjnoygy.jpg'), ('responseEvent', 1), ('fixRespStart', 0.0), ('fixRespEnd', 0.75)])
+392.3233 	DATA 	Keypress: 5
+392.3294 	EXP 	image: autoDraw = False
+392.3294 	EXP 	fixationOutside: autoDraw = False
+392.3294 	EXP 	fixationInside: autoDraw = False
+392.3294 	EXP 	image: autoDraw = False
+392.3294 	EXP 	fixationOutside: autoDraw = False
+392.3294 	EXP 	fixationResponse: autoDraw = False
+392.3294 	EXP 	fixationInside: autoDraw = False
+392.3294 	EXP 	image: size = array([0.75, 0.75])
+392.3294 	EXP 	image: image = 'Stimuli/P014/sun_buphlelowxjnoygy.jpg'
+392.3294 	EXP 	image: autoDraw = True
+392.3294 	EXP 	fixationOutside: autoDraw = True
+392.3294 	EXP 	fixationResponse: autoDraw = True
+392.3294 	EXP 	fixationInside: autoDraw = True
+392.7685 	DATA 	Keypress: 1
+393.0634 	EXP 	fixationResponse: autoDraw = False
+393.0655 	EXP 	New trial (rep=0, index=161): OrderedDict([('eventStartTime', 364.75), ('eventEndTime', 368.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+393.0801 	EXP 	image: autoDraw = False
+393.0801 	EXP 	fixationOutside: autoDraw = False
+393.0801 	EXP 	fixationInside: autoDraw = False
+393.0801 	EXP 	image: autoDraw = False
+393.0801 	EXP 	fixationOutside: autoDraw = False
+393.0801 	EXP 	fixationResponse: autoDraw = False
+393.0801 	EXP 	fixationInside: autoDraw = False
+393.0801 	EXP 	image: size = array([0., 0.])
+393.0801 	EXP 	image: image = 'Stimuli/Blank.png'
+393.0801 	EXP 	image: autoDraw = True
+393.0801 	EXP 	fixationOutside: autoDraw = True
+393.0801 	EXP 	fixationResponse: autoDraw = True
+393.0801 	EXP 	fixationResponse: autoDraw = False
+393.0801 	EXP 	fixationInside: autoDraw = True
+394.3036 	DATA 	Keypress: 5
+396.3016 	EXP 	New trial (rep=0, index=162): OrderedDict([('eventStartTime', 368.0), ('eventEndTime', 368.75), ('eventCond', 13), ('imSize', 0.75), ('imFile', 'Stimuli/P014/sun_bpccpwpohfirajtf.jpg'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+396.3085 	DATA 	Keypress: 5
+396.3163 	EXP 	image: autoDraw = False
+396.3163 	EXP 	fixationOutside: autoDraw = False
+396.3163 	EXP 	fixationInside: autoDraw = False
+396.3163 	EXP 	image: autoDraw = False
+396.3163 	EXP 	fixationOutside: autoDraw = False
+396.3163 	EXP 	fixationResponse: autoDraw = False
+396.3163 	EXP 	fixationInside: autoDraw = False
+396.3163 	EXP 	image: size = array([0.75, 0.75])
+396.3163 	EXP 	image: image = 'Stimuli/P014/sun_bpccpwpohfirajtf.jpg'
+396.3163 	EXP 	image: autoDraw = True
+396.3163 	EXP 	fixationOutside: autoDraw = True
+396.3163 	EXP 	fixationResponse: autoDraw = True
+396.3163 	EXP 	fixationResponse: autoDraw = False
+396.3163 	EXP 	fixationInside: autoDraw = True
+397.0533 	EXP 	New trial (rep=0, index=163): OrderedDict([('eventStartTime', 368.75), ('eventEndTime', 372.0), ('eventCond', 41), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 0), ('fixRespStart', 0.0), ('fixRespEnd', 0.0)])
+397.0669 	EXP 	image: autoDraw = False
+397.0669 	EXP 	fixationOutside: autoDraw = False
+397.0669 	EXP 	fixationInside: autoDraw = False
+397.0669 	EXP 	image: autoDraw = False
+397.0669 	EXP 	fixationOutside: autoDraw = False
+397.0669 	EXP 	fixationResponse: autoDraw = False
+397.0669 	EXP 	fixationInside: autoDraw = False
+397.0669 	EXP 	image: size = array([0., 0.])
+397.0669 	EXP 	image: image = 'Stimuli/Blank.png'
+397.0669 	EXP 	image: autoDraw = True
+397.0669 	EXP 	fixationOutside: autoDraw = True
+397.0669 	EXP 	fixationResponse: autoDraw = True
+397.0669 	EXP 	fixationResponse: autoDraw = False
+397.0669 	EXP 	fixationInside: autoDraw = True
+398.3089 	DATA 	Keypress: 5
+400.2925 	DATA 	Keypress: 5
+400.3053 	EXP 	New trial (rep=0, index=164): OrderedDict([('eventStartTime', 372.0), ('eventEndTime', 388.0), ('eventCond', 0), ('imSize', 0.0), ('imFile', 'Stimuli/Blank.png'), ('responseEvent', 1), ('fixRespStart', 8.0), ('fixRespEnd', 8.75)])
+400.3199 	EXP 	image: autoDraw = False
+400.3199 	EXP 	fixationOutside: autoDraw = False
+400.3199 	EXP 	fixationInside: autoDraw = False
+400.3199 	EXP 	image: autoDraw = False
+400.3199 	EXP 	fixationOutside: autoDraw = False
+400.3199 	EXP 	fixationResponse: autoDraw = False
+400.3199 	EXP 	fixationInside: autoDraw = False
+400.3199 	EXP 	image: size = array([0., 0.])
+400.3199 	EXP 	image: image = 'Stimuli/Blank.png'
+400.3199 	EXP 	image: autoDraw = True
+400.3199 	EXP 	fixationOutside: autoDraw = True
+400.3199 	EXP 	fixationInside: autoDraw = True
+402.2925 	DATA 	Keypress: 5
+404.2987 	DATA 	Keypress: 5
+406.2975 	DATA 	Keypress: 5
+408.3032 	DATA 	Keypress: 5
+408.3103 	EXP 	fixationResponse: autoDraw = True
+408.6982 	DATA 	Keypress: 1
+409.0610 	EXP 	fixationResponse: autoDraw = False
+410.3039 	DATA 	Keypress: 5
+412.3019 	DATA 	Keypress: 5
+414.3036 	DATA 	Keypress: 5
+416.3173 	EXP 	image: autoDraw = False
+416.3173 	EXP 	fixationOutside: autoDraw = False
+416.3173 	EXP 	fixationInside: autoDraw = False
+416.3173 	EXP 	image: autoDraw = False
+416.3173 	EXP 	fixationOutside: autoDraw = False
+416.3173 	EXP 	fixationResponse: autoDraw = False
+416.3173 	EXP 	fixationInside: autoDraw = False
+416.4226 	EXP 	window1: mouseVisible = True

@@ -1,0 +1,9 @@
+docker run -ti --rm \
+    -v $(pwd)/new_data:/data:ro \
+    -v $(pwd)/miniblock/derivatives:/out \
+    -v $(pwd)/FreeSurfer/license.txt:/opt/freesurfer/license.txt \
+    nipreps/fmriprep:latest \
+    /data /out participant \
+    --fs-no-reconall \
+    --nthreads 4 --omp-nthreads 2 \
+    --participant-label 09 
