@@ -703,7 +703,8 @@ def gather_noise_ceilings(project_dir, subjects, ROIs):
 
     return(results_df)
 
-def group_results(dataframe):
+def group_results_noise_ceiling(dataframe):
+
     """
     Does repeated measures ANOVAs for every ROI and smoothing option the dataframe contains over the designs. 
     Afterwards, FDR-corrected post-hoc paired t-tests are calculated.
@@ -739,6 +740,76 @@ def group_results(dataframe):
             results = []
 
             df_wide = df.pivot(index='subject', columns='runtype', values='median_nc')
+
+            for cond1, cond2 in comparisons:
+                t_stat, p_val = ttest_rel(df_wide[cond1], df_wide[cond2])
+                pvals.append(p_val)
+                results.append((cond1, cond2, t_stat, p_val))
+
+            _, pvals_corrected, _, _ = smm.multipletests(pvals, method='fdr_bh')
+
+            # Build row dict
+            row = {"ROI": ROI, "smoothing": smoothing}
+
+            for i, (cond1, cond2, t_stat, p_val) in enumerate(results):
+                label = f"{cond1}_vs_{cond2}"
+                row[f"{label}_t"] = t_stat
+                row[f"{label}_p_uncorrected"] = p_val
+                row[f"{label}_p_corrected"] = pvals_corrected[i]
+
+            significant_df.append(row)
+
+    # Convert to DataFrame
+    significant_df = pd.DataFrame(significant_df)
+    significant_df = significant_df[["ROI", "smoothing", "er_vs_miniblock_p_corrected", "er_vs_sus_p_corrected", "miniblock_vs_sus_p_corrected"]]
+    # List of p-value columns
+    pval_cols = ["er_vs_miniblock_p_corrected", "er_vs_sus_p_corrected", "miniblock_vs_sus_p_corrected"]
+
+    # Create a copy to avoid modifying the original
+    binary_df = significant_df.copy()
+
+    # Replace p-value columns with 1 if p < 0.05 else 0
+    binary_df[pval_cols] = (binary_df[pval_cols] < 0.05).astype(int)
+
+    return binary_df
+
+def group_results_wholebrain(dataframe):
+
+    """
+    Does repeated measures ANOVAs for every ROI and smoothing option the dataframe contains over the designs. 
+    Afterwards, FDR-corrected post-hoc paired t-tests are calculated.
+    A binary dataframe of the ROIs and smoothing options as rows and the pairwise comparisons between designs as colummns
+    is returned:
+    0 indicates not significant, 
+    1 indicates significance
+    """
+    ROIs = ["visually_responsive_voxels", "FFA", "PPA", "EBA", "EVC"]
+    smooths = ["sm_2_vox", "unsmoothed"]
+
+    significant_df = []
+
+    for ROI in ROIs:
+        for smoothing in smooths:
+            df = dataframe[dataframe["ROI"] == ROI]
+
+            df = (
+                df[df["smoothing"] == smoothing]
+                .groupby(["subject", "runtype"], as_index=False)["median_reliability"]
+                .mean()
+            )
+
+            # Run repeated-measures ANOVA
+            aov = AnovaRM(data=df, depvar='median_reliability', subject='subject', within=["runtype"])
+            aov_res = aov.fit()
+
+            # Pairwise comparisons
+            runtype_conditions = df['runtype'].unique()
+            comparisons = list(combinations(runtype_conditions, 2))
+
+            pvals = []
+            results = []
+
+            df_wide = df.pivot(index='subject', columns='runtype', values='median_reliability')
 
             for cond1, cond2 in comparisons:
                 t_stat, p_val = ttest_rel(df_wide[cond1], df_wide[cond2])
