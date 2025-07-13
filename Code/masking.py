@@ -18,6 +18,9 @@ from nilearn.image import index_img
 from scipy.ndimage import center_of_mass
 
 def unzip_file(gz_path, output_path):
+    """
+    Function that unzips any .gz files. Mainly needed to run decoding later on.
+    """
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with gzip.open(gz_path, 'rb') as f_in:
         with open(output_path, 'wb') as f_out:
@@ -84,6 +87,9 @@ def get_group_mask(project_dir):
     nib.save(group_mask, join(outdir,"masking/group_mask.nii"))
 
 def get_visually_responsive_voxels(project_dir, subjects):
+    """
+    Creates masks for all visually responsive voxels for every participant and stores it directly. 
+    """
     outdir = join(project_dir, 'miniblock/Outputs')
     datadir = join(project_dir, 'miniblock')
     smooths = ['sm_2_vox']
@@ -123,6 +129,9 @@ def get_visually_responsive_voxels(project_dir, subjects):
             nib.save(filtered_mask_img, join(datadir, 'derivatives', f'sub-{sub}','anat',f"visually_responsive_voxels_{smoothing}_gm.nii"))
 
 def get_evc_mask(project_dir, subjects):
+    """
+    Creates early visual cortex mask for every participant and stores it directly. 
+    """
     outdir = join(project_dir, 'miniblock/Outputs')
     datadir = join(project_dir, 'miniblock')
     smooths = ['sm_2_vox']
@@ -155,6 +164,9 @@ def get_evc_mask(project_dir, subjects):
             nib.save(filtered_mask_img, join(datadir, 'derivatives', f'sub-{sub}','anat',f"EVC_mask_{smoothing}.nii"))
 
 def get_FFA_mask(project_dir, subjects):
+    """
+    Creates masks for fusiform face area for every participant and stores it directly. 
+    """
     outdir = join(project_dir, 'miniblock/Outputs')
     datadir = join(project_dir, 'miniblock')
     presdir = join(project_dir, "Behavior/designmats")
@@ -249,6 +261,9 @@ def get_FFA_mask(project_dir, subjects):
             print("Saved mask.")
 
 def get_PPA_mask(project_dir, subjects):
+    """
+    Creates masks for parahippocampal place area for every participant and stores it directly. 
+    """
     outdir = join(project_dir, 'miniblock/Outputs')
     datadir = join(project_dir, 'miniblock')
     presdir = join(project_dir, "Behavior/designmats")
@@ -342,6 +357,9 @@ def get_PPA_mask(project_dir, subjects):
             nib.save(contrast_img, join(datadir, "derivatives", f"sub-{sub}", "anat", f"{ROI}_mask_{smoothing}.nii"))
 
 def get_EBA_mask(project_dir, subjects):
+    """
+    Creates masks for extrastriate body area for every participant and stores it directly. 
+    """
     outdir = join(project_dir, 'miniblock/Outputs')
     datadir = join(project_dir, 'miniblock')
     presdir = join(project_dir, "Behavior/designmats")

@@ -462,6 +462,14 @@ def glm_single_func(project_dir, subjects, outputs):
                 )
 
 def glm_single_loc(project_dir, subjects, outputs):
+    """
+    This function runs GLM Single for all subjects specified in the function's input for the 
+    LOCALIZER DATA. Please find below the function for the localizer data as well.  
+    It takes in the space-MNI152NLin2009cAsym_desc-preproc_bold.nii output from fMRIPrep.
+    It stores the all outputs that you specify in the outputs input (list of 4 integers). 
+    The function also calls an interpolation function that is required to align the TRs. This function is part of the preprocessing
+    script, too. 
+    """
     sm_fwhm = 2 # voxels 
     tr_old = 2 # before resampling
     tr_new = 0.5 # after resampling
@@ -547,7 +555,7 @@ def glm_single_loc(project_dir, subjects, outputs):
             opt['wantlibrary'] = 1
             opt['wantglmdenoise'] = 1
             opt['wantfracridge'] = 1
-            opt['wantfileoutputs'] = [1, 1, 1, 1]
+            opt['wantfileoutputs'] = outputs
             opt['wantmemoryoutputs'] = [0, 0, 0, 0]
 
 
