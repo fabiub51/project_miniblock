@@ -10,6 +10,8 @@ from scipy.stats import pearsonr
 import re
 from itertools import combinations
 import warnings
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 def get_whole_brain_rel_maps(project_dir, subjects):
 
@@ -176,6 +178,62 @@ def gather_reliability_maps(project_dir, subjects, ROIs):
         df.to_csv(join(outdir, 'reliability_results_all.csv'), index=False)
 
     return(df)
+
+def make_reliability_plots(dataframe):
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    # Optional: custom palette
+    palette = sns.color_palette("Set1")
+
+    ROI_dir = {
+        "EVC": "Early Visual Cortex",
+        "visually_responsive_voxels": "Visually Responsive Voxels",
+        "EBA": "Extrastriate Body Area",
+        "FFA": "Fusiform Face Area",
+        "PPA": "Parahippocampal Place Area"
+    }
+
+    # Create one plot per ROI
+    for roi, roi_name in ROI_dir.items():
+        roi_df = dataframe[dataframe["ROI"] == roi]
+
+        g = sns.catplot(
+            data=roi_df,
+            kind="bar",
+            x="runtype",
+            y="median_reliability",
+            hue="smoothing",
+            height=4,
+            aspect=1.2,
+            palette=palette,
+            errorbar="se",
+            capsize=0.1,
+            err_kws={'linewidth': 1.5}
+        )
+
+            # Set y-axis limits and ticks on the main axis
+        ax = g.ax
+        ax.set_ylim(0, 0.5)  # set min and max y-axis limits, adjust to your needs
+        ax.set_yticks([0, 0.1, 0.2, 0.3, 0.4,0.5])  # set custom tick marks
+
+        # Optional: format y-axis labels
+        ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: f'{y:.2f}'))
+
+        g.set_titles(f"{roi}", size=16, weight="bold")
+        g.set_axis_labels("Design", "Median Reliability")
+        g.set_xticklabels()
+        g._legend.remove()
+
+
+        plt.title(f"Median Reliability by Design and Smoothing Option -\n{roi_name}", fontsize=18, fontweight="bold")
+        custom_labels = ["Event-Related", "Sustained", "Miniblock"]
+        plt.xticks(ticks=np.arange(len(custom_labels)), 
+            labels=custom_labels)
+        plt.legend(title="Smoothing")
+        plt.tight_layout()
+        plt.show()
 
 def reliability_progression_between_runs(project_dir, subjects):
 
