@@ -16,7 +16,7 @@ project_dir = pathUpToDir;
 output_base_dir = fullfile(project_dir, 'miniblock/Outputs/decoding');
 
 % Subjects to loop over
-all_subjects = 1:1;
+all_subjects = 1:22;
 skip_subjects = [9, 16];
 subjects = setdiff(all_subjects, skip_subjects);
 

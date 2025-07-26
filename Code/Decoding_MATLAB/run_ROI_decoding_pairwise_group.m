@@ -14,12 +14,12 @@ function run_ROI_decoding_pairwise_group(project_dir,subj, design, mask, output_
     glmdir = fullfile(basedir, 'GLMSingle_Outputs');
     output_subfolder = output_dir;
     
-    if ~exist(fullfile(basedir, 'decoding', 'ROI','pairwise','group', output_subfolder, design, subj), 'dir')
-        mkdir(fullfile(basedir, 'decoding', 'ROI','pairwise','group', output_subfolder, design, subj));
+    if ~exist(fullfile(basedir, 'decoding', 'ROI','pairwise','group', output_subfolder, group, design, subj), 'dir')
+        mkdir(fullfile(basedir, 'decoding', 'ROI','pairwise','group', output_subfolder, group, design, subj));
     end
     
     beta_folder = fullfile(glmdir, 'nifti_betas');
-    cfg.results.dir = fullfile(basedir, 'decoding', 'ROI','pairwise', 'group',output_subfolder, design, subj);
+    cfg.results.dir = fullfile(basedir, 'decoding', 'ROI','pairwise', 'group', output_subfolder, group, design, subj);
     
     % Mask
     cfg.files.mask = mask;
@@ -53,7 +53,7 @@ function run_ROI_decoding_pairwise_group(project_dir,subj, design, mask, output_
     filtered_betas = betas(binary_rows); % Apply the filter
     
     % Assign to config
-    cfg.files.name = beta_files;
+    cfg.files.name = filtered_betas;
     
     %% Specify chunks
     unique_labels = unique(labels_num);

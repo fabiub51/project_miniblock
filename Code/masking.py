@@ -256,6 +256,7 @@ def get_FFA_mask(project_dir, subjects):
 
             binary_mask = (masked_tvals > 0).astype(np.uint8)
             contrast_img = nib.Nifti1Image(binary_mask, affine=whole_brain_mask_initial.affine)
+            print(f"Number of voxels: {np.sum(binary_mask)}")
 
             nib.save(contrast_img, join(datadir, "derivatives", f"sub-{sub}", "anat", f"{ROI}_mask_{smoothing}.nii"))
             print("Saved mask.")
@@ -352,7 +353,13 @@ def get_PPA_mask(project_dir, subjects):
             masked_tvals = tvals_thresholded * parahippocampal_mask
 
             binary_mask = (masked_tvals > 0).astype(np.uint8)
-            contrast_img = nib.Nifti1Image(binary_mask, affine=whole_brain_mask_initial.affine)
+
+            if np.sum(binary_mask) <= 40:
+                binary_t_mask = (tvals_thresholded > 0).astype(np.uint8)
+                contrast_img = nib.Nifti1Image(binary_t_mask, affine=whole_brain_mask_initial.affine)
+
+            else:
+                contrast_img = nib.Nifti1Image(binary_mask, affine=whole_brain_mask_initial.affine)
 
             nib.save(contrast_img, join(datadir, "derivatives", f"sub-{sub}", "anat", f"{ROI}_mask_{smoothing}.nii"))
 
