@@ -71,6 +71,10 @@ def resample_and_save_mask(
     print(f"Resampled mask saved to: {output_mask_path}")
 
 def get_group_mask(project_dir):
+    """
+    Creates group mask that is used in searchlight decoding to limit the analysis to voxels shared by all participants
+    """
+
     subs = ["02", "03","04", "05","06", "07", "08", "10", "11", "12", "13", "14", "15", "17", "18", "19", "20", "21", "22"]
     outdir = join(project_dir, 'miniblock/Outputs/')
     datadir = join(project_dir, "miniblock")

@@ -14,6 +14,11 @@ from tqdm import tqdm
 import os
 
 def RSA_between(project_dir, subjects, spearman=True):
+    """
+    Function that calculates RSA between particpants for every ROI. 
+    Set spearman to False to use Pearson's r instead. 
+    Returns nothing but saves a dataframe of results to the RSA/ROI_between folder.
+    """
     outdir = join(project_dir, 'miniblock/Outputs/')
     datadir = join(project_dir, 'miniblock/')
 
@@ -30,7 +35,7 @@ def RSA_between(project_dir, subjects, spearman=True):
     smooths = ['sm_2_vox']
     presdir = join(project_dir, 'Behavior', 'designmats')
     runtypes = ['sus', 'miniblock', 'er']
-    ROIs = ["EBA_mask", "FFA_mask", "PPA_mask", "EVC_mask"]
+    ROIs = ["EBA","FFA", "PPA", "EVC" ]
 
     correlation_results = []
     for ROI in ROIs: 
@@ -45,7 +50,7 @@ def RSA_between(project_dir, subjects, spearman=True):
                             betas = results_glmsingle['typed']['betasmd']
 
 
-                            brain_mask_path = join(datadir, 'derivatives', f'sub-{sub}', 'anat', f'{ROI}_sm_2_vox.nii.gz')
+                            brain_mask_path = join(datadir, 'derivatives', f'sub-{sub}', 'anat', f'{ROI}_mask_sm_2_vox.nii')
                             brain_mask = image.load_img(brain_mask_path)
                             mask = brain_mask.get_fdata()   
 
@@ -92,7 +97,6 @@ def RSA_between(project_dir, subjects, spearman=True):
                         else: 
                             cor, p_value = pearsonr(upper_triangles_flattened[0], upper_triangles_flattened[1])
 
-
                         correlation_results.append({
                                     "pair": pair_name,
                                     "ROI": ROI,
@@ -107,6 +111,11 @@ def RSA_between(project_dir, subjects, spearman=True):
         pd.DataFrame(correlation_results).to_csv(join(outdir,"RSA/ROI_between","rsa_results_pearson_between.csv"), index=False)
 
 def RSA_within(project_dir, subjects, spearman=True):
+    """
+    Function that calculates RSA within every particpant for every ROI. 
+    Set spearman to False to use Pearson's r instead. 
+    Returns nothing but saves a dataframe of results to the RSA/ROI_within folder.
+    """
     outdir = join(project_dir, 'miniblock/Outputs/')
     datadir = join(project_dir, 'miniblock/')
     smooths = ['sm_2_vox']
@@ -143,7 +152,7 @@ def RSA_within(project_dir, subjects, spearman=True):
                             results_glmsingle['typed'] = np.load(join(outdir,"GLMSingle_Outputs",f'{smoothing}_sub-{sub}_{runtype}_TYPED_FITHRF_GLMDENOISE_RR.npy'), allow_pickle=True).item()
                             betas = results_glmsingle['typed']['betasmd']
 
-                            brain_mask_path = join(datadir, 'derivatives', f'sub-{sub}', 'anat', f'{ROI}_sm_2_vox.nii.gz')
+                            brain_mask_path = join(datadir, 'derivatives', f'sub-{sub}', 'anat', f'{ROI}_sm_2_vox.nii')
                             brain_mask = image.load_img(brain_mask_path)
                             mask = brain_mask.get_fdata()   
 
@@ -208,6 +217,11 @@ def RSA_within(project_dir, subjects, spearman=True):
 
 
 def PCA_voxels(mean_betas):
+    """
+    PCA function using SVD to extract number of principle components of matrix shaped 
+    number of conditions by number of voxels. 
+    Maximum number of components is 39. 
+    """
     # Standardize (assuming data is shape conditions (40) by voxels (whatever size the ROI is))
     X_standard = (mean_betas - np.mean(mean_betas, axis=0)) / np.std(mean_betas, axis = 0)
     n_samples = X_standard.shape[0]
@@ -231,6 +245,10 @@ def PCA_voxels(mean_betas):
     return eigvecs, explained_variance_ratio
 
 def make_sphere(radius_voxels):
+    """
+    Function later used in the searchlight RSA to extract the sphere of voxels around each voxel. 
+    Returns the offsets of all adjacent voxels, if within the radius (2mm our case) from the center voxel.
+    """
     r = radius_voxels
     offsets = []
     for x in range(-r, r+1):
@@ -241,6 +259,9 @@ def make_sphere(radius_voxels):
     return np.array(offsets)  
 
 def RSA_searchlight(project_dir, subjects):
+    """
+    Calculates searchlight RSA for every participant. Loops over all subjects, designs and splits of betas (10).
+    """
     outdir = join(project_dir, 'miniblock/Outputs/')
     datadir = join(project_dir, 'miniblock/')
     smooths = ['sm_2_vox']
@@ -369,7 +390,10 @@ def RSA_searchlight(project_dir, subjects):
                     nib.save(out_img, join(outdir, 'RSA', 'searchlight', f"sub-{sub}", f'{smoothing}_sub-{sub}_rsa_map_{runtype}_split_{split_idx}.nii.gz'))
 
 def PCA_all_trials(project_dir, subjects):
- 
+    """
+    Calculates a single PCA for every ROI and participant using all trials of every condition. 
+    No cross-validation is applied here.
+    """
     outdir = join(project_dir, "miniblock/Outputs")
     datadir = join(project_dir, "miniblock")
     smooths = ['unsmoothed']
@@ -436,6 +460,12 @@ def PCA_all_trials(project_dir, subjects):
     return explained_variance
 
 def PCA_CV(project_dir, subjects, ROIs):
+    """
+    Applies cross-validation to the PCA in a leave-one-beta-out cross-validation scheme. A PCA is done using 5 of the 6 trials. 
+    The left out matrix created with the left out beta is then projected onto the eigenvectors created by the PCA on the 5 
+    beta values. The amount of variance explained by each of the principal components from the test data in the train data 
+    is then stored in first_39_components and returned along other variables. 
+    """    
     outdir = join(project_dir, "miniblock/Outputs")
     datadir = join(project_dir, "miniblock")
     smooths = ['sm_2_vox']
@@ -528,5 +558,118 @@ def PCA_CV(project_dir, subjects, ROIs):
 
     return explained_variance_train, explained_variance_test, all_eigenvectors, first_39_components
 
+def EVC_analysis(project_dir, subjects):
+    """
+    Calculates the correlation of the upper triangle of the RDM in EVC with each of the other ROIs' RDM for every subject. 
+    Returns the results in the end with one value per subject, design and ROI.
+    """
+
+    outdir = join(project_dir, "miniblock/Outputs")
+    datadir = join(project_dir, "miniblock")
+    # pairs_dict = {"pair_1" : ["01", "02"], 
+    #             "pair_2" : ["03", "04"], 
+    #             "pair_3" : ["05", "06"], 
+    #             "pair_4" : ["07", "08"], 
+    #             "pair_5" : ["11", "12"], 
+    #             "pair_6" : ["13", "14"], 
+    #             "pair_7" : ["17", "18"],
+    #             "pair 8" : ["19", "20"],
+    #             "pair 9" : ["10", "21"],
+    #             "pair 10": ["15", "22"]}
+    smooths = ['sm_2_vox', "unsmoothed"]
+    presdir = join(project_dir, 'Behavior', 'designmats')
+    runtypes = ['sus', 'miniblock', 'er']
+    ROIs = ["EBA_mask", "FFA_mask", "PPA_mask", "EVC_mask"]
+
+    elements = [0, 1, 2, 3, 4, 5]
+    # Get all combinations of 3 elements
+    group1_list = list(combinations(elements, 3))
+
+    # To avoid duplicates (like (group1, group2) and (group2, group1)), only keep half
+    splits = []
+    seen = set()
+
+    for group1 in group1_list:
+        group2 = tuple(sorted(set(elements) - set(group1)))
+        # Make sure we haven't already seen this partition
+        key = tuple(sorted([group1, group2]))
+        if key not in seen:
+            seen.add(key)
+            splits.append((group1, group2))
+
+    store_matrix = np.zeros((len(runtypes), len(subjects), len(smooths), len(ROIs), 780))
+
+    for sub in range(len(subjects)):
+        for runtype in range(len(runtypes)): 
+                for smoothing in range(len(smooths)):
+                    for ROI in range(len(ROIs)):
+                        
+                        results_glmsingle = dict()
+                        results_glmsingle['typed'] = np.load(join(outdir,"GLMSingle_Outputs",f'{smooths[smoothing]}_sub-{subjects[sub]}_{runtypes[runtype]}_TYPED_FITHRF_GLMDENOISE_RR.npy'), allow_pickle=True).item()
+                        betas = results_glmsingle['typed']['betasmd']
+
+                        brain_mask_path = join(datadir, 'derivatives', f'sub-{subjects[sub]}', 'anat', f'{ROIs[ROI]}_sm_2_vox.nii')
+                        brain_mask = image.load_img(brain_mask_path)
+                        mask = brain_mask.get_fdata()   
+
+                        masked_betas = betas[mask.astype(bool)]
+
+
+                        pattern = presdir + f'/P0{subjects[sub]}_ConditionRich_Run*_{runtypes[runtype]}.csv'
+                        matches = glob.glob(pattern)
+                        matches.sort()
+                        
+                        design = []
+                        for i in range(len(matches)):
+                            designMat = pd.read_csv(matches[i], header=None)
+                            design.append(designMat)
+
+                        all_design = np.vstack((design[0], design[1], design[2]))
+                        condition_mask = all_design.sum(axis=1) > 0
+                        condition_vector = np.argmax(all_design[condition_mask], axis=1)
+                        n_conditions = 40
+                        max_reps = 6
+
+                        repindices = np.full((max_reps, n_conditions), np.nan)
+                        for p in range(n_conditions):  
+                            inds = np.where(condition_vector == p)[0]  
+                            repindices[:len(inds), p] = inds  
+                        
+                        X, T = masked_betas.shape
+                        n_reps, n_conds = repindices.shape
+                        betas_per_condition = np.full((X, n_reps, n_conds), np.nan)
+
+                        for cond in range(n_conds):
+                            trial_indices = repindices[:, cond]
+                            for rep, trial_idx in enumerate(trial_indices):
+                                if not np.isnan(trial_idx):
+                                    trial_idx = int(trial_idx)
+                                    betas_per_condition[:, rep, cond] = masked_betas[:, trial_idx]
+
+                        all_betas_means = betas_per_condition.mean(axis=-2)
+                        all_betas = all_betas_means.T
+                        upper_triangle = pdist(all_betas, metric='correlation')
+                        
+                        store_matrix[runtype, sub, smoothing, ROI, :] = upper_triangle
+
+    matrix_smoothed = store_matrix[:,:,0,:,:]
+    results_smoothed = []
+
+    for sub in range(20):
+        for design in range(3):
+            for ROI in range(3):
+                cor,_ = spearmanr(matrix_smoothed[design,sub,ROI,:], matrix_smoothed[design,sub,3,:])
+
+                results_smoothed.append({
+                    "design" : runtypes[design],
+                    "subject" : subjects[sub],
+                    "ROI" : ROIs[ROI],
+                    "correlation": cor
+        
+                })
+    
+    results_smoothed = pd.DataFrame(results_smoothed)
+
+    return results_smoothed
 
 

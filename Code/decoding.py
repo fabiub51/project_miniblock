@@ -11,7 +11,7 @@ import re
 
 def create_nifti_betas(project_dir, subjects):
     """
-    Function that creates individual beta images for every stimulus presentation (240 total = 6x40)
+    Function that creates individual beta images for every stimulus presentation (240 total = 6x40) as needed for TDT in MATLAB
     """
 
     outdir = join(project_dir, "miniblock/Outputs")
@@ -50,6 +50,9 @@ def create_nifti_betas(project_dir, subjects):
                     nib.save(nii, join(save_dir, f'beta_{i+1:04d}_{smoothing}_sub-{sub}_{runtype}.nii'))
 
 def extract_object_name(filepath):
+    """
+    Extracts the file name to make judgement about animacy
+    """
     # Get just the filename, e.g. "things_accordion_03s.jpg"
     filename = os.path.basename(filepath)
     # Remove extension
@@ -63,6 +66,10 @@ def extract_object_name(filepath):
         return None
 
 def get_animate(project_dir):
+    """
+    Function that required user input to make judgement about animacy. Press "A" if animate, any other key if inanimate.
+    Feel free to skip this function. 
+    """
     presdir = join(project_dir, 'Behavior', 'CondRichData')
 
     subjects = [f"{i:02d}" for i in range(1, 23) if i not in [9, 16]]
@@ -99,7 +106,7 @@ def get_animate(project_dir):
             for file in list(file_names)[20:]:
                 object = extract_object_name(file)
                 if (object not in animate) and (object not in inanimate):
-                    user_check = input(f"{file}: Animate? A Inanimate? L")
+                    user_check = input(f"{file}: Animate? A Inanimate? any other key")
                     if user_check == "a":
                         animate.append(object)
                     else: 
@@ -108,6 +115,10 @@ def get_animate(project_dir):
     return animate, inanimate
 
 def get_orders_by_design(project_dir, animate):
+    """
+    Saves a dataframe to the group decoding folder based on which images were animate, inanimate or scenes and which order 
+    they were presented to each participant.
+    """
     presdir = join(project_dir, 'Behavior', 'CondRichData')
     subjects = [f"{i:02d}" for i in range(1, 23) if i not in [9, 16]]
     max_runs = 9
