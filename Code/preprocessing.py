@@ -29,6 +29,7 @@ def get_design_matrices(project_dir, subjects):
     ~/project_miniblock/Behavior/designmats
     """
 
+    # Set directories
     presdir = join(project_dir, 'Behavior', 'CondRichData')
     outdir  = join(project_dir, 'Behavior', 'designmats')
     if exists(presdir):
@@ -39,60 +40,69 @@ def get_design_matrices(project_dir, subjects):
 
         for sub in subjects: 
             for run in range(1,max_runs+1):
+                # load the presentation file of that run
                 pattern = presdir + f'/P0{sub}_ConditionRich_Run{run}*.csv'
                 matches = glob.glob(pattern)
                 match = matches[0]
                 df = pd.read_csv(match)
                 df = df.drop([0, 1]).reset_index(drop=True)
                 # Check condition
-                if df["imFile"][5] == df ["imFile"][7]:
+                if df["imFile"][5] == df ["imFile"][7]: # if the same file is repeated --> miniblock
                     runtype = "miniblock"
-                    duration = 4
-                elif (df["eventEndTime"][3] - df["eventStartTime"][3]) == 3.75 :
+                elif (df["eventEndTime"][3] - df["eventStartTime"][3]) == 3.75 : # if presentation time is 3.75 --> sustained
                     runtype = "sus"
                     duration = 4
-                else: 
+                else: # else event-related
                     runtype = "er"
                     duration = 1
+                # Get all filenames, remove the fixation dot presentations
                 file_names = df["imFile"].unique()
                 file_names = file_names[file_names != 'Stimuli/Blank.png']
-                file_names.sort()
-                # print(file_names)
+                file_names.sort() # Sort alphabetically
+                
+                # Make empty array of shape seconds by conditions 
                 empty_array = np.zeros((388,40))
-
+                
+                # shift the files names back two places (to only get the onsets of the stimulus presentation for miniblock as GLMsingle requires )
                 df['two_before'] = df['imFile'].shift(2)
 
+                # loop over all conditions
                 for name in range(empty_array.shape[1]):
                     for row in range(len(df["imFile"])):
-                        if (file_names[name] == df["imFile"][row]) & (df["imFile"][row] != df["two_before"][row]): 
-                            empty_array[int(df["eventStartTime"][row]), name] = 1
+                        if (file_names[name] == df["imFile"][row]) & (df["imFile"][row] != df["two_before"][row]): # control for repeated presentation in miniblock
+                            empty_array[int(df["eventStartTime"][row]), name] = 1 # set to 1 of stimulus presentation started here
 
-                path = outdir + f'/P0{sub}_ConditionRich_Run_0{run}_{runtype}.csv'
+                # store design matrix as csv file 
+                path = outdir + f'/P0{sub}_ConditionRich_Run_0{run}_{runtype}.csv' 
                 np.savetxt(path, empty_array, delimiter=",", fmt="%d")
 
-    else: 
+    else: # check if the presentation files exist 
         print("It seems like the functional presentation files are not present. Did you save them under ~project_miniblock/Behavior/CondRichData?")
-
+    
+    # similar logic for the localizer data
+    # Set up directories 
     locpresdir = join(project_dir, 'Behavior', 'LocData')
     locoutdir  = join(project_dir, 'Behavior', 'designmats', 'localizer')
 
-    if exists(locpresdir):
+    if exists(locpresdir): # check if directory exists
         print(f"Saving files to the following directory: {locoutdir}")
         os.makedirs(locoutdir, exist_ok=True)
 
         subjects = [f"{i:02d}" for i in range(1, 23)] 
-        max_loc_runs = 3
+        max_loc_runs = 3 
 
         for sub in subjects: 
             for run in range(1,max_loc_runs+1):
+                # Load presentation file of that run
                 pattern = locpresdir + f'/P0{sub}_CategoryLocalizer_Run{run}*.csv'
                 matches = glob.glob(pattern)
-                if matches == []:
+                if matches == []: # if no match is found, the subject probably had no 3 localizer runs
                     print(f"Run {run} not found for subject {sub}. Skipping.")
                     continue
                 match = matches[0]
                 df = pd.read_csv(match)
                 df = df.drop([0, 1]).reset_index(drop=True)
+                # make new columns for face-, object-, scene- and body-images 
                 df["Faces"]= df["imFile"].str.contains("Faces")
                 df["Objects"]= df["imFile"].str.contains("Objects")
                 df["Scenes"] = df["imFile"].str.contains("Scenes")
@@ -100,20 +110,19 @@ def get_design_matrices(project_dir, subjects):
 
                 categories = ["Faces", "Objects", "Scenes", "Bodies"]
                 
-                # print(file_names)
+                # make empty array with max time point of the presentation file 
                 empty_array = np.zeros((int(max(df["eventEndTime"])),4))
-
-                df['two_before'] = df['imFile'].shift(2)
-
+                
+                # loop over condition names and mark every presentation of an image within a condition with a one, all others with 0
                 for name in range(4):
                     for row in range(len(df["imFile"])):
                         if df[categories[name]][row] and df[categories[name]][row-1] == False: 
-                            empty_array[int(df["eventStartTime"][row]), name] = 1
+                            empty_array[int(df["eventStartTime"][row]), name] = 1 
 
                 rows, cols = empty_array.shape
 
                 new_array = np.zeros(empty_array.shape)
-
+                # make sure that only the start of a new condition gets a 1 (as needed for GLMsingle)
                 for col in range(cols):
                     for row in range(rows):
                         if empty_array[row][col] == 1:
@@ -124,6 +133,7 @@ def get_design_matrices(project_dir, subjects):
                         else: 
                             new_array[row][col] = 0
 
+                # Save csv.file for every localizer run
                 path = locoutdir + f'/P0{sub}_CategoryLocalizer_Run_0{run}.csv'
                 np.savetxt(path, new_array, delimiter=",", fmt="%d")
 
@@ -195,23 +205,27 @@ def accuracies_functional(project_dir, subjects):
     This is done only for the functional data. See below the function for the localizer data. The tasks were slightly different, 
     therefore we opted for two different functions. 
     """
-
+ 
     # Initialize a dictionary to store the accuracies
     accuracies = {}
 
     # Loop over subjects and runs
     for sub in subjects: 
         for run in range(1,10):  
-            # Construct the file path
+            # Get the presentation file's path
             pattern = join(project_dir, f'Behavior/CondRichData/P0{sub}_ConditionRich_Run{run}_*.csv')
             matches = glob.glob(pattern)
             path = matches[0]  
 
-            # Read the CSV file
+            # Read the file
             df = pd.read_csv(path)
 
+            # Whenever an event occurred
             condition = (df['responseEvent'] == 1)
+            # filter the dataframe
             df_filtered = df[condition]
+
+            # filter for conditions
             conditions = np.array(df_filtered["eventEndTime"] - df_filtered["eventStartTime"])
             values, counts = np.unique(conditions, return_counts=True)
             most_frequent = values[np.argmax(counts)]
@@ -223,14 +237,13 @@ def accuracies_functional(project_dir, subjects):
             else: 
                 runtype = "er"
             
-
+            df_filtered = df_filtered.copy()
             # Create a new column "responseWindow" with the given formula
-            #df_filtered.loc[:, "responseWindow"] = (df_filtered["eventStartTime"].fillna(0) + df_filtered["fixRespStart"].fillna(0) + 2)
+            df_filtered[ "responseWindow"] = (df_filtered["eventStartTime"].fillna(0) + df_filtered["fixRespStart"].fillna(0) + 5)
 
             # Calculate accuracy based on participant response time
-            #correct_responses = (df_filtered["eventStartTime"] + df_filtered["participantResponse.rt"] <= df_filtered["responseWindow"]) & (df_filtered["participantReadyResponse.keys"].notna())
-            correct_responses = df_filtered[df_filtered["participantResponse.keys"].notna()]
-            accuracy = 100 * len(correct_responses) / len(df_filtered)
+            correct_responses = (df_filtered["eventStartTime"] + df_filtered["participantResponse.rt"] <= df_filtered["responseWindow"])
+            accuracy = 100 * correct_responses.sum() / len(df_filtered)
 
             # Store the accuracy in the dictionary using participant and run as the key
             accuracies[f"sub{sub}_run{run}"] = {
@@ -238,7 +251,7 @@ def accuracies_functional(project_dir, subjects):
                 "runtype": runtype
             }
 
-    
+    # Store one dataframe for all subjects
     accuracies_df = pd.DataFrame.from_dict(accuracies, orient='index').reset_index()
     accuracies_df.columns = ["Participant_Run", "Accuracy", "RunType"]
     accuracies_df.to_csv(join(project_dir,"Behavior/accuracy_results_func.csv"), index=False)
@@ -251,25 +264,26 @@ def accuracies_localizer(project_dir, subjects):
     This is done only for the localizer data. 
     """
 
-    # Initialize a dictionary to store the accuracies
     localizer_accuracies = {}
 
     # Loop over subjects and runs
     for sub in subjects:  
-        
+
         for run in range(1,4):  
             
-            # Construct the file path
+            # Get the presentation file's path
             pattern = join(project_dir, f'Behavior/LocData/P0{sub}_CategoryLocalizer_Run{run}_*.csv')
             matches = glob.glob(pattern)
 
+            # skip if participant had only 2 localizer runs
             if matches == []:
                 print(f"Run {run} not found for subject {sub}. Skipping.")
                 continue
 
-            # Read the CSV file
+            # Read the file
             df = pd.read_csv(matches[0])
 
+            # detect repeats manually since the column repeatedImage from the csv-file does not seem to correspond 
             repeats = []
             image = ['start']
             
@@ -284,16 +298,21 @@ def accuracies_localizer(project_dir, subjects):
 
             df["repeats"] = repeats
             condition = (df['repeats'] == 1) 
+            # filter for the repeated stimuli only
             df_filtered = df[condition]
-            correct_responses = df_filtered[df_filtered["participantResponse.keys"].notna()]
-            accuracy = 100 * len(correct_responses) / (len(df_filtered))
 
-            # Store the accuracy in the dictionary using participant and run as the key
+            df_filtered = df_filtered.copy()
+            # Create a new column "responseWindow" by giving a 5 second interval to the start time of each presentation
+            df_filtered[ "responseWindow"] = (df_filtered["eventStartTime"].fillna(0)  + 5)
+
+            # Calculate accuracy based on participant response time
+            correct_responses = (df_filtered["eventStartTime"] + df_filtered["participantResponse.rt"] <= df_filtered["responseWindow"])
+            accuracy = 100 * correct_responses.sum() / len(df_filtered)
             localizer_accuracies[f"sub{sub}_run{run}"] = {
-                "accuracy": accuracy
-            }
+                    "accuracy": accuracy
+                }
 
-    
+    # save as a csv file 
     localizer_accuracies_df = pd.DataFrame.from_dict(localizer_accuracies, orient='index').reset_index()
     localizer_accuracies_df.columns = ["Participant_Run", "Accuracy"]
     localizer_accuracies_df.to_csv(join(project_dir, "Behavior/accuracy_results_loc.csv"), index=False)
@@ -346,9 +365,9 @@ def glm_single_func(project_dir, subjects, outputs):
     """
 
     runtypes = [ 'er', 'miniblock', 'sus']
-    sm_fwhm = 2 # voxels 
-    tr_old = 2 # before resampling
-    tr_new = 0.5 # after resampling
+    sm_fwhm = 2 # smoothing
+    tr_old = 2 # TR before resampling
+    tr_new = 0.5 # TR after resampling
     datadir = join(project_dir,'miniblock','derivatives')
     presdir = join(project_dir, 'Behavior', 'designmats')
 
@@ -358,7 +377,7 @@ def glm_single_func(project_dir, subjects, outputs):
             for smoothing in range(2):
                 print(f'These are {runTypeIdx} - runs and smoothing is {smoothing}')
 
-                # Specify stimulus duration 
+                # Specify stimulus duration (1 second for the ER, 4 secongs for MB and SUS)
                 if runTypeIdx == 'er':
                     stimdur = 1
                 else: 
@@ -385,7 +404,7 @@ def glm_single_func(project_dir, subjects, outputs):
                     elif (sub == '01') & (runNum >4) & (runNum < 7):
                         runNum +=1
                     
-                    # get the nii.gz file 
+                    # get the fully preprocessed file from fMRIprep
                     if runNum < 10: 
                         file_path = join(datadir, subString, 'func', subString + f'_task-func_run-0{runNum}_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz')
                     else: 
@@ -393,7 +412,7 @@ def glm_single_func(project_dir, subjects, outputs):
                     
                     # Load the file 
                     origData = nibabel.load(file_path)
-                    # Interpolation 
+                    # Interpolation with custom function 
                     interpData = fmri_interpolate(origData.get_fdata(), tr_old, tr_new)
                     print(interpData.shape[-1])
 
@@ -408,6 +427,7 @@ def glm_single_func(project_dir, subjects, outputs):
                     design.append(upsampled_matrix[1:-1, :])
                     print(f"Size of Design Matrix after upsampling: {design[i].shape}")
 
+                    # smoothing the data 
                     if smoothing == 1: 
                         print('doing smoothing')
                         sigma = sm_fwhm/np.sqrt(8 * np.log(2))
@@ -420,12 +440,13 @@ def glm_single_func(project_dir, subjects, outputs):
 
                         outputdir = join(project_dir, 'miniblock', 'Outputs', subString, f'sm_{sm_fwhm}_vox_{subString}_{runTypeIdx}')
                     
-                    else: 
+                    else: # skip smoothing
                         data.append(interpData)
                         outputdir = join(project_dir, 'miniblock', 'Outputs', subString, f'unsmoothed_{subString}_{runTypeIdx}')
                     
                     assert design[i].shape[0] == interpData.shape[-1], "Design matrix and fMRI timepoints do not match!"
-                        
+                
+                # Some print statements to check data (sizes, stimuli per design...)
                 print(f'There are {len(data)} runs in total\n')
                 print(f'N = {data[0].shape[3]} TRs per run\n')
                 print(f'The dimensions of the data for each run are: {data[0].shape}\n')
@@ -438,16 +459,17 @@ def glm_single_func(project_dir, subjects, outputs):
                 opt['wantglmdenoise'] = 1
                 opt['wantfracridge'] = 1
                 opt['wantfileoutputs'] = outputs
-                opt['wantmemoryoutputs'] = [0, 0, 0, 0]
+                opt['wantmemoryoutputs'] = [0, 0, 0, 0] # no memory outputs needed
 
 
-                glmsingle_obj = GLM_single(opt)
+                glmsingle_obj = GLM_single(opt) # make GLMsingle object
 
                 pprint(glmsingle_obj.params)
 
-                start_time = time.time()
+                start_time = time.time() # check duration
 
                 os.makedirs(outputdir, exist_ok=True)
+                # run GLMsingle
                 results_glmsingle = glmsingle_obj.fit(
                     design, 
                     data, 
@@ -470,7 +492,7 @@ def glm_single_loc(project_dir, subjects, outputs):
     The function also calls an interpolation function that is required to align the TRs. This function is part of the preprocessing
     script, too. 
     """
-    sm_fwhm = 2 # voxels 
+    sm_fwhm = 2 # smoothing 
     tr_old = 2 # before resampling
     tr_new = 0.5 # after resampling
     stimdur = 16 # since all localizer runs have the same stimulus length
@@ -526,7 +548,7 @@ def glm_single_loc(project_dir, subjects, outputs):
                 design.append(upsampled_matrix[1:-1, :])
                 print(f"Size of Design Matrix after upsampling: {design[i].shape}")
 
-                if smoothing == 1: 
+                if smoothing == 1: # Apply smoothing
                     print('doing smoothing')
                     sigma = sm_fwhm/np.sqrt(8 * np.log(2))
                     numX,numY,numz,numT = interpData.shape
@@ -538,12 +560,13 @@ def glm_single_loc(project_dir, subjects, outputs):
 
                     outputdir = join(project_dir, 'miniblock', 'Outputs','localizer',f'sub-{sub}', f'sm_{sm_fwhm}_vox_{subString}_localizer')
                 
-                else: 
+                else: # skip smoothing
                     data.append(interpData)
                     outputdir = join(project_dir, 'miniblock', 'Outputs','localizer',f'sub-{sub}', f'unsmoothed_{subString}_localizer')
                 
                 assert design[i].shape[0] == interpData.shape[-1], "Design matrix and fMRI timepoints do not match!"
-                    
+            
+            # some print statements to check data specifications
             print(f'There are {len(data)} runs in total\n')
             print(f'N = {data[0].shape[3]} TRs per run\n')
             print(f'The dimensions of the data for each run are: {data[0].shape}\n')
@@ -556,16 +579,17 @@ def glm_single_loc(project_dir, subjects, outputs):
             opt['wantglmdenoise'] = 1
             opt['wantfracridge'] = 1
             opt['wantfileoutputs'] = outputs
-            opt['wantmemoryoutputs'] = [0, 0, 0, 0]
+            opt['wantmemoryoutputs'] = [0, 0, 0, 0] # no memory outputs needed
 
 
-            glmsingle_obj = GLM_single(opt)
+            glmsingle_obj = GLM_single(opt) # create GLMsingle object
 
             pprint(glmsingle_obj.params)
 
-            start_time = time.time()
+            start_time = time.time() # check durations
 
             os.makedirs(outputdir, exist_ok=True)
+            # Run GLMsingle
             results_glmsingle = glmsingle_obj.fit(
                 design, 
                 data, 

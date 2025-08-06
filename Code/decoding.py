@@ -18,7 +18,7 @@ def create_nifti_betas(project_dir, subjects):
     smooths = ["sm_2_vox"]
     runtypes = ['miniblock', "sus", "er"]
 
-    # Affine transformation of data
+    # Set affine transformation of data
     target_affine = np.array([
         [2., 0., 0., -76.],
         [0., 2., 0., -112.],
@@ -30,7 +30,8 @@ def create_nifti_betas(project_dir, subjects):
     for sub in subjects: 
         for smoothing in smooths: 
             for runtype in runtypes: 
-
+                
+                # Load GLMsingle outputs
                 results_glmsingle = dict()
                 results_glmsingle['typed'] = np.load(join(outdir,"GLMSingle_Outputs",f'{smoothing}_sub-{sub}_{runtype}_TYPED_FITHRF_GLMDENOISE_RR.npy'), allow_pickle=True).item()
                 betas = results_glmsingle['typed']['betasmd']
@@ -39,7 +40,7 @@ def create_nifti_betas(project_dir, subjects):
                 save_dir = join(outdir, 'GLMSingle_Outputs/nifti_betas')
                 os.makedirs(save_dir, exist_ok=True)
 
-                # Define affine (identity or use a real affine if you have one)
+                # Define affine 
                 affine = target_affine
 
                 # Loop over trials and save each one
@@ -53,7 +54,7 @@ def extract_object_name(filepath):
     """
     Extracts the file name to make judgement about animacy
     """
-    # Get just the filename, e.g. "things_accordion_03s.jpg"
+    # Get just the filename
     filename = os.path.basename(filepath)
     # Remove extension
     name = os.path.splitext(filename)[0]
@@ -80,29 +81,19 @@ def get_animate(project_dir):
 
     for sub in subjects: 
         for run in range(1,max_runs+1):
+            # Load the design matrices 
             pattern = presdir + f'/P0{sub}_ConditionRich_Run{run}*.csv'
             matches = glob.glob(pattern)
             match = matches[0]
             df = pd.read_csv(match)
             df = df.drop([0, 1]).reset_index(drop=True)
 
-            # Check condition
-            if df["imFile"][5] == df ["imFile"][7]:
-                runtype = "miniblock"
-                duration = 4
-            elif (df["eventEndTime"][3] - df["eventStartTime"][3]) == 3.75 :
-                runtype = "sus"
-                duration = 4
-            else: 
-                runtype = "er"
-                duration = 1
-
+            # Get all unique file names
             file_names = df["imFile"].unique()
             file_names = file_names[file_names != 'Stimuli/Blank.png']
             file_names.sort()
 
-
-
+            # if the name is not yet present in any category, make user make a judgement about animacy
             for file in list(file_names)[20:]:
                 object = extract_object_name(file)
                 if (object not in animate) and (object not in inanimate):
@@ -129,52 +120,54 @@ def get_orders_by_design(project_dir, animate):
         "er": [],
         "sus": []
         }
-        print(f"Working on subject {sub}")
+        #print(f"Working on subject {sub}")
+
         for run in range(1,max_runs+1):
+            # Load deisgn matrices from GLMsingle 
             pattern = presdir + f'/P0{sub}_ConditionRich_Run{run}*.csv'
             matches = glob.glob(pattern)
             match = matches[0]
             df = pd.read_csv(match)
             df = df.drop([0, 1]).reset_index(drop=True)
 
-            # Check condition
+            # Check the condition
             if df["imFile"][5] == df ["imFile"][7]:
                 runtype = "miniblock"
-                duration = 4
             elif (df["eventEndTime"][3] - df["eventStartTime"][3]) == 3.75 :
                 runtype = "sus"
-                duration = 4
             else: 
                 runtype = "er"
-                duration = 1
 
+            # Get all unique filenames
             file_names = df["imFile"].unique()
             file_names = file_names[file_names != 'Stimuli/Blank.png']
             file_names.sort()
 
+            # Load counters to track which image it is exactly 
             scene_counter = 0
             animate_counter = 0
             inanimate_counter = 0
             file_names_new = list(file_names)
             for file_idx in range(40):
                 object = extract_object_name(file_names[file_idx])
+                # If the image name contains "sun_", it is from the sun database --> therefore a scene, add to file_names_new
                 if "sun_" in file_names[file_idx]: 
                     file_names_new[file_idx] = f"scene{scene_counter}"
                     scene_counter += 1
                 
+                # if the name is in the animate names, add to file_names_new
                 elif object in animate.values: 
                     file_names_new[file_idx] = f"isanimate{animate_counter}"
                     animate_counter += 1
 
+                # if the filename is not in the animate names, add to file_names_new
                 else: 
                     file_names_new[file_idx] = f"inanimate{inanimate_counter}"
                     inanimate_counter += 1
 
             if animate_counter != inanimate_counter:
-                print("Lengths do not match!")
+                print("Lengths do not match!") # must be the same length (10 and 10)
                 break
-
-            empty_array = np.zeros((40))
 
             df['two_before'] = df['imFile'].shift(2)
             for row in range(len(df["imFile"])):
@@ -182,7 +175,7 @@ def get_orders_by_design(project_dir, animate):
                     if (file_names[name_idx] == df["imFile"][row]) & (df["imFile"][row] != df["two_before"][row]): 
                         orders[runtype].append(file_names_new[name_idx])
 
-
+        # save one dataframe per subject with the condition order for each design and all 240 betas
         order_df = pd.DataFrame(orders)
         pd.DataFrame.to_csv(order_df, path_or_buf=join(presdir, "group_decoding", f"sub-{sub}_orders.csv"))
             

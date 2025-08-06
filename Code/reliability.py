@@ -20,20 +20,22 @@ def get_whole_brain_rel_maps(project_dir, subjects):
     """
     Creates whole-brain reliability maps for all participants for the following specifications: 
     - design (er, miniblock, sus)
-    - smoothin option (sm_2_vox, unsmoothed)
+    - smoothing option (sm_2_vox, unsmoothed)
     - splits (1-10)
 
     All maps are stored in Outputs/sub-xx.
     """
     warnings.filterwarnings("ignore", category=RuntimeWarning)
     warnings.filterwarnings("ignore", category=scipy.stats.ConstantInputWarning)
-
+    # set up directories 
     outdir = join(project_dir, 'miniblock/Outputs')
     datadir = join(project_dir, 'miniblock')
     presdir = join(project_dir, 'Behavior', 'designmats')
     smooths = ["unsmoothed", "sm_2_vox"]
     runtypes = ['miniblock', 'sus', 'er']
 
+    # we want to calculate all splits of the 6 betas
+    # this part creates all possible combinations when splitting in two groups
     elements = [0, 1, 2, 3, 4, 5]
 
     # Get all combinations of 3 elements
@@ -53,16 +55,17 @@ def get_whole_brain_rel_maps(project_dir, subjects):
 
     for sub in subjects: 
         counter = 0
-        print(f"Now working on subject {sub}")
+        #print(f"Now working on subject {sub}")
         for split in splits: 
             counter += 1
             for runtype in runtypes:
                 for smoothing in smooths: 
-
+                     
+                    # Load GLMsingle outputs
                     results_glmsingle = dict()
                     results_glmsingle['typed'] = np.load(join(outdir,"GLMSingle_Outputs",f'{smoothing}_sub-{sub}_{runtype}_TYPED_FITHRF_GLMDENOISE_RR.npy'), allow_pickle=True).item()
                     betas = results_glmsingle['typed']['betasmd']
-
+                    # Load whole-brain mask
                     brain_mask = image.load_img(join(datadir, 'derivatives', f'sub-{sub}', 'anat', f'sub-{sub}_space-MNI152NLin2009cAsym_desc-brain_mask_resampled.nii.gz'))
                     mask = brain_mask.get_fdata()
 
@@ -90,10 +93,13 @@ def get_whole_brain_rel_maps(project_dir, subjects):
 
                     all_design = np.vstack((design[0], design[1], design[2]))
                     condition_mask = all_design.sum(axis=1) > 0
+                    # a vector assigning conditions to trials
                     condition_vector = np.argmax(all_design[condition_mask], axis=1)
+                    # Get the beta values into a vector 
                     n_conditions = 40
                     max_reps = 6
 
+                    # create a matrix of shape trials by condition containing the indices 
                     repindices = np.full((max_reps, n_conditions), np.nan)
                     for p in range(n_conditions):  
                         inds = np.where(condition_vector == p)[0]  
@@ -112,11 +118,12 @@ def get_whole_brain_rel_maps(project_dir, subjects):
                                 trial_idx = int(trial_idx)
                                 betas_per_condition[:, :, :, rep, cond] = unmasked_betas[:, :, :, trial_idx]
 
-                    # Compute reliability map
+                    # Compute reliability map - mean of betas per split
                     reliability_map = np.full((X, Y, Z), np.nan)
                     even_betas_mean = betas_per_condition[:,:,:,list(split[0]),:].mean(axis=3)
                     odd_betas_mean = betas_per_condition[:,:,:,list(split[1]),:].mean(axis=3)
 
+                    # Compute correlations
                     rel_map,_ = pearsonr(even_betas_mean, odd_betas_mean, axis=-1)
 
                     # Save reliability map as NIfTI file
@@ -132,6 +139,7 @@ def gather_reliability_maps(project_dir, subjects, ROIs):
     For every participant and smoothing option, the maps are averaged for every voxel. 
     Lastly, for every ROI, the median, mean and maximum reliability is stored in the dataframe. 
     """
+    # set up directories 
     outdir = join(project_dir, 'miniblock/Outputs/reliability')
     anatdir = join(project_dir, 'miniblock/derivatives')
     smooths = ["unsmoothed", "sm_2_vox"]
@@ -165,7 +173,7 @@ def gather_reliability_maps(project_dir, subjects, ROIs):
                             reliability_img = nib.load(reliability_filename)
                             reliability_data = reliability_img.get_fdata()
 
-
+                            # compute different statistics
                             masked_values = reliability_data[mask.astype(bool)]
                             median_reliability = np.nanmedian(masked_values)
                             mean_reliability = np.nanmean(masked_values)
@@ -185,7 +193,7 @@ def gather_reliability_maps(project_dir, subjects, ROIs):
                         else:
                             print(f"Missing file: {reliability_filename}")
 
-    # Build DataFrame
+    # Build DataFrame and save if all 20 subjects are included
     df = pd.DataFrame(results)
     print("Data collected for", len(df), "split maps.")
 
@@ -199,13 +207,10 @@ def make_reliability_plots(dataframe):
     Simple plotting function that visualizes results by ROI, smoothing option and design. 
     Creates one plot per ROI.
     """
-    import seaborn as sns
-    import matplotlib.pyplot as plt
-    import numpy as np
-
-    # Optional: custom palette
+    # set color palette
     palette = sns.color_palette("Set1")
 
+    # Dictionary for ROI names in the plot
     ROI_dir = {
         "EVC": "Early Visual Cortex",
         "visually_responsive_voxels": "Visually Responsive Voxels",
@@ -232,12 +237,12 @@ def make_reliability_plots(dataframe):
             err_kws={'linewidth': 1.5}
         )
 
-            # Set y-axis limits and ticks on the main axis
+        # Set y-axis limits and ticks on the main axis
         ax = g.ax
-        ax.set_ylim(0, 0.5)  # set min and max y-axis limits, adjust to your needs
+        ax.set_ylim(0, 0.5)  # set min and max y-axis limits
         ax.set_yticks([0, 0.1, 0.2, 0.3, 0.4,0.5])  # set custom tick marks
 
-        # Optional: format y-axis labels
+        # format y-axis labels
         ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: f'{y:.2f}'))
 
         g.set_titles(f"{roi}", size=16, weight="bold")
@@ -245,7 +250,7 @@ def make_reliability_plots(dataframe):
         g.set_xticklabels()
         g._legend.remove()
 
-
+        # Create the plot
         plt.title(f"Median Reliability by Design and Smoothing Option -\n{roi_name}", fontsize=18, fontweight="bold")
         custom_labels = ["Event-Related", "Sustained", "Miniblock"]
         plt.xticks(ticks=np.arange(len(custom_labels)), 
@@ -261,7 +266,7 @@ def reliability_progression_between_runs(project_dir, subjects):
     - 2: run 2 vs. run 3
     - 3: run 1 vs. run 3
     """
-
+    # set up directories
     outdir = join(project_dir,'miniblock/Outputs/')
     datadir = join(project_dir,'miniblock/')
     presdir = join(project_dir, 'Behavior', 'designmats')
@@ -270,17 +275,17 @@ def reliability_progression_between_runs(project_dir, subjects):
 
 
     for sub in subjects: 
-        print(f"Now working on subject {sub}")
+        #print(f"Now working on subject {sub}")
         for runtype in runtypes:
             for smoothing in smooths: 
-
+                # Load GLMsingle outputs
                 results_glmsingle = dict()
                 results_glmsingle['typed'] = np.load(join(outdir,"GLMSingle_Outputs",f'{smoothing}_sub-{sub}_{runtype}_TYPED_FITHRF_GLMDENOISE_RR.npy'), allow_pickle=True).item()
                 betas = results_glmsingle['typed']['betasmd']
-
+                # load whole brain mask 
                 brain_mask = image.load_img(join(datadir, 'derivatives', f'sub-{sub}', 'anat', f'sub-{sub}_space-MNI152NLin2009cAsym_desc-brain_mask_resampled.nii.gz'))
                 mask = brain_mask.get_fdata()
-
+                # mask betas
                 masked_betas = betas[mask.astype(bool)]
                 unmasked_betas = np.zeros(betas.shape)
                 unmasked_betas[mask.astype(bool)] = masked_betas
@@ -305,10 +310,13 @@ def reliability_progression_between_runs(project_dir, subjects):
 
                 all_design = np.vstack((design[0], design[1], design[2]))
                 condition_mask = all_design.sum(axis=1) > 0
+                # a vector assigning conditions to trials
                 condition_vector = np.argmax(all_design[condition_mask], axis=1)
+                # Get the beta values into a vector 
                 n_conditions = 40
                 max_reps = 6
 
+                # create a matrix of shape trials by condition containing the indices 
                 repindices = np.full((max_reps, n_conditions), np.nan)
                 for p in range(n_conditions):  
                     inds = np.where(condition_vector == p)[0]  
@@ -327,16 +335,17 @@ def reliability_progression_between_runs(project_dir, subjects):
                             trial_idx = int(trial_idx)
                             betas_per_condition[:, :, :, rep, cond] = unmasked_betas[:, :, :, trial_idx]
 
-                # Compute reliability map
+                # Compute mean betas for each run
                 first_betas_mean = betas_per_condition[:,:,:,:2,:].mean(axis=3)
                 middle_betas_mean = betas_per_condition[:,:,:,2:4,:].mean(axis=3)
                 last_betas_mean = betas_per_condition[:,:,:,4:,:].mean(axis=3)
 
+                # Compute whole-brain maps comparing each of the runs
                 rel_map_1,_ = pearsonr(first_betas_mean, middle_betas_mean, axis=-1)
                 rel_map_2,_ = pearsonr(middle_betas_mean, last_betas_mean, axis=-1)
                 rel_map_3,_ = pearsonr(first_betas_mean, last_betas_mean, axis=-1)
 
-                # Save reliability map as NIfTI file
+                # Save reliability maps as NIfTI files (3 comparisons)
                 sub_outdir = join(outdir, 'reliability', 'progression_analysis_between',f'sub-{sub}')
                 os.makedirs(sub_outdir, exist_ok=True)
                 reliability_img_1 = nib.Nifti1Image(rel_map_1, brain_mask.affine)
@@ -355,6 +364,7 @@ def gather_progession_between(project_dir, subjects, ROIs):
     """
     Gathers between run reliabilities for every ROI. Outputs a dataframe if all participants are included. 
     """
+    # set up directories
     outdir = join(project_dir, 'miniblock/Outputs/reliability/progression_analysis_between')
     anatdir = join(project_dir, 'miniblock/derivatives')
     smooths = ["unsmoothed", "sm_2_vox"]
@@ -384,15 +394,16 @@ def gather_progession_between(project_dir, subjects, ROIs):
                         )
 
                         if os.path.exists(reliability_filename):
+                            # load the file 
                             reliability_img = nib.load(reliability_filename)
                             reliability_data = reliability_img.get_fdata()
 
-
+                            # apply ROI mask and compute different statistics 
                             masked_values = reliability_data[mask.astype(bool)]
                             median_reliability = np.nanmedian(masked_values)
                             mean_reliability = np.nanmean(masked_values)
                     
-
+                            # store results
                             results.append({
                             "subject": sub,
                             "runtype": runtype,
@@ -404,7 +415,7 @@ def gather_progession_between(project_dir, subjects, ROIs):
                         else:
                             print(f"Missing file: {reliability_filename}")
 
-    # Build DataFrame
+    # Build dataframe and save if all participants are included 
     df = pd.DataFrame(results)
 
     if len(subjects) == 20:
@@ -570,6 +581,7 @@ def noise_ceilings(project_dir, subjects):
     Calculates the noise ceiling for every voxel similar to Allen et al. (2021) in the NSD paper. Again, for each participant,
     each design, and both smoothing options one value per voxel is calculated. 
     """        
+    # set up directories
     outdir = join(project_dir, 'miniblock/Outputs')
     datadir = join(project_dir, 'miniblock')
     presdir = join(project_dir, 'Behavior', 'designmats')
@@ -580,13 +592,14 @@ def noise_ceilings(project_dir, subjects):
     for sub in subjects: 
         for runtype in runtypes:
             for smoothing in smooths: 
-
+                # Load GLMsingle outputs
                 results_glmsingle = dict()
                 results_glmsingle['typed'] = np.load(join(outdir,"GLMSingle_Outputs",f'{smoothing}_sub-{sub}_{runtype}_TYPED_FITHRF_GLMDENOISE_RR.npy'), allow_pickle=True).item()
                 betas = results_glmsingle['typed']['betasmd']
+                # load brain mask 
                 brain_mask = image.load_img(join(datadir, 'derivatives', f'sub-{sub}', 'anat', f'sub-{sub}_space-MNI152NLin2009cAsym_desc-brain_mask_resampled.nii.gz'))
                 mask = brain_mask.get_fdata()
-
+                # mask betas
                 masked_betas = betas[mask.astype(bool)]
                 unmasked_betas = np.zeros(betas.shape)
                 unmasked_betas[mask.astype(bool)] = masked_betas
@@ -611,10 +624,13 @@ def noise_ceilings(project_dir, subjects):
 
                 all_design = np.vstack((design[0], design[1], design[2]))
                 condition_mask = all_design.sum(axis=1) > 0
+                # a vector assigning conditions to trials
                 condition_vector = np.argmax(all_design[condition_mask], axis=1)
+                # Get the beta values into a vector 
                 n_conditions = 40
                 max_reps = 6
 
+                # create a matrix of shape trials by condition containing the indices 
                 repindices = np.full((max_reps, n_conditions), np.nan)
                 for p in range(n_conditions):  
                     inds = np.where(condition_vector == p)[0]  
@@ -633,23 +649,23 @@ def noise_ceilings(project_dir, subjects):
                             trial_idx = int(trial_idx)
                             betas_per_condition[:, :, :, rep, cond] = unmasked_betas[:, :, :, trial_idx]
 
-                # 1. Noise variance: average within-image variance
+                # Noise variance: average within-condition variance
                 variance_per_image = np.var(betas_per_condition, axis=3, ddof=1)  # over 6 repeats
                 variance_noise = np.mean(variance_per_image, axis=3)              # over 40 images
 
-                # 2. Total variance: variance across image means
+                # Total variance: variance across condition means
                 mean_betas_per_image = np.mean(betas_per_condition, axis=3)       # over 6 repeats
                 variance_tot = np.var(mean_betas_per_image, axis=3, ddof=1)       # over 40 images
 
-                # 3. Estimate signal variance
+                # Estimate signal variance
                 variance_signal = variance_tot - (variance_noise / 6)
                 variance_signal = np.clip(variance_signal, 0, None)               # avoid sqrt negatives
 
-                # 4. Noise ceiling
+                # Compute noise ceiling
                 NC = np.sqrt(variance_signal) / np.sqrt(variance_tot)
 
 
-                # Save reliability map as NIfTI file
+                # Save noise ceilings as whole-brain nifti
                 NC_img = nib.Nifti1Image(NC, brain_mask.affine)
                 NC_filename = join(outdir, 'reliability', 'noise_ceilings', f'sub-{sub}', f'{smoothing}_sub-{sub}_{runtype}_noise_ceilings.nii.gz')
                 sub_outdir = join(outdir, 'reliability','noise_ceilings', f'sub-{sub}')
@@ -660,6 +676,7 @@ def gather_noise_ceilings(project_dir, subjects, ROIs):
     """
     Gathers noise ceilings for every ROI. Outputs a dataframe if all participants are included. 
     """
+    # set up directories
     outdir = join(project_dir, 'miniblock/Outputs/reliability/noise_ceilings')
     anatdir = join(project_dir, 'miniblock/derivatives')
     smooths = ["unsmoothed", "sm_2_vox"]
@@ -675,18 +692,21 @@ def gather_noise_ceilings(project_dir, subjects, ROIs):
                     else:
                         mask_path = join(anatdir, f"sub-{sub}", "anat", f"{ROI}_mask_sm_2_vox.nii")
                     mask = image.load_img(mask_path).get_fdata()
-                    
+                    # get the file name and load the file 
                     NC_filename = join(outdir, f'sub-{sub}', f'{smoothing}_sub-{sub}_{runtype}_noise_ceilings.nii.gz')
                     nc_data = image.load_img(NC_filename).get_fdata()
 
+                    # mask the data
                     if nc_data.shape[:3] == mask.shape:
                         masked_values = nc_data[mask.astype(bool)]
                     else: 
                         print("Data shapes not compatible.")
 
+                    # compute relevant statistics
                     median_nc = np.nanmedian(masked_values)
                     mean_nc = np.nanmean(masked_values)
 
+                    # store the results
                     results.append({
                                 "subject": sub,
                                 "runtype": runtype,
@@ -695,7 +715,7 @@ def gather_noise_ceilings(project_dir, subjects, ROIs):
                                 "mean_nc": mean_nc,
                                 "ROI": ROI
                             })
-                    
+    # Build a dataframe and save if all participants were included     
     results_df = pd.DataFrame(results)
 
     if len(subjects) == 20:
@@ -713,6 +733,7 @@ def group_results_noise_ceiling(dataframe):
     0 indicates not significant, 
     1 indicates significance
     """
+    # specify smoothing and ROIs
     ROIs = ["visually_responsive_voxels", "FFA", "PPA", "EBA", "EVC"]
     smooths = ["sm_2_vox", "unsmoothed"]
 
@@ -720,8 +741,9 @@ def group_results_noise_ceiling(dataframe):
 
     for ROI in ROIs:
         for smoothing in smooths:
+            # filter for an ROI
             df = dataframe[dataframe["ROI"] == ROI]
-
+            # filter for a smoothing option and calculate the mean noise ceiling value within that ROI
             df = (
                 df[df["smoothing"] == smoothing]
                 .groupby(["subject", "runtype"], as_index=False)["median_nc"]
@@ -738,17 +760,19 @@ def group_results_noise_ceiling(dataframe):
 
             pvals = []
             results = []
-
+            # turn this into a wide dataframe
             df_wide = df.pivot(index='subject', columns='runtype', values='median_nc')
 
+            # compare all designs against each other (pairwise)
             for cond1, cond2 in comparisons:
                 t_stat, p_val = ttest_rel(df_wide[cond1], df_wide[cond2])
                 pvals.append(p_val)
                 results.append((cond1, cond2, t_stat, p_val))
 
+            # correct for multiple comparisons 
             _, pvals_corrected, _, _ = smm.multipletests(pvals, method='fdr_bh')
 
-            # Build row dict
+            # Build row dictionary 
             row = {"ROI": ROI, "smoothing": smoothing}
 
             for i, (cond1, cond2, t_stat, p_val) in enumerate(results):
@@ -756,7 +780,7 @@ def group_results_noise_ceiling(dataframe):
                 row[f"{label}_t"] = t_stat
                 row[f"{label}_p_uncorrected"] = p_val
                 row[f"{label}_p_corrected"] = pvals_corrected[i]
-
+            # store all results to be printed out
             significant_df.append(row)
 
     # Convert to DataFrame
@@ -768,13 +792,12 @@ def group_results_noise_ceiling(dataframe):
     # Create a copy to avoid modifying the original
     binary_df = significant_df.copy()
 
-    # Replace p-value columns with 1 if p < 0.05 else 0
+    # Replace p-value columns with 1 if p < 0.05 else 0 to indicate significance
     binary_df[pval_cols] = (binary_df[pval_cols] < 0.05).astype(int)
 
     return binary_df
 
 def group_results_wholebrain(dataframe):
-
     """
     Does repeated measures ANOVAs for every ROI and smoothing option the dataframe contains over the designs. 
     Afterwards, FDR-corrected post-hoc paired t-tests are calculated.
@@ -783,6 +806,7 @@ def group_results_wholebrain(dataframe):
     0 indicates not significant, 
     1 indicates significance
     """
+    # specify smoothing and ROIs
     ROIs = ["visually_responsive_voxels", "FFA", "PPA", "EBA", "EVC"]
     smooths = ["sm_2_vox", "unsmoothed"]
 
@@ -790,8 +814,9 @@ def group_results_wholebrain(dataframe):
 
     for ROI in ROIs:
         for smoothing in smooths:
+            # filter for an ROI
             df = dataframe[dataframe["ROI"] == ROI]
-
+            # filter for a smoothing option and calculate the mean median reliability value within that ROI
             df = (
                 df[df["smoothing"] == smoothing]
                 .groupby(["subject", "runtype"], as_index=False)["median_reliability"]
@@ -808,17 +833,17 @@ def group_results_wholebrain(dataframe):
 
             pvals = []
             results = []
-
+            # turn this into a wide dataframe
             df_wide = df.pivot(index='subject', columns='runtype', values='median_reliability')
-
+            # compare all designs against each other (pairwise)
             for cond1, cond2 in comparisons:
                 t_stat, p_val = ttest_rel(df_wide[cond1], df_wide[cond2])
                 pvals.append(p_val)
                 results.append((cond1, cond2, t_stat, p_val))
-
+            # correct for multiple comparisons 
             _, pvals_corrected, _, _ = smm.multipletests(pvals, method='fdr_bh')
 
-            # Build row dict
+            # Build row dictionary
             row = {"ROI": ROI, "smoothing": smoothing}
 
             for i, (cond1, cond2, t_stat, p_val) in enumerate(results):
@@ -826,10 +851,10 @@ def group_results_wholebrain(dataframe):
                 row[f"{label}_t"] = t_stat
                 row[f"{label}_p_uncorrected"] = p_val
                 row[f"{label}_p_corrected"] = pvals_corrected[i]
-
+            # store all results to be printed out
             significant_df.append(row)
 
-    # Convert to DataFrame
+    # Convert to dataframe
     significant_df = pd.DataFrame(significant_df)
     significant_df = significant_df[["ROI", "smoothing", "er_vs_miniblock_p_corrected", "er_vs_sus_p_corrected", "miniblock_vs_sus_p_corrected"]]
     # List of p-value columns
@@ -838,7 +863,7 @@ def group_results_wholebrain(dataframe):
     # Create a copy to avoid modifying the original
     binary_df = significant_df.copy()
 
-    # Replace p-value columns with 1 if p < 0.05 else 0
+    # Replace p-value columns with 1 if p < 0.05 else 0 to indicate significance
     binary_df[pval_cols] = (binary_df[pval_cols] < 0.05).astype(int)
 
     return binary_df

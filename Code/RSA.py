@@ -13,15 +13,19 @@ from numpy.linalg import eigh, svd
 from tqdm import tqdm
 import os
 
-def RSA_between(project_dir, subjects, spearman=True):
+def RSA_between(project_dir, spearman=True):
     """
     Function that calculates RSA between particpants for every ROI. 
     Set spearman to False to use Pearson's r instead. 
     Returns nothing but saves a dataframe of results to the RSA/ROI_between folder.
     """
+
+    # Set up directories 
     outdir = join(project_dir, 'miniblock/Outputs/')
     datadir = join(project_dir, 'miniblock/')
 
+    # Set up paris dictionary 
+    # Since participants 9 and 16 had to be excluded, 21 and 22 are taking their place 
     pairs_dict = {"pair_1" : ["01", "02"], 
                 "pair_2" : ["03", "04"], 
                 "pair_3" : ["05", "06"], 
@@ -32,30 +36,32 @@ def RSA_between(project_dir, subjects, spearman=True):
                 "pair 8" : ["19", "20"],
                 "pair 9" : ["10", "21"],
                 "pair 10": ["15", "22"]}
-    smooths = ['sm_2_vox']
+    smooths = ['sm_2_vox'] # only smoothed data
     presdir = join(project_dir, 'Behavior', 'designmats')
     runtypes = ['sus', 'miniblock', 'er']
     ROIs = ["EBA","FFA", "PPA", "EVC" ]
 
-    correlation_results = []
+    correlation_results = [] # store results here
     for ROI in ROIs: 
         for pair_name, subjects in pairs_dict.items():
             #print(f"Now working on {pair_name} in ROI: {ROI}")
             for runtype in runtypes: 
                     for smoothing in smooths:
-                        upper_triangles_flattened = []
+                        upper_triangles_flattened = [] # store flattened upper triangles 
+                        # loop over both subjects
                         for sub in subjects: 
+                            # Load GLMsingle Outputs
                             results_glmsingle = dict()
                             results_glmsingle['typed'] = np.load(join(outdir,"GLMSingle_Outputs",f'{smoothing}_sub-{sub}_{runtype}_TYPED_FITHRF_GLMDENOISE_RR.npy'), allow_pickle=True).item()
                             betas = results_glmsingle['typed']['betasmd']
 
-
+                            # load the participant-specific ROI mask 
                             brain_mask_path = join(datadir, 'derivatives', f'sub-{sub}', 'anat', f'{ROI}_mask_sm_2_vox.nii')
                             brain_mask = image.load_img(brain_mask_path)
                             mask = brain_mask.get_fdata()   
-
+                            # Mask betas 
                             masked_betas = betas[mask.astype(bool)]
-
+                            # Get design matrix from GLMsingle
                             pattern = presdir + f'/P0{sub}_ConditionRich_Run*_{runtype}.csv'
                             matches = glob.glob(pattern)
                             matches.sort()
@@ -67,19 +73,24 @@ def RSA_between(project_dir, subjects, spearman=True):
 
                             all_design = np.vstack((design[0], design[1], design[2]))
                             condition_mask = all_design.sum(axis=1) > 0
+                            # a vector assigning conditions to trials
                             condition_vector = np.argmax(all_design[condition_mask], axis=1)
+                            # Get the beta values into a vector 
                             n_conditions = 40
                             max_reps = 6
 
+                            # create a matrix of shape trials by condition containing the indeces 
                             repindices = np.full((max_reps, n_conditions), np.nan)
                             for p in range(n_conditions):  
                                 inds = np.where(condition_vector == p)[0]  
                                 repindices[:len(inds), p] = inds  
                             
+                            # prepare empty array to store betas per repitition per condition
                             X, T = masked_betas.shape
                             n_reps, n_conds = repindices.shape
                             betas_per_condition = np.full((X, n_reps, n_conds), np.nan)
 
+                            # loop over conditions and fill the betas_per_condition matrix
                             for cond in range(n_conds):
                                 trial_indices = repindices[:, cond]
                                 for rep, trial_idx in enumerate(trial_indices):
@@ -87,23 +98,25 @@ def RSA_between(project_dir, subjects, spearman=True):
                                         trial_idx = int(trial_idx)
                                         betas_per_condition[:, rep, cond] = masked_betas[:, trial_idx]
 
+                            # result: number of voxels by repetitions by conditions
+                            # calculate mean over all trials
                             all_betas_means = betas_per_condition.mean(axis=-2)
-                            all_betas = all_betas_means.T
-                            upper_triangle = pdist(all_betas, metric='correlation')
+                            all_betas = all_betas_means.T #transpose 
+                            upper_triangle = pdist(all_betas, metric='correlation') # get similarity matrix and extract upper triangle
                             upper_triangles_flattened.append(upper_triangle)
-
+                        # Calculate correlation between the two subjects
                         if spearman: 
                             cor, p_value = spearmanr(upper_triangles_flattened[0], upper_triangles_flattened[1])
                         else: 
                             cor, p_value = pearsonr(upper_triangles_flattened[0], upper_triangles_flattened[1])
-
+                        # append to results 
                         correlation_results.append({
                                     "pair": pair_name,
                                     "ROI": ROI,
                                     "runtype": runtype,
                                     "smoothing": smoothing,
                                     "correlation": cor})
-
+    # store as csv file after doing all pairs
     if spearman:                        
         os.makedirs(join(outdir,"RSA/ROI_between"),exist_ok=True)
         pd.DataFrame(correlation_results).to_csv(join(outdir,"RSA/ROI_between","rsa_results_spearman_between.csv"), index=False)
@@ -116,14 +129,16 @@ def RSA_within(project_dir, subjects, spearman=True):
     Set spearman to False to use Pearson's r instead. 
     Returns nothing but saves a dataframe of results to the RSA/ROI_within folder.
     """
+    # Set up directories 
     outdir = join(project_dir, 'miniblock/Outputs/')
     datadir = join(project_dir, 'miniblock/')
     smooths = ['sm_2_vox']
     presdir = join(project_dir, 'Behavior', 'designmats')
     runtypes = ['sus', 'miniblock', 'er']
     ROIs = ["EBA_mask", "FFA_mask", "PPA_mask", "EVC_mask"]
-    subjects = [f"{i:02d}" for i in range(1, 23) if i not in [9, 16]]
 
+    # we want to calculate all splits of the 6 betas
+    # this part creates all possible combinations when splitting in two groups
     elements = [0, 1, 2, 3, 4, 5]
     # Get all combinations of 3 elements
     group1_list = list(combinations(elements, 3))
@@ -140,24 +155,24 @@ def RSA_within(project_dir, subjects, spearman=True):
             seen.add(key)
             splits.append((group1, group2))
 
-    correlation_results = []
+    correlation_results = [] # store results here
     for ROI in ROIs: 
         for sub in subjects:
             for split in splits:
                 split_idx = splits.index(split) + 1
                 for runtype in runtypes: 
                         for smoothing in smooths:
-                            
+                            # Load GLMsingle Outputs
                             results_glmsingle = dict()
                             results_glmsingle['typed'] = np.load(join(outdir,"GLMSingle_Outputs",f'{smoothing}_sub-{sub}_{runtype}_TYPED_FITHRF_GLMDENOISE_RR.npy'), allow_pickle=True).item()
                             betas = results_glmsingle['typed']['betasmd']
-
+                            # load the participant-specific ROI mask 
                             brain_mask_path = join(datadir, 'derivatives', f'sub-{sub}', 'anat', f'{ROI}_sm_2_vox.nii')
                             brain_mask = image.load_img(brain_mask_path)
                             mask = brain_mask.get_fdata()   
-
+                            # Mask betas 
                             masked_betas = betas[mask.astype(bool)]
-
+                            # Get design matrix from GLMsingle
                             pattern = presdir + f'/P0{sub}_ConditionRich_Run*_{runtype}.csv'
                             matches = glob.glob(pattern)
                             matches.sort()
@@ -169,38 +184,47 @@ def RSA_within(project_dir, subjects, spearman=True):
 
                             all_design = np.vstack((design[0], design[1], design[2]))
                             condition_mask = all_design.sum(axis=1) > 0
+                            # a vector assigning conditions to trials
                             condition_vector = np.argmax(all_design[condition_mask], axis=1)
+                            # Get the beta values into a vector 
                             n_conditions = 40
                             max_reps = 6
 
+                            # create a matrix of shape trials by condition containing the indices 
                             repindices = np.full((max_reps, n_conditions), np.nan)
                             for p in range(n_conditions):  
                                 inds = np.where(condition_vector == p)[0]  
                                 repindices[:len(inds), p] = inds  
                             
+                            # prepare empty array to store betas per repitition per condition
                             X, T = masked_betas.shape
                             n_reps, n_conds = repindices.shape
                             betas_per_condition = np.full((X, n_reps, n_conds), np.nan)
 
+                            # loop over conditions and fill the betas_per_condition matrix
                             for cond in range(n_conds):
                                 trial_indices = repindices[:, cond]
                                 for rep, trial_idx in enumerate(trial_indices):
                                     if not np.isnan(trial_idx):
                                         trial_idx = int(trial_idx)
                                         betas_per_condition[:, rep, cond] = masked_betas[:, trial_idx]
-
+                            # result: number of voxels by repetitions by conditions
+                            
+                            # for each split, calculate the mean over the 3 respective betas and transpose
                             first_split = betas_per_condition[:,list(split[0]),:].mean(axis = -2)
                             second_split = betas_per_condition[:,list(split[1]),:].mean(axis = -2)
                             first_split_betas = first_split.T
                             second_split_betas = second_split.T
-                            first_upper = pdist(first_split_betas, metric='correlation')
-                            second_upper = pdist(second_split_betas, metric='correlation')
+                            first_upper = pdist(first_split_betas, metric='correlation') # get similarity matrix and extract upper triangle
+                            second_upper = pdist(second_split_betas, metric='correlation') # get similarity matrix and extract upper triangle
+                            # Calculate correlation between the two splits
                             if spearman:
                                 cor, p_value = spearmanr(first_upper, second_upper)
 
                             else:
                                 cor, p_value = pearsonr(first_upper, second_upper)
 
+                            # store results 
                             correlation_results.append({
                                     "subject": sub,
                                     "ROI": ROI,
@@ -208,7 +232,7 @@ def RSA_within(project_dir, subjects, spearman=True):
                                     "smoothing": smoothing,
                                     "correlation": cor,
                                     "split": split_idx})
-
+    # save end result as csv
     if spearman:                        
         os.makedirs(join(outdir,"RSA/ROI_within"),exist_ok=True)
         pd.DataFrame(correlation_results).to_csv(join(outdir,"RSA/ROI_within","rsa_results_spearman_within.csv"), index=False)
@@ -251,6 +275,7 @@ def make_sphere(radius_voxels):
     """
     r = radius_voxels
     offsets = []
+    # loop over all voxels 
     for x in range(-r, r+1):
         for y in range(-r, r+1):
             for z in range(-r, r+1):
@@ -262,14 +287,16 @@ def RSA_searchlight(project_dir, subjects):
     """
     Calculates searchlight RSA for every participant. Loops over all subjects, designs and splits of betas (10).
     """
+    # Set up directories 
     outdir = join(project_dir, 'miniblock/Outputs/')
     datadir = join(project_dir, 'miniblock/')
-    smooths = ['sm_2_vox']
+    smooths = ['sm_2_vox'] # only smoothed data
     presdir = join(project_dir, 'Behavior', 'designmats')
     runtypes = ['sus', 'miniblock', 'er']
 
-    sphere_offsets = make_sphere(radius_voxels=2)  
-
+    sphere_offsets = make_sphere(radius_voxels=2) # use custom function to extract spheres 
+    # we want to calculate all splits of the 6 betas
+    # this part creates all possible combinations when splitting in two groups
     elements = [0, 1, 2, 3, 4, 5]
     # Get all combinations of 3 elements
     group1_list = list(combinations(elements, 3))
@@ -292,7 +319,7 @@ def RSA_searchlight(project_dir, subjects):
         brain_mask_path = join(datadir, 'derivatives', f'sub-{sub}', 'anat', f'sub-{sub}_space-MNI152NLin2009cAsym_desc-brain_mask_resampled.nii.gz')
         brain_mask = image.load_img(brain_mask_path)
         mask = brain_mask.get_fdata() 
-        for split in tqdm(splits, desc=f"Subject {sub}", position=0):
+        for split in tqdm(splits, desc=f"Subject {sub}", position=0): # track progress
             for runtype in runtypes: 
                 # Get the design matrix from GLMSingle to get the condition order 
                 pattern = presdir + f'/P0{sub}_ConditionRich_Run*_{runtype}.csv'
@@ -306,11 +333,13 @@ def RSA_searchlight(project_dir, subjects):
 
                 all_design = np.vstack((design[0], design[1], design[2]))
                 condition_mask = all_design.sum(axis=1) > 0
+                # a vector assigning conditions to trials
                 condition_vector = np.argmax(all_design[condition_mask], axis=1)
+                # Get the beta values into a vector 
                 n_conditions = 40
                 max_reps = 6
 
-                # Get the conditions in order 
+                # create a matrix of shape trials by condition containing the indices 
                 repindices = np.full((max_reps, n_conditions), np.nan)
                 for p in range(n_conditions):  
                     inds = np.where(condition_vector == p)[0]  
@@ -320,7 +349,7 @@ def RSA_searchlight(project_dir, subjects):
                 for smoothing in smooths: 
 
                     print(f"Working on: subject {sub}, runtype {runtype}, split {split}")
-                    # Load the betas 
+                    # Load the GLMsingle outputs 
                     results_glmsingle = dict()
                     results_glmsingle['typed'] = np.load(join(outdir,"GLMSingle_Outputs",f'{smoothing}_sub-{sub}_{runtype}_TYPED_FITHRF_GLMDENOISE_RR.npy'), allow_pickle=True).item()
                     betas = results_glmsingle['typed']['betasmd']
@@ -352,10 +381,10 @@ def RSA_searchlight(project_dir, subjects):
                                     betas[nx, ny, nz, :] for (nx, ny, nz) in neighbors
                                 ])  # shape: [n_voxels_in_sphere, n_trials]
 
-                            
+                                # prepare empty array to store betas per repitition per condition
                                 betas_per_condition = np.full((searchlight_data.shape[0], n_reps, n_conds), np.nan)
 
-                                # get the corresponding beta values into the correct shape
+                                #  loop over conditions and fill the betas_per_condition matrix
                                 for cond in range(n_conds):
                                     trial_indices = repindices[:, cond]
                                     for rep, trial_idx in enumerate(trial_indices):
@@ -376,13 +405,13 @@ def RSA_searchlight(project_dir, subjects):
                                 extract_even = cor_matrix_even[np.triu_indices(40, k = 1)]
                                 extract_odd = cor_matrix_odd[np.triu_indices(40, k = 1)]
 
-                                # Get the correlation of both 
+                                # get the correlation of both 
                                 cor, p_value = pearsonr(extract_even, extract_odd)
 
                                 # store at that voxel's location
                                 empty_array[x,y,z] = cor
                     
-                    # Create one nifti image per split, per participant, per smoothing option
+                    # create one nifti image per split, per participant, per smoothing option
                     out_img = nib.Nifti1Image(empty_array, affine=brain_mask.affine)
                     split_idx = splits.index(split) + 1
                     out_subdir = join(outdir, 'RSA', 'searchlight', f"sub-{sub}")
@@ -394,33 +423,32 @@ def PCA_all_trials(project_dir, subjects):
     Calculates a single PCA for every ROI and participant using all trials of every condition. 
     No cross-validation is applied here.
     """
+    # set up directories
     outdir = join(project_dir, "miniblock/Outputs")
     datadir = join(project_dir, "miniblock")
     smooths = ['unsmoothed']
     presdir = join(project_dir, 'Behavior', 'designmats')
     runtypes = ['sus', 'miniblock', 'er']
     ROIs  = ["FFA", "PPA", "EBA", "EVC"]
-
+    # create matrix to store all results 
     explained_variance = np.zeros(shape=(20,3,4,40))
 
     for sub in range(len(subjects)):
         for runtype in range(len(runtypes)): 
                 for smoothing in range(len(smooths)):
                     for ROI in range(len(ROIs)):
-
+                        # Load GLMsingle outputs
                         results_glmsingle = dict()
                         results_glmsingle['typed'] = np.load(join(outdir,"GLMSingle_Outputs",f'{smooths[smoothing]}_sub-{subjects[sub]}_{runtypes[runtype]}_TYPED_FITHRF_GLMDENOISE_RR.npy'), allow_pickle=True).item()
                         betas = results_glmsingle['typed']['betasmd']
-
-                        if ROI == "visually_responsive_voxels":
-                            brain_mask_path = join(datadir, 'derivatives', f'sub-{subjects[sub]}', 'anat', f'{ROIs[ROI]}_sm_2_vox_gm.nii')
-                        else: 
-                            brain_mask_path = join(datadir, 'derivatives', f'sub-{subjects[sub]}', 'anat', f'{ROIs[ROI]}_mask_sm_2_vox.nii')
+                        # Load ROI mask 
+                        brain_mask_path = join(datadir, 'derivatives', f'sub-{subjects[sub]}', 'anat', f'{ROIs[ROI]}_mask_sm_2_vox.nii')
                         brain_mask = image.load_img(brain_mask_path)
                         mask = brain_mask.get_fdata()   
-
+                        # apply mask 
                         masked_betas = betas[mask.astype(bool)]
 
+                        # Get design matrices from GLMsingle
                         pattern = presdir + f'/P0{subjects[sub]}_ConditionRich_Run*_{runtypes[runtype]}.csv'
                         matches = glob.glob(pattern)
                         matches.sort()
@@ -432,19 +460,23 @@ def PCA_all_trials(project_dir, subjects):
 
                         all_design = np.vstack((design[0], design[1], design[2]))
                         condition_mask = all_design.sum(axis=1) > 0
+                        # a vector assigning conditions to trials
                         condition_vector = np.argmax(all_design[condition_mask], axis=1)
                         n_conditions = 40
                         max_reps = 6
 
+                        # create a matrix of shape trials by condition containing the indices 
                         repindices = np.full((max_reps, n_conditions), np.nan)
                         for p in range(n_conditions):  
                             inds = np.where(condition_vector == p)[0]  
                             repindices[:len(inds), p] = inds  
                         
+                        # prepare empty array to store betas per repitition per condition
                         X, T = masked_betas.shape
                         n_reps, n_conds = repindices.shape
                         betas_per_condition = np.full((X, n_reps, n_conds), np.nan)
 
+                        # loop over conditions and fill the betas_per_condition matrix
                         for cond in range(n_conds):
                             trial_indices = repindices[:, cond]
                             for rep, trial_idx in enumerate(trial_indices):
@@ -452,9 +484,11 @@ def PCA_all_trials(project_dir, subjects):
                                     trial_idx = int(trial_idx)
                                     betas_per_condition[:, rep, cond] = masked_betas[:, trial_idx]
                         
+                        # calculate mean over all betas
                         mean_betas = betas_per_condition.mean(axis=1)
+                        # run PCA (SVD)
                         eigvecs, explained_variance_ratio = PCA_voxels(mean_betas.T)
-
+                        # store explained variance
                         explained_variance[sub, runtype, ROI, :] = explained_variance_ratio[:40]
 
     return explained_variance
@@ -466,14 +500,20 @@ def PCA_CV(project_dir, subjects, ROIs):
     beta values. The amount of variance explained by each of the principal components from the test data in the train data 
     is then stored in first_39_components and returned along other variables. 
     """    
+    # set up directories
     outdir = join(project_dir, "miniblock/Outputs")
     datadir = join(project_dir, "miniblock")
     smooths = ['sm_2_vox']
     presdir = join(project_dir, 'Behavior', 'designmats')
     runtypes = ['sus', 'miniblock', 'er']
+    # store results
+    # track explained variance by each component in the train data
     explained_variance_train = np.zeros(shape=(20,3,4,6,40))
+    # track eigenvectors
     all_eigenvectors = np.zeros(shape=(20,3,4,6,40,40))
+    # track explained variance in the test data 
     explained_variance_test = np.zeros(shape=(20,3,4,6,40))
+    # track first 39 components (test data)
     first_39_components = np.zeros(shape=(20,3,4,6,39))
 
 
@@ -481,20 +521,22 @@ def PCA_CV(project_dir, subjects, ROIs):
         for runtype in range(len(runtypes)): 
                 for smoothing in range(len(smooths)):
                     for ROI in range(len(ROIs)):
-                        
+                        # load GLMsingle outputs
                         results_glmsingle = dict()
                         results_glmsingle['typed'] = np.load(join(outdir,"GLMSingle_Outputs",f'{smooths[smoothing]}_sub-{subjects[sub]}_{runtypes[runtype]}_TYPED_FITHRF_GLMDENOISE_RR.npy'), allow_pickle=True).item()
                         betas = results_glmsingle['typed']['betasmd']
 
+                        # load brain mask
                         if ROI == "visually_responsive_voxels":
                             brain_mask_path = join(datadir, 'derivatives', f'sub-{subjects[sub]}', 'anat', f'{ROIs[ROI]}_sm_2_vox_gm.nii')
                         else: 
                             brain_mask_path = join(datadir, 'derivatives', f'sub-{subjects[sub]}', 'anat', f'{ROIs[ROI]}_mask_sm_2_vox.nii')
                         brain_mask = image.load_img(brain_mask_path)
                         mask = brain_mask.get_fdata()   
-
+                        # apply mask
                         masked_betas = betas[mask.astype(bool)]
 
+                        # get design matrix from GLMsingle
                         pattern = presdir + f'/P0{subjects[sub]}_ConditionRich_Run*_{runtypes[runtype]}.csv'
                         matches = glob.glob(pattern)
                         matches.sort()
@@ -506,19 +548,24 @@ def PCA_CV(project_dir, subjects, ROIs):
 
                         all_design = np.vstack((design[0], design[1], design[2]))
                         condition_mask = all_design.sum(axis=1) > 0
+                        # a vector assigning condtions to trials
                         condition_vector = np.argmax(all_design[condition_mask], axis=1)
+                        # Get the beta values into a vector 
                         n_conditions = 40
                         max_reps = 6
 
+                        # create a matrix of shape trials by condition containing the indices 
                         repindices = np.full((max_reps, n_conditions), np.nan)
                         for p in range(n_conditions):  
                             inds = np.where(condition_vector == p)[0]  
                             repindices[:len(inds), p] = inds  
                         
+                        # prepare empty array to store betas per repitition per condition
                         X, T = masked_betas.shape
                         n_reps, n_conds = repindices.shape
                         betas_per_condition = np.full((X, n_reps, n_conds), np.nan)
 
+                        # loop over conditions and fill the betas_per_condition matrix
                         for cond in range(n_conds):
                             trial_indices = repindices[:, cond]
                             for rep, trial_idx in enumerate(trial_indices):
@@ -527,31 +574,38 @@ def PCA_CV(project_dir, subjects, ROIs):
                                     betas_per_condition[:, rep, cond] = masked_betas[:, trial_idx]
 
 
-                        # First for no cross-validation
+                        # Apply cross-validated PCA
                         for i in range(6):
+                            # Get the indices for the train data
                             train_idx = np.arange(6) != i
+                            # filter for train data
                             beta_filtered = betas_per_condition[:,train_idx,:]
+                            # filter for test data
                             beta_filtered_test = betas_per_condition[:,i,:]
+                            # calculate mean over the train betas
                             beta_filtered = beta_filtered.mean(axis=1)
+                            # Apply PCA, extract eigenvectors and explained variance
                             eigvecs, explained_variance_ratio = PCA_voxels(beta_filtered.T)
 
-                            # Project hold-out betas onto the fitted PCs
+                            # project hold-out betas onto the fitted PCs
+                            # center data first, then project
                             beta_filtered_test_centered = (beta_filtered_test - np.mean(beta_filtered_test, axis=0)) / np.std(beta_filtered_test, axis = 0)
                             beta_test_projected = beta_filtered_test_centered @ eigvecs.T
 
-                            # Store eigenvectors and explained variance in the train set
+                            # store eigenvectors and explained variance in the train set
                             explained_variance_train[sub, runtype, ROI, :] = explained_variance_ratio
                             all_eigenvectors[sub, runtype, ROI, :, :] = eigvecs
 
-                            # Variance captured along each PC
+                            # variance captured along each PC
                             variance_along_pcs = np.var(beta_test_projected, axis=0, ddof=1)
 
-                            # Total variance in hold-out data
+                            # Total variance in hold-out data (test data)
                             total_variance_new_data = np.sum(np.var(beta_test_projected, axis=0, ddof=1))
 
-                            # Fraction explained by each PC
+                            # fraction explained by each PC
                             explained_fraction_per_pc = variance_along_pcs / total_variance_new_data
 
+                            # store results 
                             explained_variance_test[sub, runtype, ROI, :] = explained_fraction_per_pc
                             non_noise_variance = explained_fraction_per_pc[:39].sum()
                             first_39_components[sub, runtype, ROI, :] = non_noise_variance
@@ -563,58 +617,34 @@ def EVC_analysis(project_dir, subjects):
     Calculates the correlation of the upper triangle of the RDM in EVC with each of the other ROIs' RDM for every subject. 
     Returns the results in the end with one value per subject, design and ROI.
     """
-
+    # set up directories
     outdir = join(project_dir, "miniblock/Outputs")
     datadir = join(project_dir, "miniblock")
-    # pairs_dict = {"pair_1" : ["01", "02"], 
-    #             "pair_2" : ["03", "04"], 
-    #             "pair_3" : ["05", "06"], 
-    #             "pair_4" : ["07", "08"], 
-    #             "pair_5" : ["11", "12"], 
-    #             "pair_6" : ["13", "14"], 
-    #             "pair_7" : ["17", "18"],
-    #             "pair 8" : ["19", "20"],
-    #             "pair 9" : ["10", "21"],
-    #             "pair 10": ["15", "22"]}
     smooths = ['sm_2_vox', "unsmoothed"]
     presdir = join(project_dir, 'Behavior', 'designmats')
     runtypes = ['sus', 'miniblock', 'er']
     ROIs = ["EBA_mask", "FFA_mask", "PPA_mask", "EVC_mask"]
 
-    elements = [0, 1, 2, 3, 4, 5]
-    # Get all combinations of 3 elements
-    group1_list = list(combinations(elements, 3))
-
-    # To avoid duplicates (like (group1, group2) and (group2, group1)), only keep half
-    splits = []
-    seen = set()
-
-    for group1 in group1_list:
-        group2 = tuple(sorted(set(elements) - set(group1)))
-        # Make sure we haven't already seen this partition
-        key = tuple(sorted([group1, group2]))
-        if key not in seen:
-            seen.add(key)
-            splits.append((group1, group2))
-
+    # store results here
     store_matrix = np.zeros((len(runtypes), len(subjects), len(smooths), len(ROIs), 780))
 
     for sub in range(len(subjects)):
         for runtype in range(len(runtypes)): 
                 for smoothing in range(len(smooths)):
                     for ROI in range(len(ROIs)):
-                        
+                        # Load GLMsingle outputs
                         results_glmsingle = dict()
                         results_glmsingle['typed'] = np.load(join(outdir,"GLMSingle_Outputs",f'{smooths[smoothing]}_sub-{subjects[sub]}_{runtypes[runtype]}_TYPED_FITHRF_GLMDENOISE_RR.npy'), allow_pickle=True).item()
                         betas = results_glmsingle['typed']['betasmd']
-
+                        # load the participant-specific ROI mask 
                         brain_mask_path = join(datadir, 'derivatives', f'sub-{subjects[sub]}', 'anat', f'{ROIs[ROI]}_sm_2_vox.nii')
                         brain_mask = image.load_img(brain_mask_path)
                         mask = brain_mask.get_fdata()   
 
+                        # Mask betas
                         masked_betas = betas[mask.astype(bool)]
 
-
+                        # Get design matrix from GLMsingle
                         pattern = presdir + f'/P0{subjects[sub]}_ConditionRich_Run*_{runtypes[runtype]}.csv'
                         matches = glob.glob(pattern)
                         matches.sort()
@@ -626,15 +656,19 @@ def EVC_analysis(project_dir, subjects):
 
                         all_design = np.vstack((design[0], design[1], design[2]))
                         condition_mask = all_design.sum(axis=1) > 0
+                        # a vector assigning conditions to trials
                         condition_vector = np.argmax(all_design[condition_mask], axis=1)
+                        # Get the beta values into a vector 
                         n_conditions = 40
                         max_reps = 6
-
+                        
+                        # create a matrix of shape trials by condition containing the indices 
                         repindices = np.full((max_reps, n_conditions), np.nan)
                         for p in range(n_conditions):  
                             inds = np.where(condition_vector == p)[0]  
                             repindices[:len(inds), p] = inds  
                         
+                        # prepare empty array to store betas per repitition per condition
                         X, T = masked_betas.shape
                         n_reps, n_conds = repindices.shape
                         betas_per_condition = np.full((X, n_reps, n_conds), np.nan)
@@ -645,21 +679,23 @@ def EVC_analysis(project_dir, subjects):
                                 if not np.isnan(trial_idx):
                                     trial_idx = int(trial_idx)
                                     betas_per_condition[:, rep, cond] = masked_betas[:, trial_idx]
-
+                        # result: number of voxels by repetitions by conditions
+                        # calculte mean over all betas 
                         all_betas_means = betas_per_condition.mean(axis=-2)
                         all_betas = all_betas_means.T
-                        upper_triangle = pdist(all_betas, metric='correlation')
+                        upper_triangle = pdist(all_betas, metric='correlation') # get similarity matrix and extract upper triangle
                         
-                        store_matrix[runtype, sub, smoothing, ROI, :] = upper_triangle
+                        store_matrix[runtype, sub, smoothing, ROI, :] = upper_triangle # store upper triangle
 
-    matrix_smoothed = store_matrix[:,:,0,:,:]
+    matrix_smoothed = store_matrix[:,:,0,:,:] # filter for smoothed data
     results_smoothed = []
 
     for sub in range(20):
         for design in range(3):
             for ROI in range(3):
-                cor,_ = spearmanr(matrix_smoothed[design,sub,ROI,:], matrix_smoothed[design,sub,3,:])
-
+                # for every subject, design and ROI calculate the correlation with the EVC
+                cor,_ = spearmanr(matrix_smoothed[design,sub,ROI,:], matrix_smoothed[design,sub,3,:]) 
+                # store results
                 results_smoothed.append({
                     "design" : runtypes[design],
                     "subject" : subjects[sub],
@@ -667,7 +703,7 @@ def EVC_analysis(project_dir, subjects):
                     "correlation": cor
         
                 })
-    
+    # return as dataframe
     results_smoothed = pd.DataFrame(results_smoothed)
 
     return results_smoothed
