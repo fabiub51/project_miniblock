@@ -239,7 +239,6 @@ def RSA_within(project_dir, subjects, spearman=True):
     else: 
         pd.DataFrame(correlation_results).to_csv(join(outdir,"RSA/ROI_within","rsa_results_pearson_within.csv"), index=False)
 
-
 def PCA_voxels(mean_betas):
     """
     PCA function using SVD to extract number of principle components of matrix shaped 
@@ -418,87 +417,50 @@ def RSA_searchlight(project_dir, subjects):
                     os.makedirs(out_subdir, exist_ok=True)
                     nib.save(out_img, join(outdir, 'RSA', 'searchlight', f"sub-{sub}", f'{smoothing}_sub-{sub}_rsa_map_{runtype}_split_{split_idx}.nii.gz'))
 
-def PCA_all_trials(project_dir, subjects):
+def cv_pca_curves(betas_per_run):
     """
-    Calculates a single PCA for every ROI and participant using all trials of every condition. 
-    No cross-validation is applied here.
+    betas_per_run: (voxels, runs=3, conds=40)
+    returns: folds x Kmax array of R² curves
     """
-    # set up directories
-    outdir = join(project_dir, "miniblock/Outputs")
-    datadir = join(project_dir, "miniblock")
-    smooths = ['unsmoothed']
-    presdir = join(project_dir, 'Behavior', 'designmats')
-    runtypes = ['sus', 'miniblock', 'er']
-    ROIs  = ["FFA", "PPA", "EBA", "EVC"]
-    # create matrix to store all results 
-    explained_variance = np.zeros(shape=(20,3,4,40))
+    V, n_runs, C = betas_per_run.shape
+    Kmax = C - 1
+    curves = np.zeros((n_runs, Kmax))
 
-    for sub in range(len(subjects)):
-        for runtype in range(len(runtypes)): 
-                for smoothing in range(len(smooths)):
-                    for ROI in range(len(ROIs)):
-                        # Load GLMsingle outputs
-                        results_glmsingle = dict()
-                        results_glmsingle['typed'] = np.load(join(outdir,"GLMSingle_Outputs",f'{smooths[smoothing]}_sub-{subjects[sub]}_{runtypes[runtype]}_TYPED_FITHRF_GLMDENOISE_RR.npy'), allow_pickle=True).item()
-                        betas = results_glmsingle['typed']['betasmd']
-                        # Load ROI mask 
-                        brain_mask_path = join(datadir, 'derivatives', f'sub-{subjects[sub]}', 'anat', f'{ROIs[ROI]}_mask_sm_2_vox.nii')
-                        brain_mask = image.load_img(brain_mask_path)
-                        mask = brain_mask.get_fdata()   
-                        # apply mask 
-                        masked_betas = betas[mask.astype(bool)]
+    for test_run in range(n_runs):
+        train_runs = [r for r in range(n_runs) if r != test_run]
+        X_train = betas_per_run[:,train_runs,:].mean(axis=1)
+        X_test  = betas_per_run[:,test_run,:]
 
-                        # Get design matrices from GLMsingle
-                        pattern = presdir + f'/P0{subjects[sub]}_ConditionRich_Run*_{runtypes[runtype]}.csv'
-                        matches = glob.glob(pattern)
-                        matches.sort()
-                        
-                        design = []
-                        for i in range(len(matches)):
-                            designMat = pd.read_csv(matches[i], header=None)
-                            design.append(designMat)
+        # Standardize
+        mu = X_train.mean(axis=0)
+        sd = X_train.std(axis=0, ddof=1)
+        sd[sd==0] = 1.0
+        Xtr = (X_train - mu) / sd
+        Xte = (X_test  - mu) / sd
+        Xtr = Xtr.T
+        Xte = Xte.T
 
-                        all_design = np.vstack((design[0], design[1], design[2]))
-                        condition_mask = all_design.sum(axis=1) > 0
-                        # a vector assigning conditions to trials
-                        condition_vector = np.argmax(all_design[condition_mask], axis=1)
-                        n_conditions = 40
-                        max_reps = 6
+        # PCA
+        U, S, Vt = np.linalg.svd(Xtr, full_matrices=False)
+        Vvox = Vt.T
 
-                        # create a matrix of shape trials by condition containing the indices 
-                        repindices = np.full((max_reps, n_conditions), np.nan)
-                        for p in range(n_conditions):  
-                            inds = np.where(condition_vector == p)[0]  
-                            repindices[:len(inds), p] = inds  
-                        
-                        # prepare empty array to store betas per repitition per condition
-                        X, T = masked_betas.shape
-                        n_reps, n_conds = repindices.shape
-                        betas_per_condition = np.full((X, n_reps, n_conds), np.nan)
+        # R² curve
+        for k in range(1, Kmax+1):
+            Uk = Vvox[:, :k]
+            scores_te = Xte @ Uk
+            Xte_hat = scores_te @ Uk.T
+            num = np.sum((Xte - Xte_hat)**2)
+            den = np.sum(Xte**2)
+            curves[test_run, k-1] = 1 - num/den
 
-                        # loop over conditions and fill the betas_per_condition matrix
-                        for cond in range(n_conds):
-                            trial_indices = repindices[:, cond]
-                            for rep, trial_idx in enumerate(trial_indices):
-                                if not np.isnan(trial_idx):
-                                    trial_idx = int(trial_idx)
-                                    betas_per_condition[:, rep, cond] = masked_betas[:, trial_idx]
-                        
-                        # calculate mean over all betas
-                        mean_betas = betas_per_condition.mean(axis=1)
-                        # run PCA (SVD)
-                        eigvecs, explained_variance_ratio = PCA_voxels(mean_betas.T)
-                        # store explained variance
-                        explained_variance[sub, runtype, ROI, :] = explained_variance_ratio[:40]
-
-    return explained_variance
+    return curves
 
 def PCA_CV(project_dir, subjects, ROIs):
     """
-    Applies cross-validation to the PCA in a leave-one-beta-out cross-validation scheme. A PCA is done using 5 of the 6 trials. 
-    The left out matrix created with the left out beta is then projected onto the eigenvectors created by the PCA on the 5 
-    beta values. The amount of variance explained by each of the principal components from the test data in the train data 
-    is then stored in first_39_components and returned along other variables. 
+    Applies cross-validation to the PCA in a leave-one-run-out cross-validation scheme. A PCA is done using 2 of the 3 runs. 
+    The left out matrix created with the left out run is then projected onto the eigenvectors created by the PCA on the 2 
+    runs. The amount of variance explained by each of the principal components from the test data in the train data 
+    is then stored in an array and saved to the results as a csv-file. 
     """    
     # set up directories
     outdir = join(project_dir, "miniblock/Outputs")
@@ -508,14 +470,7 @@ def PCA_CV(project_dir, subjects, ROIs):
     runtypes = ['sus', 'miniblock', 'er']
     # store results
     # track explained variance by each component in the train data
-    explained_variance_train = np.zeros(shape=(20,3,4,6,40))
-    # track eigenvectors
-    all_eigenvectors = np.zeros(shape=(20,3,4,6,40,40))
-    # track explained variance in the test data 
-    explained_variance_test = np.zeros(shape=(20,3,4,6,40))
-    # track first 39 components (test data)
-    first_39_components = np.zeros(shape=(20,3,4,6,39))
-
+    all_R2 = np.zeros(shape=(20,3,4,39))
 
     for sub in range(len(subjects)):
         for runtype in range(len(runtypes)): 
@@ -526,11 +481,7 @@ def PCA_CV(project_dir, subjects, ROIs):
                         results_glmsingle['typed'] = np.load(join(outdir,"GLMSingle_Outputs",f'{smooths[smoothing]}_sub-{subjects[sub]}_{runtypes[runtype]}_TYPED_FITHRF_GLMDENOISE_RR.npy'), allow_pickle=True).item()
                         betas = results_glmsingle['typed']['betasmd']
 
-                        # load brain mask
-                        if ROI == "visually_responsive_voxels":
-                            brain_mask_path = join(datadir, 'derivatives', f'sub-{subjects[sub]}', 'anat', f'{ROIs[ROI]}_sm_2_vox_gm.nii')
-                        else: 
-                            brain_mask_path = join(datadir, 'derivatives', f'sub-{subjects[sub]}', 'anat', f'{ROIs[ROI]}_mask_sm_2_vox.nii')
+                        brain_mask_path = join(datadir, 'derivatives', f'sub-{subjects[sub]}', 'anat', f'{ROIs[ROI]}_mask_sm_2_vox.nii')
                         brain_mask = image.load_img(brain_mask_path)
                         mask = brain_mask.get_fdata()   
                         # apply mask
@@ -572,45 +523,30 @@ def PCA_CV(project_dir, subjects, ROIs):
                                 if not np.isnan(trial_idx):
                                     trial_idx = int(trial_idx)
                                     betas_per_condition[:, rep, cond] = masked_betas[:, trial_idx]
+                        
+                        betas_per_run = np.zeros(shape=(betas_per_condition.shape[0],3,betas_per_condition.shape[2]))
+                        betas_per_run[:,0,:] = betas_per_condition[:,:2,:].mean(axis=1)
+                        betas_per_run[:,1,:] = betas_per_condition[:,2:4,:].mean(axis=1)
+                        betas_per_run[:,2,:] = betas_per_condition[:,4:,:].mean(axis=1)
+                        
+                        subject_curves = cv_pca_curves(betas_per_run)
+                        mean_R2 = subject_curves.mean(axis=0)
+                        all_R2[sub,runtype,ROI,:] = mean_R2
+    mean_over_part = all_R2.mean(axis=0)
+    make_2_dimension = []
+    for runtype in range(3):
+        for ROI in range(4):
+            for n_component in range(39):
+                make_2_dimension.append({
+                    "ROI": ROIs[ROI],
+                    "runtype": runtypes[runtype],
+                    "component": n_component+1,
+                    "value": mean_over_part[runtype,ROI,n_component]
+                })
 
-
-                        # Apply cross-validated PCA
-                        for i in range(6):
-                            # Get the indices for the train data
-                            train_idx = np.arange(6) != i
-                            # filter for train data
-                            beta_filtered = betas_per_condition[:,train_idx,:]
-                            # filter for test data
-                            beta_filtered_test = betas_per_condition[:,i,:]
-                            # calculate mean over the train betas
-                            beta_filtered = beta_filtered.mean(axis=1)
-                            # Apply PCA, extract eigenvectors and explained variance
-                            eigvecs, explained_variance_ratio = PCA_voxels(beta_filtered.T)
-
-                            # project hold-out betas onto the fitted PCs
-                            # center data first, then project
-                            beta_filtered_test_centered = (beta_filtered_test - np.mean(beta_filtered_test, axis=0)) / np.std(beta_filtered_test, axis = 0)
-                            beta_test_projected = beta_filtered_test_centered @ eigvecs.T
-
-                            # store eigenvectors and explained variance in the train set
-                            explained_variance_train[sub, runtype, ROI, :] = explained_variance_ratio
-                            all_eigenvectors[sub, runtype, ROI, :, :] = eigvecs
-
-                            # variance captured along each PC
-                            variance_along_pcs = np.var(beta_test_projected, axis=0, ddof=1)
-
-                            # Total variance in hold-out data (test data)
-                            total_variance_new_data = np.sum(np.var(beta_test_projected, axis=0, ddof=1))
-
-                            # fraction explained by each PC
-                            explained_fraction_per_pc = variance_along_pcs / total_variance_new_data
-
-                            # store results 
-                            explained_variance_test[sub, runtype, ROI, :] = explained_fraction_per_pc
-                            non_noise_variance = explained_fraction_per_pc[:39].sum()
-                            first_39_components[sub, runtype, ROI, :] = non_noise_variance
-
-    return explained_variance_train, explained_variance_test, all_eigenvectors, first_39_components
+    R2_df = pd.DataFrame(make_2_dimension)
+    os.makedirs(join(outdir, "RSA/CV_PCA"), exist_ok=True)
+    pd.DataFrame.to_csv(R2_df, join(outdir, "RSA/CV_PCA/R2_df.csv"))
 
 def EVC_analysis(project_dir, subjects):
     """
@@ -705,7 +641,9 @@ def EVC_analysis(project_dir, subjects):
                 })
     # return as dataframe
     results_smoothed = pd.DataFrame(results_smoothed)
-
+    os.makedirs(join(outdir,"RSA/ROI_within/EVC_analysis"),exist_ok=True)
+    pd.DataFrame(results_smoothed).to_csv(join(outdir,"RSA/ROI_within/EVC_analysis","evc_results.csv"), index=False)
+    
     return results_smoothed
 
 
