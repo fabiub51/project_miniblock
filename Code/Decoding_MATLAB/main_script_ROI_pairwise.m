@@ -42,13 +42,9 @@ for s = subjects
             else
                 mask = fullfile(project_dir, 'miniblock', 'derivatives', subj, 'anat', sprintf('%s_mask_sm_2_vox.nii', roi));
             end
-            
-            % Display for sanity check
-            fprintf('Subject: %s | Design: %s | ROI: %s\n', subj, design, roi);
-            fprintf('Mask: %s\n', mask);
-            
+            % Set output directory
             output_dir = roi;
-            
+            % run function 
             run_ROI_decoding_pairwise(project_dir, subj, design, mask, output_dir)
             close all
         end

@@ -27,6 +27,7 @@ for s = subjects
     % Loop over designs
     for d = 1:length(designs)
         design = designs{d};
+        % Run function
         run_searchlight_decoding(project_dir, subj, design)
 
     end

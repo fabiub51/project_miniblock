@@ -7,18 +7,18 @@ function run_searchlight_decoding(project_dir,subj, design)
     cfg.decoding.software = 'libsvm';  % SVM library
     cfg.decoding.method = 'classification';
     cfg.scale.method = 'min0max1global';
-    
+    % Setting up directories 
     basedir = fullfile(strcat(project_dir, '/miniblock/Outputs/'));
     glmdir = fullfile(basedir, 'GLMSingle_Outputs');
-    
+    % Creating new directory if does not exist
     if ~exist(fullfile(basedir, 'decoding', 'searchlight','pairwise', design, subj), 'dir')
         mkdir(fullfile(basedir, 'decoding', 'searchlight','pairwise', design, subj));
     end
-
+    
     beta_folder = fullfile(glmdir, 'nifti_betas');
     cfg.results.dir = fullfile(basedir, 'decoding', 'searchlight','pairwise', design, subj);
 
-    % Beta images
+    %% Beta images
     pattern = fullfile(beta_folder, sprintf('beta_*%s*%s*.nii', subj, design));
     files = dir(pattern);
     
@@ -76,7 +76,7 @@ function run_searchlight_decoding(project_dir,subj, design)
     %% Decoding design
     cfg.design.function = 'make_design_cv';  % Define function to use for design creation
     cfg.design.label = 'leave_one_chunk_out';  % Cross-validation type
-    cfg.design = make_design_cv(cfg);  % Create design matrix for cross-validation
+    cfg.design = make_design_cv(cfg);
     cfg.results.overwrite = 1;  % Overwrite existing results
     cfg.design.fig = 0;
     cfg.plot = 0;

@@ -1,6 +1,5 @@
 % Base directories
 fullPath = pwd;
-
 targetDir = 'project_miniblock';
 [fileDir,~,~] = fileparts(fullPath);
 idx = strfind(fileDir, targetDir);
@@ -46,7 +45,7 @@ for s = subjects
             for g = 1:length(groups)
                 group = groups{g};
                 output_dir = roi;
-            
+                % run the function
                 run_ROI_decoding_pairwise_group(project_dir, subj, design, mask, output_dir, group)
                 close all
             end

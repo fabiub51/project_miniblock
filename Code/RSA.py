@@ -544,9 +544,25 @@ def PCA_CV(project_dir, subjects, ROIs):
                     "value": mean_over_part[runtype,ROI,n_component]
                 })
 
+    make_2_dimension_subs = []
+    for sub in range(20):
+        for runtype in range(3):
+            for ROI in range(4):
+                for n_component in range(39):
+                    make_2_dimension_subs.append({
+                        "subject": subjects[sub],
+                        "ROI": ROIs[ROI],
+                        "runtype": runtypes[runtype],
+                        "component": n_component+1,
+                        "value": all_R2[sub,runtype,ROI,n_component]
+                    })
+
     R2_df = pd.DataFrame(make_2_dimension)
     os.makedirs(join(outdir, "RSA/CV_PCA"), exist_ok=True)
-    pd.DataFrame.to_csv(R2_df, join(outdir, "RSA/CV_PCA/R2_df.csv"))
+    R2_df.to_csv(join(outdir, "RSA/CV_PCA/R2_df.csv"))
+
+    R2_subs = pd.DataFrame(make_2_dimension_subs)
+    R2_subs.to_csv(join(outdir, "RSA/CV_PCA/R2_subs.csv"))
 
 def EVC_analysis(project_dir, subjects):
     """
